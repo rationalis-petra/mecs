@@ -1,0 +1,5 @@
+{
+  "gccDefaultCFlags": "-Wall -c -DDEBUG",
+  "gccErrorLimit": 15,
+  "gccIncludePaths": "./include",
+}

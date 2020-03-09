@@ -1,0 +1,30 @@
+\hypertarget{structEntityList}{}\doxysection{Entity\+List Struct Reference}
+\label{structEntityList}\index{EntityList@{EntityList}}
+
+
+The entity list datatype, which is used to store the output of a query.  
+
+
+
+
+{\ttfamily \#include $<$query.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structEntityList_a49dba1b3b1c80366b3135efdc2c3bcb1}\label{structEntityList_a49dba1b3b1c80366b3135efdc2c3bcb1}} 
+int \mbox{\hyperlink{structEntityList_a49dba1b3b1c80366b3135efdc2c3bcb1}{len}}
+\begin{DoxyCompactList}\small\item\em The number of entities in the list. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structEntityList_aee9b64aa13e259bc4d9529c5caba2651}\label{structEntityList_aee9b64aa13e259bc4d9529c5caba2651}} 
+int $\ast$ \mbox{\hyperlink{structEntityList_aee9b64aa13e259bc4d9529c5caba2651}{entities}}
+\begin{DoxyCompactList}\small\item\em An array of entity ids. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The entity list datatype, which is used to store the output of a query. 
+
+The entity list is essentially an array with two variables\+: the length (len) and array (entities). The entities array stores the integer ids which can be used to access the components of the entity via \mbox{\hyperlink{group__Base_gac4a80c3a238d32f76cfd6a6b5c3c8586}{get\+\_\+component()}}; 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/engine/core/\mbox{\hyperlink{query_8h}{query.\+h}}\end{DoxyCompactItemize}

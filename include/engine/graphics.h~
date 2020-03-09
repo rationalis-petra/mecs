@@ -1,0 +1,9 @@
+#ifndef GRAPHICS_BACKEND
+#define GRAPHICS_BACKEND OPEN_GL
+#endif
+
+#if GRAPHICS_BACKEND == OPEN_GL
+#include "engine/graphics/opengl.h"
+#else
+#include"engine/graphics/vulkan.h"
+#endif

@@ -1,0 +1,12 @@
+#ifndef TEMPLATE_H
+#define TEMPLATE_H
+
+
+typedef struct Template {
+  int num_components;
+  void** components;
+} Template;
+
+void delete_template(Template* template);
+
+#endif

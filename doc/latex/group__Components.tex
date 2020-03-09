@@ -1,0 +1,65 @@
+\hypertarget{group__Components}{}\doxysection{Components}
+\label{group__Components}\index{Components@{Components}}
+
+
+Components are data structures which store information relating to a specific behaviour(s)  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structCreature}{Creature}}
+\begin{DoxyCompactList}\small\item\em The creature struct contains the basic stat block for all creatures, and auxilliary information. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structInfo}{Info}}
+\begin{DoxyCompactList}\small\item\em The info struct stored miscellaneous information about an entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structCreature}{Creature}} \mbox{\hyperlink{group__Components_ga508eccd4f0c8029b4da3a0b557e7ab1c}{Creature}}
+\begin{DoxyCompactList}\small\item\em The creature struct contains the basic stat block for all creatures, and auxilliary information. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Components_ga107c14b934a12b9e6d0d8d71d8c3f99d}\label{group__Components_ga107c14b934a12b9e6d0d8d71d8c3f99d}} 
+typedef struct \mbox{\hyperlink{structInfo}{Info}} \mbox{\hyperlink{group__Components_ga107c14b934a12b9e6d0d8d71d8c3f99d}{Info}}
+\begin{DoxyCompactList}\small\item\em The info struct stored miscellaneous information about an entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__Components_ga305263dd89ad9fde1863aece00907351}\label{group__Components_ga305263dd89ad9fde1863aece00907351}} 
+enum \mbox{\hyperlink{group__Components_ga305263dd89ad9fde1863aece00907351}{Tag}} \{ {\bfseries Player\+Tag} = 1, 
+{\bfseries Enemy\+Tag} = 2, 
+{\bfseries Friendly\+Tag} = 4
+ \}
+\begin{DoxyCompactList}\small\item\em The tag enum is a definition of flags which are bit-\/aligned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__Components_gab07e6fc62a2f7b0ad37b92312a942b60}\label{group__Components_gab07e6fc62a2f7b0ad37b92312a942b60}} 
+void $\ast$ {\bfseries new\+\_\+creature} ()
+\item 
+\mbox{\Hypertarget{group__Components_ga4ea35871c4ba85c19b0b9aa23b46b018}\label{group__Components_ga4ea35871c4ba85c19b0b9aa23b46b018}} 
+void {\bfseries delete\+\_\+creature} (void $\ast$creature)
+\item 
+\mbox{\Hypertarget{group__Components_gab541529c1d4c45b25d4198956af41ef7}\label{group__Components_gab541529c1d4c45b25d4198956af41ef7}} 
+void $\ast$ {\bfseries new\+\_\+info} ()
+\item 
+\mbox{\Hypertarget{group__Components_ga866558f5889c7709afe96ff413c0814b}\label{group__Components_ga866558f5889c7709afe96ff413c0814b}} 
+void {\bfseries delete\+\_\+info} (void $\ast$info)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Components are data structures which store information relating to a specific behaviour(s) 
+
+Components are one of the core parts of the E\+CS, although they are completely defined by the user, exisiting only as void$\ast$ in the engine itself. The components module contains all user-\/defined types as well as an enum indexing them all. To see details on accessing components, see \mbox{\hyperlink{group__Query}{Query}} 
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{group__Components_ga508eccd4f0c8029b4da3a0b557e7ab1c}\label{group__Components_ga508eccd4f0c8029b4da3a0b557e7ab1c}} 
+\index{Components@{Components}!Creature@{Creature}}
+\index{Creature@{Creature}!Components@{Components}}
+\doxysubsubsection{\texorpdfstring{Creature}{Creature}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structCreature}{Creature}} \mbox{\hyperlink{structCreature}{Creature}}}
+
+
+
+The creature struct contains the basic stat block for all creatures, and auxilliary information. 
+
+Based off the standard D\&D stat-\/block, contains basic informatino on strength, dexterity, armour, health, etc. 

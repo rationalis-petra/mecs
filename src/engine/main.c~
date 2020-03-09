@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include "engine/engine.h"
+
+#include "components/components.h"
+#include "components/info.h"
+#include "components/creature.h"
+#include "components/transform.h"
+
+#include "templates/templates.h"
+
+int main(int argc, char** argv)
+{
+  // The initialisation
+  register_component(TransformType, &new_transform, &delete_transform);
+  register_component(InfoType, &new_info, &delete_info);
+  register_component(CreatureType, &new_creature, &delete_creature);
+  
+  add_entity(&player_template);
+  init();
+  run();
+  clean();
+
+  return 0;
+}

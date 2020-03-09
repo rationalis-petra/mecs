@@ -1,0 +1,6 @@
+/** @Mainpage Enigma
+ * 
+ * @section intro_sec Introduction
+ * Enigma is several experiments rolled into one: an experiment in implementing an 
+ * efficient ECS enginen in C, in the Vulkan API, and in the C language itself
+ */

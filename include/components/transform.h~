@@ -1,0 +1,29 @@
+// #derive (component, Transform)
+#ifndef TRANSFORM_H
+#define TRANSFORM_H
+
+/** @brief Stores 2D position information for the transform component
+ */
+typedef struct Position {
+  int x;
+  int y;
+} Position;
+
+
+typedef struct Transform {
+  Position position;
+  int rotation;
+
+  Position* (*get_position)(struct Transform*);
+  Position* (*copy_position)(struct Transform*);
+  int* (*get_rotation)(struct Transform*);
+  void (*move)(struct Transform*, Position*);
+  void (*rotate)(struct Transform*, int);
+} Transform;
+
+void* new_transform();
+
+void delete_transform(void* transform);
+
+
+#endif

@@ -1,0 +1,46 @@
+\hypertarget{state_8h}{}\doxysection{include/engine/core/state.h File Reference}
+\label{state_8h}\index{include/engine/core/state.h@{include/engine/core/state.h}}
+
+
+A file containing the variables for the state of the engine.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries nullptr}~0
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries running}
+\item 
+void $\ast$$\ast$$\ast$ {\bfseries entities}
+\item 
+int {\bfseries entity\+\_\+capacity}
+\item 
+int {\bfseries entity\+\_\+len}
+\item 
+int {\bfseries num\+\_\+types}
+\item 
+void $\ast$($\ast$$\ast$ {\bfseries new\+\_\+methods} )(void)
+\item 
+void($\ast$$\ast$ {\bfseries delete\+\_\+methods} )(void $\ast$)
+\item 
+void($\ast$$\ast$ {\bfseries systems} )(void)
+\item 
+int {\bfseries systems\+\_\+capacity}
+\item 
+int {\bfseries systems\+\_\+len}
+\item 
+int $\ast$ {\bfseries registered\+\_\+components}
+\item 
+int {\bfseries num\+\_\+components}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A file containing the variables for the state of the engine. 
+
+Contains all generic data structures and information about them in a singe to avoid the cost of having dedicated structures. As such, this header file should only be included in engine-\/specific .c files, as the game should not attempt to access these structures directly for safety reasons. 

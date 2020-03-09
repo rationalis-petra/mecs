@@ -1,0 +1,21 @@
+#include <SDL/SDL.h>
+
+// a surface is anything that can be drawn or drawn to
+SDL_Surface* Surf_Display = NULL;
+
+int make_window(int width, int height) {
+  if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+    return 1;
+  }
+
+  if((Surf_Display = SDL_SetVideoMode(width, height, 32, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL) {
+    return 2;
+  }
+ 
+   return 0;
+}
+
+void close_window(int window) {
+  SDL_Quit();
+}
+

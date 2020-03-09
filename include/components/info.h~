@@ -1,0 +1,19 @@
+#ifndef INFO_H
+#define INFO_H
+
+enum Tag {  
+	  PlayerTag = 1,
+	  EnemyTag = 2,
+	  FriendlyTag = 4,
+};
+
+typedef struct Info {
+  char* name;
+  enum Tag tags;
+} Info;
+
+void* new_info();
+
+void delete_info(void* info);
+
+#endif

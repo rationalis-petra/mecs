@@ -1,0 +1,37 @@
+\hypertarget{base_8h}{}\doxysection{include/engine/core/base.h File Reference}
+\label{base_8h}\index{include/engine/core/base.h@{include/engine/core/base.h}}
+
+
+Core engine functionality -\/ may get moved to other files over time and become an aggregating include.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}engine/core.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__Base_ga8c528baf37154d347366083f0f816846}{stop}} ()
+\begin{DoxyCompactList}\small\item\em stops the engine normally \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Base_ga431df771c524d1e0d9e081f2278945c6}{add\+\_\+entity}} (\mbox{\hyperlink{structTemplate}{Template}} $\ast$(template)(void))
+\begin{DoxyCompactList}\small\item\em creates a new entity in the engine from the provided tempalte \end{DoxyCompactList}\item 
+void {\bfseries delete\+\_\+entity} (int id)
+\item 
+void $\ast$ \mbox{\hyperlink{group__Base_gac4a80c3a238d32f76cfd6a6b5c3c8586}{get\+\_\+component}} (int id, int type)
+\begin{DoxyCompactList}\small\item\em gets the component of a specific type from the provided entity \end{DoxyCompactList}\item 
+void {\bfseries delete\+\_\+component} (void $\ast$component, int type)
+\item 
+void {\bfseries register\+\_\+component} (int type, void $\ast$($\ast$new\+\_\+function)(), void($\ast$delete\+\_\+function)(void $\ast$))
+\item 
+void {\bfseries register\+\_\+system} (void($\ast$system\+\_\+function)())
+\item 
+void {\bfseries init} ()
+\item 
+void {\bfseries run} ()
+\item 
+void {\bfseries clean} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Core engine functionality -\/ may get moved to other files over time and become an aggregating include. 
+

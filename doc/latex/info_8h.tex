@@ -1,0 +1,39 @@
+\hypertarget{info_8h}{}\doxysection{include/components/info.h File Reference}
+\label{info_8h}\index{include/components/info.h@{include/components/info.h}}
+
+
+the info component stores useful yet miscellaneous information  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structInfo}{Info}}
+\begin{DoxyCompactList}\small\item\em The info struct stored miscellaneous information about an entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structInfo}{Info}} \mbox{\hyperlink{group__Components_ga107c14b934a12b9e6d0d8d71d8c3f99d}{Info}}
+\begin{DoxyCompactList}\small\item\em The info struct stored miscellaneous information about an entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__Components_ga305263dd89ad9fde1863aece00907351}\label{group__Components_ga305263dd89ad9fde1863aece00907351}} 
+enum \mbox{\hyperlink{group__Components_ga305263dd89ad9fde1863aece00907351}{Tag}} \{ {\bfseries Player\+Tag} = 1, 
+{\bfseries Enemy\+Tag} = 2, 
+{\bfseries Friendly\+Tag} = 4
+ \}
+\begin{DoxyCompactList}\small\item\em The tag enum is a definition of flags which are bit-\/aligned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ {\bfseries new\+\_\+info} ()
+\item 
+void {\bfseries delete\+\_\+info} (void $\ast$info)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+the info component stores useful yet miscellaneous information 
+
+The info component is (hopefully) a temporary component which currently stores an entity\textquotesingle{}s name and any relevant tags 

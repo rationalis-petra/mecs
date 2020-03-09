@@ -1,0 +1,26 @@
+\hypertarget{query_8h}{}\doxysection{include/engine/core/query.h File Reference}
+\label{query_8h}\index{include/engine/core/query.h@{include/engine/core/query.h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structEntityList}{Entity\+List}}
+\begin{DoxyCompactList}\small\item\em The entity list datatype, which is used to store the output of a query. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structEntityList}{Entity\+List}} \mbox{\hyperlink{group__Query_gaea8e2d9412cbf0d8ae7a288c38c01b29}{Entity\+List}}
+\begin{DoxyCompactList}\small\item\em The entity list datatype, which is used to store the output of a query. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structEntityList}{Entity\+List}} \mbox{\hyperlink{group__Query_gaab44bc0c4b5c4890b40b07f25be0a015}{component\+\_\+mask}} (int,...)
+\begin{DoxyCompactList}\small\item\em Queries the system and returns a list of entities containing the provided components. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structEntityList}{Entity\+List}} \mbox{\hyperlink{group__Query_ga0a4e238f1d0bb2c2734a1dabefdf906b}{predicate\+\_\+mask}} (bool($\ast$predicate)(int))
+\begin{DoxyCompactList}\small\item\em Queries the system to find entities which match some component function. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Query_gaa5dfed0c76c249d3c17e755014afc2d2}{first\+\_\+match}} (bool($\ast$predicate)(int))
+\begin{DoxyCompactList}\small\item\em Returns the first entity which matches some predicate function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Often, we want to ask the engine for a collection of entities matching a certain criteria, e.\+g. all entities with a transform, or all entites which are less than some distance from a point, etc. This kind of data retreival can be done via a query on the engine. We have multiple functions to support this. 
