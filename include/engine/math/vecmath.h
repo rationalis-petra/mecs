@@ -6,30 +6,48 @@
  */
 
 #define define_vec2(Type, Prefix) \
-  typedef struct Vec2##Prefix Vec2##Prefix; \
-  struct Vec2##Prefix { \
-  Type x; \
-  Type y; \
-  }; 
+typedef struct Vec2##Prefix Vec2##Prefix; \
+struct Vec2##Prefix { \
+    Type x; \
+    Type y; \
+}; 
     
 
 #define define_vec3(Type, Prefix) \
-  typedef struct Vec3##Prefix Vec3##Prefix; \
-  struct Vec3##Prefix { \
-  union { \
-  struct { \
-  Type x; \
-  Type y; \
-  Type z; \
-  }; \
-  struct { \
-  Type r; \
-  Type g; \
-  Type b; \
-  }; \
-  }; \
-    };
+typedef struct Vec3##Prefix Vec3##Prefix; \
+struct Vec3##Prefix { \
+union { \
+    struct { \
+	Type x; \
+	Type y; \
+	Type z; \
+    }; \
+    struct { \
+	Type r; \
+	Type g; \
+	Type b; \
+    }; \
+}; \
+};
 
+#define define_vec4(Type, Prefix) \
+typedef struct Vec4##Prefix Vec4##Prefix; \
+    struct Vec4##Prefix { \
+    union { \
+	struct { \
+	    Type x; \
+	    Type y; \
+	    Type z; \
+	    Type w; \
+	}; \
+	struct { \
+	    Type r; \
+	    Type g; \
+	    Type b; \
+	    Type a; \
+	};\
+    };\
+};\
 
 define_vec2(double, d) 
 define_vec2(float, f)
@@ -40,6 +58,11 @@ define_vec3(double, d)
 define_vec3(float, f)
 define_vec3(int, i)
 define_vec3(unsigned int, u)
+
+define_vec4(double, d)
+define_vec4(float, f)
+define_vec4(int, i)
+define_vec4(unsigned int, u)
 
 double vec2d_magnitude(Vec2d* vec);
 float vec2f_magnitude(Vec2f* vec);

@@ -31,7 +31,5 @@ int main(int argc, char** argv)
   run();
   clean();
 
-  delete_window(0);
-
   return 0;
 }

@@ -1,0 +1,2 @@
+--memcheck:leak-check=full
+--supprestions=/usr/lib/libglfw.so.3.3

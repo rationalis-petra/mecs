@@ -20,10 +20,6 @@ void enemy_system() {
     Info* info = (Info*) get_component(enemy, InfoType);
     Creature* creature = (Creature*) get_component(enemy, CreatureType);
 
-    printf("You face %s, he is %d away, and on %d health!\n",
-	   info->name,
-	   vec2i_magnitude(&e_transform->position),
-	   creature->health);
   }
   
   free(enemies.entities);

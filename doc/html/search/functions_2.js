@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['first_5fmatch_49',['first_match',['../group__Query.html#gaa5dfed0c76c249d3c17e755014afc2d2',1,'query.h']]]
+  ['delete_5fwindow_56',['delete_window',['../window_8h.html#a67fcb3931767cffebd08160bfff45390',1,'window.h']]]
 ];

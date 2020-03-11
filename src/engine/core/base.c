@@ -6,7 +6,6 @@
 #include "engine.h"
 #include "engine/core/state.h"
 
-
 bool running = true;
 // Assets: assets
 // GenerationalIndexAllocator
@@ -123,8 +122,6 @@ void stop() {
 void init() {
 }
 
-# include "systems/systems.h"
-
 void run() {
   while(running) {
     for (int i = 0; i < systems_len; i++) {
@@ -147,4 +144,6 @@ void clean() {
   free(new_methods);
   free(delete_methods);
   free(registered_components);
+
+  delete_window(0);
 }

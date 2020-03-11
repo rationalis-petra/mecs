@@ -6,7 +6,7 @@ obj_dir = $(addprefix build/,$(dirs))
 src_dir = $(addprefix src/,$(dirs))
 
 src = $(foreach dir,$(src_dir),$(wildcard $(dir)/*.c))
-build = $(addprefix src/,$(dirs))
+build = $(addprefix src,$(dirs))
 
 debug_objects = $(src:.c=.od)
 debug_objects := $(subst src/,build/,$(debug_objects))
@@ -15,8 +15,9 @@ debug_objects += build/libs/glad.od
 
 include = -I include/ -I libs/include
 
+.PHONY: debug run clean docs memcheck
 
-.PHONY: debug
+
 debug: build/enigma_d
 
 build/enigma_d: $(debug_objects)
@@ -29,6 +30,7 @@ build/engine/core/template.od : src/engine/core/template.c
 build/engine/math/vecmath.od : src/engine/math/vecmath.c
 
 build/engine/graphics/window.od : src/engine/graphics/window.c
+build/engine/graphics/shader.od : src/engine/graphics/shader.c
 
 build/components/creature.od : src/components/creature.c
 build/components/info.od : src/components/info.c
@@ -49,13 +51,14 @@ build/main.od : src/main.c
 $(debug_objects): 
 	cc -c $(debug_flags) -o $@ $^ $(include) $(libs)
 
-.PHONY : run
-
 run : debug
 	build/enigma_d
 
-
-.PHONY : clean
-
 clean:
 	find . -name '*.od' -delete
+
+docs :
+	doxygen doxy_config
+
+memcheck :
+	valgrind --track-origins=yes ./build/enigma_d

@@ -1,0 +1,7 @@
+{
+my_suppression
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/libglfw.so.3.3
+   fun:glfwCreateWindow
+}

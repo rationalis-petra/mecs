@@ -85,6 +85,8 @@ Macros</h2></td></tr>
 <tr class="separator:a26e5ef69d0979ab746e40b4344af6f04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a513e98b54fe91907efe49103b174a07e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>define_vec3</b>(Type,  Prefix)</td></tr>
 <tr class="separator:a513e98b54fe91907efe49103b174a07e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1877fef957e3ca998a6e88ab713527b3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>define_vec4</b>(Type,  Prefix)</td></tr>
+<tr class="separator:a1877fef957e3ca998a6e88ab713527b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -100,9 +102,15 @@ f u&#160;</td><td class="memItemRight" valign="bottom"><b>define_vec3</b> (doubl
 <tr class="memitem:ab78b7ddabeb997f2278bb9bfe9939269"><td class="memItemLeft" align="right" valign="top"><a id="ab78b7ddabeb997f2278bb9bfe9939269"></a>
 f u f&#160;</td><td class="memItemRight" valign="bottom"><b>define_vec3</b> (int, i) define_vec3(unsigned int</td></tr>
 <tr class="separator:ab78b7ddabeb997f2278bb9bfe9939269"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2bf3869ae7a5ef051ee914e3c6141238"><td class="memItemLeft" align="right" valign="top"><a id="a2bf3869ae7a5ef051ee914e3c6141238"></a>
-f u f u double&#160;</td><td class="memItemRight" valign="bottom"><b>vec2d_magnitude</b> (Vec2d *vec)</td></tr>
-<tr class="separator:a2bf3869ae7a5ef051ee914e3c6141238"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71cfdaa7f5f1820e482ede6c825263a9"><td class="memItemLeft" align="right" valign="top"><a id="a71cfdaa7f5f1820e482ede6c825263a9"></a>
+f u f u&#160;</td><td class="memItemRight" valign="bottom"><b>define_vec4</b> (double, d) define_vec4(float</td></tr>
+<tr class="separator:a71cfdaa7f5f1820e482ede6c825263a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef6db4b2ffb1c4960ecf308d3b4ddbd5"><td class="memItemLeft" align="right" valign="top"><a id="aef6db4b2ffb1c4960ecf308d3b4ddbd5"></a>
+f u f u f&#160;</td><td class="memItemRight" valign="bottom"><b>define_vec4</b> (int, i) define_vec4(unsigned int</td></tr>
+<tr class="separator:aef6db4b2ffb1c4960ecf308d3b4ddbd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a165bd08dd3096435b2051b6b26eae7dd"><td class="memItemLeft" align="right" valign="top"><a id="a165bd08dd3096435b2051b6b26eae7dd"></a>
+f u f u f u double&#160;</td><td class="memItemRight" valign="bottom"><b>vec2d_magnitude</b> (Vec2d *vec)</td></tr>
+<tr class="separator:a165bd08dd3096435b2051b6b26eae7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae59f81626f2a1db068e46c104ea63e79"><td class="memItemLeft" align="right" valign="top"><a id="ae59f81626f2a1db068e46c104ea63e79"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>vec2f_magnitude</b> (Vec2f *vec)</td></tr>
 <tr class="separator:ae59f81626f2a1db068e46c104ea63e79"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -210,11 +218,11 @@ Vec3i&#160;</td><td class="memItemRight" valign="bottom"><b>vec3i_cross</b> (Vec
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  <span class="keyword">typedef</span> <span class="keyword">struct </span>Vec2##Prefix Vec2##Prefix; \</div>
-<div class="line">  struct Vec2##Prefix { \</div>
-<div class="line">  Type x; \</div>
-<div class="line">  Type y; \</div>
-<div class="line">  };</div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>Vec2##Prefix Vec2##Prefix; \</div>
+<div class="line">struct Vec2##Prefix { \</div>
+<div class="line">    Type x; \</div>
+<div class="line">    Type y; \</div>
+<div class="line">};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -243,21 +251,66 @@ Vec3i&#160;</td><td class="memItemRight" valign="bottom"><b>vec3i_cross</b> (Vec
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  <span class="keyword">typedef</span> <span class="keyword">struct </span>Vec3##Prefix Vec3##Prefix; \</div>
-<div class="line">  struct Vec3##Prefix { \</div>
-<div class="line">  union { \</div>
-<div class="line">  struct { \</div>
-<div class="line">  Type x; \</div>
-<div class="line">  Type y; \</div>
-<div class="line">  Type z; \</div>
-<div class="line">  }; \</div>
-<div class="line">  struct { \</div>
-<div class="line">  Type r; \</div>
-<div class="line">  Type g; \</div>
-<div class="line">  Type b; \</div>
-<div class="line">  }; \</div>
-<div class="line">  }; \</div>
-<div class="line">    };</div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>Vec3##Prefix Vec3##Prefix; \</div>
+<div class="line">struct Vec3##Prefix { \</div>
+<div class="line">union { \</div>
+<div class="line">    struct { \</div>
+<div class="line">    Type x; \</div>
+<div class="line">    Type y; \</div>
+<div class="line">    Type z; \</div>
+<div class="line">    }; \</div>
+<div class="line">    struct { \</div>
+<div class="line">    Type r; \</div>
+<div class="line">    Type g; \</div>
+<div class="line">    Type b; \</div>
+<div class="line">    }; \</div>
+<div class="line">}; \</div>
+<div class="line">};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1877fef957e3ca998a6e88ab713527b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1877fef957e3ca998a6e88ab713527b3">&#9670;&nbsp;</a></span>define_vec4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define define_vec4</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">Type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">Prefix&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>Vec4##Prefix Vec4##Prefix; \</div>
+<div class="line">    struct Vec4##Prefix { \</div>
+<div class="line">    union { \</div>
+<div class="line">    struct { \</div>
+<div class="line">        Type x; \</div>
+<div class="line">        Type y; \</div>
+<div class="line">        Type z; \</div>
+<div class="line">        Type w; \</div>
+<div class="line">    }; \</div>
+<div class="line">    struct { \</div>
+<div class="line">        Type r; \</div>
+<div class="line">        Type g; \</div>
+<div class="line">        Type b; \</div>
+<div class="line">        Type a; \</div>
+<div class="line">    };\</div>
+<div class="line">    };\</div>
+<div class="line">};\</div>
 </div><!-- fragment -->
 </div>
 </div>

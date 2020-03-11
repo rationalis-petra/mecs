@@ -11,6 +11,8 @@ a set of functions for doing math on vectors
 \#define {\bfseries define\+\_\+vec2}(Type,  Prefix)
 \item 
 \#define {\bfseries define\+\_\+vec3}(Type,  Prefix)
+\item 
+\#define {\bfseries define\+\_\+vec4}(Type,  Prefix)
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -27,8 +29,14 @@ f u {\bfseries define\+\_\+vec3} (double, d) define\+\_\+vec3(float
 \mbox{\Hypertarget{vecmath_8h_ab78b7ddabeb997f2278bb9bfe9939269}\label{vecmath_8h_ab78b7ddabeb997f2278bb9bfe9939269}} 
 f u f {\bfseries define\+\_\+vec3} (int, i) define\+\_\+vec3(unsigned int
 \item 
-\mbox{\Hypertarget{vecmath_8h_a2bf3869ae7a5ef051ee914e3c6141238}\label{vecmath_8h_a2bf3869ae7a5ef051ee914e3c6141238}} 
-f u f u double {\bfseries vec2d\+\_\+magnitude} (Vec2d $\ast$vec)
+\mbox{\Hypertarget{vecmath_8h_a71cfdaa7f5f1820e482ede6c825263a9}\label{vecmath_8h_a71cfdaa7f5f1820e482ede6c825263a9}} 
+f u f u {\bfseries define\+\_\+vec4} (double, d) define\+\_\+vec4(float
+\item 
+\mbox{\Hypertarget{vecmath_8h_aef6db4b2ffb1c4960ecf308d3b4ddbd5}\label{vecmath_8h_aef6db4b2ffb1c4960ecf308d3b4ddbd5}} 
+f u f u f {\bfseries define\+\_\+vec4} (int, i) define\+\_\+vec4(unsigned int
+\item 
+\mbox{\Hypertarget{vecmath_8h_a165bd08dd3096435b2051b6b26eae7dd}\label{vecmath_8h_a165bd08dd3096435b2051b6b26eae7dd}} 
+f u f u f u double {\bfseries vec2d\+\_\+magnitude} (Vec2d $\ast$vec)
 \item 
 \mbox{\Hypertarget{vecmath_8h_ae59f81626f2a1db068e46c104ea63e79}\label{vecmath_8h_ae59f81626f2a1db068e46c104ea63e79}} 
 float {\bfseries vec2f\+\_\+magnitude} (Vec2f $\ast$vec)
@@ -124,11 +132,11 @@ a set of functions for doing math on vectors
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{  \textcolor{keyword}{typedef} \textcolor{keyword}{struct }Vec2\#\#Prefix Vec2\#\#Prefix; \(\backslash\)}
-\DoxyCodeLine{  struct Vec2\#\#Prefix \{ \(\backslash\)}
-\DoxyCodeLine{  Type x; \(\backslash\)}
-\DoxyCodeLine{  Type y; \(\backslash\)}
-\DoxyCodeLine{  \};}
+\DoxyCodeLine{\textcolor{keyword}{typedef} \textcolor{keyword}{struct }Vec2\#\#Prefix Vec2\#\#Prefix; \(\backslash\)}
+\DoxyCodeLine{struct Vec2\#\#Prefix \{ \(\backslash\)}
+\DoxyCodeLine{    Type x; \(\backslash\)}
+\DoxyCodeLine{    Type y; \(\backslash\)}
+\DoxyCodeLine{\};}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{vecmath_8h_a513e98b54fe91907efe49103b174a07e}\label{vecmath_8h_a513e98b54fe91907efe49103b174a07e}} 
@@ -139,20 +147,47 @@ a set of functions for doing math on vectors
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{  \textcolor{keyword}{typedef} \textcolor{keyword}{struct }Vec3\#\#Prefix Vec3\#\#Prefix; \(\backslash\)}
-\DoxyCodeLine{  struct Vec3\#\#Prefix \{ \(\backslash\)}
-\DoxyCodeLine{  union \{ \(\backslash\)}
-\DoxyCodeLine{  struct \{ \(\backslash\)}
-\DoxyCodeLine{  Type x; \(\backslash\)}
-\DoxyCodeLine{  Type y; \(\backslash\)}
-\DoxyCodeLine{  Type z; \(\backslash\)}
-\DoxyCodeLine{  \}; \(\backslash\)}
-\DoxyCodeLine{  struct \{ \(\backslash\)}
-\DoxyCodeLine{  Type r; \(\backslash\)}
-\DoxyCodeLine{  Type g; \(\backslash\)}
-\DoxyCodeLine{  Type b; \(\backslash\)}
-\DoxyCodeLine{  \}; \(\backslash\)}
-\DoxyCodeLine{  \}; \(\backslash\)}
-\DoxyCodeLine{    \};}
+\DoxyCodeLine{\textcolor{keyword}{typedef} \textcolor{keyword}{struct }Vec3\#\#Prefix Vec3\#\#Prefix; \(\backslash\)}
+\DoxyCodeLine{struct Vec3\#\#Prefix \{ \(\backslash\)}
+\DoxyCodeLine{union \{ \(\backslash\)}
+\DoxyCodeLine{    struct \{ \(\backslash\)}
+\DoxyCodeLine{    Type x; \(\backslash\)}
+\DoxyCodeLine{    Type y; \(\backslash\)}
+\DoxyCodeLine{    Type z; \(\backslash\)}
+\DoxyCodeLine{    \}; \(\backslash\)}
+\DoxyCodeLine{    struct \{ \(\backslash\)}
+\DoxyCodeLine{    Type r; \(\backslash\)}
+\DoxyCodeLine{    Type g; \(\backslash\)}
+\DoxyCodeLine{    Type b; \(\backslash\)}
+\DoxyCodeLine{    \}; \(\backslash\)}
+\DoxyCodeLine{\}; \(\backslash\)}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{vecmath_8h_a1877fef957e3ca998a6e88ab713527b3}\label{vecmath_8h_a1877fef957e3ca998a6e88ab713527b3}} 
+\index{vecmath.h@{vecmath.h}!define\_vec4@{define\_vec4}}
+\index{define\_vec4@{define\_vec4}!vecmath.h@{vecmath.h}}
+\doxysubsubsection{\texorpdfstring{define\_vec4}{define\_vec4}}
+{\footnotesize\ttfamily \#define define\+\_\+vec4(\begin{DoxyParamCaption}\item[{}]{Type,  }\item[{}]{Prefix }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{typedef} \textcolor{keyword}{struct }Vec4\#\#Prefix Vec4\#\#Prefix; \(\backslash\)}
+\DoxyCodeLine{    struct Vec4\#\#Prefix \{ \(\backslash\)}
+\DoxyCodeLine{    union \{ \(\backslash\)}
+\DoxyCodeLine{    struct \{ \(\backslash\)}
+\DoxyCodeLine{        Type x; \(\backslash\)}
+\DoxyCodeLine{        Type y; \(\backslash\)}
+\DoxyCodeLine{        Type z; \(\backslash\)}
+\DoxyCodeLine{        Type w; \(\backslash\)}
+\DoxyCodeLine{    \}; \(\backslash\)}
+\DoxyCodeLine{    struct \{ \(\backslash\)}
+\DoxyCodeLine{        Type r; \(\backslash\)}
+\DoxyCodeLine{        Type g; \(\backslash\)}
+\DoxyCodeLine{        Type b; \(\backslash\)}
+\DoxyCodeLine{        Type a; \(\backslash\)}
+\DoxyCodeLine{    \};\(\backslash\)}
+\DoxyCodeLine{    \};\(\backslash\)}
+\DoxyCodeLine{\};\(\backslash\)}
 
 \end{DoxyCode}
