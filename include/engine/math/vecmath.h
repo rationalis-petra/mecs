@@ -2,7 +2,7 @@
 #define VECMATH_H
 
 /** @file 
- * @brief a set of functions for doing math on vectors
+ * @brief a set of functions and types for doing math on vectors
  */
 
 #define define_vec2(Type, Prefix) \

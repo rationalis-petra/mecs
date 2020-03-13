@@ -28,6 +28,7 @@ build/engine/core/query.od : src/engine/core/query.c
 build/engine/core/template.od : src/engine/core/template.c
 
 build/engine/math/vecmath.od : src/engine/math/vecmath.c
+build/engine/math/matmath.od : src/engine/math/matmath.c
 
 build/engine/graphics/window.od : src/engine/graphics/window.c
 build/engine/graphics/shader.od : src/engine/graphics/shader.c
