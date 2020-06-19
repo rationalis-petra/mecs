@@ -1,0 +1,3 @@
+#include <stdio.h>
+
+#include "engine/math/test_math.c"

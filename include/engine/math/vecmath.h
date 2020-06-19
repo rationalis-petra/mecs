@@ -5,6 +5,8 @@
  * @brief a set of functions and types for doing math on vectors
  */
 
+/// @addtogroup Vectors
+/// @{
 #define define_vec2(Type, Prefix) \
 typedef struct Vec2##Prefix Vec2##Prefix; \
 struct Vec2##Prefix { \
@@ -47,9 +49,9 @@ typedef struct Vec4##Prefix Vec4##Prefix; \
 	    Type a; \
 	};\
     };\
-};\
+};
 
-define_vec2(double, d) 
+define_vec2(double, d);
 define_vec2(float, f)
 define_vec2(int, i)
 define_vec2(unsigned int, u)
@@ -64,40 +66,65 @@ define_vec4(float, f)
 define_vec4(int, i)
 define_vec4(unsigned int, u)
 
-double vec2d_magnitude(Vec2d* vec);
-float vec2f_magnitude(Vec2f* vec);
-int vec2i_magnitude(Vec2i* vec);
+Vec2d new_vec2d();
+Vec2f new_vec2f();
+Vec2i new_vec2i();
 
-Vec2d vec2d_sum(Vec2d* vec1, Vec2d* vec2);
-Vec2f vec2f_sum(Vec2f* vec1, Vec2f* vec2);
-Vec2i vec2i_sum(Vec2i* vec1, Vec2i* vec2);
+int vec2d_equals(Vec2d vec1, Vec2d vec2);
+int vec2f_equals(Vec2f vec1, Vec2f vec2);
+int vec2i_equals(Vec2i vec1, Vec2i vec2);
 
-Vec2d vec2d_difference(Vec2d* vec1, Vec2d* vec2);
-Vec2f vec2f_difference(Vec2f* vec1, Vec2f* vec2);
-Vec2i vec2i_difference(Vec2i* vec1, Vec2i* vec2);
+Vec2d vec2d_normalize(Vec2d vec);
+Vec2f vec2f_normalize(Vec2f vec);
+Vec2i vec2i_normalize(Vec2i vec);
 
-double vec2d_dot(Vec2d* vec1, Vec2d* vec2);
-float vec2f_dot(Vec2f* vec1, Vec2f* vec2);
-int vec2i_dot(Vec2i* vec1, Vec2i* vec2);
+double vec2d_magnitude(Vec2d vec);
+float vec2f_magnitude(Vec2f vec);
+int vec2i_magnitude(Vec2i vec);
 
-double vec3d_magnitude(Vec3d* vec);
-float vec3f_magnitude(Vec3f* vec);
-int vec3i_magnitude(Vec3i* vec);
+Vec2d vec2d_sum(Vec2d vec1, Vec2d vec2);
+Vec2f vec2f_sum(Vec2f vec1, Vec2f vec2);
+Vec2i vec2i_sum(Vec2i vec1, Vec2i vec2);
 
-Vec3d vec3d_sum(Vec3d* vec1, Vec3d* vec2);
-Vec3f vec3f_sum(Vec3f* vec1, Vec3f* vec2);
-Vec3i vec3i_sum(Vec3i* vec1, Vec3i* vec2);
+Vec2d vec2d_difference(Vec2d vec1, Vec2d vec2);
+Vec2f vec2f_difference(Vec2f vec1, Vec2f vec2);
+Vec2i vec2i_difference(Vec2i vec1, Vec2i vec2);
 
-Vec3d vec3d_difference(Vec3d* vec1, Vec3d* vec2);
-Vec3f vec3f_difference(Vec3f* vec1, Vec3f* vec2);
-Vec3i vec3i_difference(Vec3i* vec1, Vec3i* vec2);
+double vec2d_dot(Vec2d vec1, Vec2d vec2);
+float vec2f_dot(Vec2f vec1, Vec2f vec2);
+int vec2i_dot(Vec2i vec1, Vec2i vec2);
 
-double vec3d_dot(Vec3d* vec1, Vec3d* vec2);
-float vec3f_dot(Vec3f* vec, Vec3f* vec2);
-int vec3i_dot(Vec3i* vec, Vec3i* vec2);
+Vec3d new_vec3d();
+Vec3f new_vec3f();
+Vec3i new_vec3i();
 
-Vec3d vec3d_cross(Vec3d* vec1, Vec3d* vec2);
-Vec3f vec3f_cross(Vec3f* vec1, Vec3f* vec2);
-Vec3i vec3i_cross(Vec3i* vec1, Vec3i* vec2);
+int vec3d_equals(Vec3d vec1, Vec3d vec2);
+int vec3f_equals(Vec3f vec1, Vec3f vec2);
+int vec3i_equals(Vec3i vec1, Vec3i vec2);
 
+double vec3d_magnitude(Vec3d vec);
+float vec3f_magnitude(Vec3f vec);
+int vec3i_magnitude(Vec3i vec);
+
+Vec3d vec3d_normalize(Vec3d vec);
+Vec3f vec3f_normalize(Vec3f vec);
+Vec3i vec3i_normalize(Vec3i vec);
+
+Vec3d vec3d_sum(Vec3d vec1, Vec3d vec2);
+Vec3f vec3f_sum(Vec3f vec1, Vec3f vec2);
+Vec3i vec3i_sum(Vec3i vec1, Vec3i vec2);
+
+Vec3d vec3d_difference(Vec3d vec1, Vec3d vec2);
+Vec3f vec3f_difference(Vec3f vec1, Vec3f vec2);
+Vec3i vec3i_difference(Vec3i vec1, Vec3i vec2);
+
+double vec3d_dot(Vec3d vec1, Vec3d vec2);
+float vec3f_dot(Vec3f vec, Vec3f vec2);
+int vec3i_dot(Vec3i vec, Vec3i vec2);
+
+Vec3d vec3d_cross(Vec3d vec1, Vec3d vec2);
+Vec3f vec3f_cross(Vec3f vec1, Vec3f vec2);
+Vec3i vec3i_cross(Vec3i vec1, Vec3i vec2);
+
+/// @}
 #endif

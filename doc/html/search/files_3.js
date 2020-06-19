@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['query_2eh_48',['query.h',['../query_8h.html',1,'']]]
+  ['matmath_2eh_56',['matmath.h',['../matmath_8h.html',1,'']]]
 ];

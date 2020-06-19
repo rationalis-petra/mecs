@@ -1,0 +1,28 @@
+#include "engine/math.h"
+#include "tester.h"
+#include "tests.h"
+
+begin_test(vec3f_equals_returns_true_for_equal_vals) 
+  Vec3f x_1 = {3.0f, 4.0f, 5.0f};
+  Vec3f x_2 = {3.0f, 4.0f, 5.0f};
+
+  assert_that(vec3f_equals(x_1, x_2));
+
+end_test(vec3f_equals_returns_true_for_equal_vals)
+
+begin_test(vec3f_equals_returns_false_for_inequal_vals)
+  Vec3f x = {1.0f, 2.0f, 3.0f};
+  Vec3f y = {3.0f, 2.0f, 1.0f};
+
+  assert_that(!vec3f_equals(x1, x2));
+end_test(vec3f_equals_returns_false_for_inequal_vals)
+
+/*
+test(vec3f_cross_ok_on_units) {
+  Vec3f x = {1.0f, 0.0f, 0.0f};
+  Vec3f y = {0.0f, 1.0f, 1.0f};
+  Vec3f z = {0.0f, 0.0f, 1.0f};
+
+  assert_that(cross(x, y) == z);
+  }*/
+

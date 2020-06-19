@@ -6,7 +6,7 @@
 #include "engine.h"
 #include "engine/core/state.h"
 
-bool running = true;
+bool running = false;
 // Assets: assets
 // GenerationalIndexAllocator
 // AnyMap components - the anymap can store exactly one of every type we put into it
@@ -15,7 +15,9 @@ void*** entities = 0;
 int entity_capacity = 0;
 int entity_len = 0;
 
-void (**systems)(void) = 0;
+void (**systems)(void) = nullptr;
+void (**sys_inits)(void) = nullptr;
+void (**sys_cleans)(void) = nullptr;
 int systems_capacity = 0;
 int systems_len = 0;
 
@@ -24,6 +26,8 @@ int num_components = 0;
 
 void* (**new_methods)(void) = 0;
 void (**delete_methods)(void*) = 0;
+
+
 
 int add_entity(Template* (template)(void)) {
   Template* entity = template();
@@ -106,12 +110,21 @@ void delete_component(void* component, int type) {
   delete_methods[type](component);
 }
 
-void register_system(void (*system_function)()) {
+void register_system(void (*system_function)(), void (*sys_init)(), void (*sys_clean)()) {
   if (systems_capacity == systems_len) {
     systems_capacity += 10;
     systems = realloc(systems, sizeof(void (*)()) * systems_capacity);
+    sys_inits = realloc(sys_inits, sizeof(void(*)()) * systems_capacity);
+    sys_cleans = realloc(sys_cleans, sizeof(void(*)()) * systems_capacity);
   }
+
   systems[systems_len] = system_function;
+  sys_inits[systems_len] = sys_init;
+  sys_cleans[systems_len] = sys_clean;
+
+  if (running) {
+    sys_init();
+  }
   systems_len++;
 }
 
@@ -120,9 +133,13 @@ void stop() {
 }
 
 void init() {
+  for (int i = 0; i < systems_len; i++){
+    sys_inits[i]();
+  }
 }
 
 void run() {
+  running = true;
   while(running) {
     for (int i = 0; i < systems_len; i++) {
       systems[i]();
@@ -132,6 +149,7 @@ void run() {
 
 
 void clean() {
+  // clean all components from grid
   for (int type = 0; type < num_components; type++) {
     for (int i = 0; i < entity_len; i++) {
       (*delete_component)(entities[type][i], type);
@@ -139,11 +157,21 @@ void clean() {
     free(entities[type]);
   }
 
+  // entities
   free(entities);
+  // systems
   free(systems);
+  for (int i = 0; i < systems_len; i++) {
+    sys_cleans[i]();
+  }
+  // components
   free(new_methods);
   free(delete_methods);
   free(registered_components);
+  
+  // graphics
+  //free_shaders();
+  //free_models();
 
   delete_window(0);
 }

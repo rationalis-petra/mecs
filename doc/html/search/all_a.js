@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['name_21',['name',['../structInfo.html#a5acc2da66717d052d39db0e9f84cf75d',1,'Info']]],
-  ['new_5fshader_5fprogram_22',['new_shader_program',['../shader_8h.html#ab880d29da8db98080abf6b5e1f0e8788',1,'shader.h']]],
-  ['new_5fwindow_23',['new_window',['../window_8h.html#a12f14b0edbe80cc6d670de83d37bd6f4',1,'window.h']]]
+  ['mat4f_5fmultiply_21',['mat4f_multiply',['../group__Matrices.html#ga725b1e33877c332b61f458f4d65f6b84',1,'matmath.h']]],
+  ['mat4f_5frotate_22',['mat4f_rotate',['../group__Matrices.html#ga5ae8abd08564ebbe2ef5cb7fe156f586',1,'matmath.h']]],
+  ['mat4f_5fscale_23',['mat4f_scale',['../group__Matrices.html#ga76ff5e2cab077d39a5a051cd1ca47425',1,'matmath.h']]],
+  ['mat4f_5ftranslate_24',['mat4f_translate',['../group__Matrices.html#ga55d89210dc5a790a6952375e17945ff5',1,'matmath.h']]],
+  ['math_25',['Math',['../group__Math.html',1,'']]],
+  ['matmath_2eh_26',['matmath.h',['../matmath_8h.html',1,'']]],
+  ['matrices_27',['Matrices',['../group__Matrices.html',1,'']]]
 ];

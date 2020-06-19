@@ -1,0 +1,8 @@
+#include <stdio.h>
+
+#include "test/engine/math/test_vecmath.c"
+
+void test_math() {
+  printf("    testing vecmath...\n");
+  test_vecmath();
+}

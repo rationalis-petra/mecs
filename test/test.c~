@@ -1,0 +1,8 @@
+#include <stdio.h>
+
+#include "test/engine/test_engine.c"
+
+int main(int arc, char** argv) {
+  printf("testing engine...\n");
+  test_engine();
+}

@@ -11,7 +11,6 @@
 
 int main(int argc, char** argv)
 {
-  init();
   new_window(1200, 720);
 
   // The initialisation
@@ -19,15 +18,16 @@ int main(int argc, char** argv)
   register_component(InfoType, &new_info, &delete_info);
   register_component(CreatureType, &new_creature, &delete_creature);
 
-  register_system(&input_system);
-  register_system(&enemy_system);
-  register_system(&render_system);
+  register_system(&input_system, &input_init, &input_clean);
+  register_system(&enemy_system, &enemy_init, &enemy_clean);
+  register_system(&render_system, &render_init, &render_clean);
   
   add_entity(&player_template);
 
   add_entity(&enemy_template);
   add_entity(&enemy_template);
 
+  init();
   run();
   clean();
 

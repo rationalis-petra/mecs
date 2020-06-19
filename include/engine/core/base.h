@@ -13,6 +13,8 @@
 
 #include "engine/core/template.h"
 
+typedef unsigned int uint;
+
 /** @brief stops the engine normally
  * 
  * @details Intended to be the function to be called when we want to stop the engine without any errors - will
@@ -56,7 +58,7 @@ void delete_component(void* component, int type);
 
 void register_component(int type, void* (*new_function)(), void (*delete_function)(void*));
 
-void register_system(void (*system_function)());
+void register_system(void (*system)(), void (*sys_init)(), void (*sys_clean)());
 
 void init();
 

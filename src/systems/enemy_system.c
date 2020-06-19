@@ -25,3 +25,8 @@ void enemy_system() {
   free(enemies.entities);
 }
 
+void enemy_init() {
+}
+
+void enemy_clean() {
+}

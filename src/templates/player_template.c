@@ -16,6 +16,11 @@ Template* player_template() {
   components[InfoType] = new_info();
   components[CreatureType] = new_creature();
 
+  Transform* trans = components[TransformType];
+  trans->position.x = 0;
+  trans->position.y = 0;
+  trans->position.z = -30;
+
   Info* info = components[InfoType];
   info->tags = PlayerTag;
   info->name = malloc(sizeof(char) * 6);

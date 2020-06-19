@@ -46,12 +46,15 @@ unsigned int new_shader_program(char* program_name) {
     file_len = ftell(vertex_shader_file);
     fseek(vertex_shader_file, 0, SEEK_SET);
 
-    file_contents = malloc(file_len);
+    // read into file
+    // we add 1 so that we can have a null character '\0' at the end
+    file_contents = malloc(file_len + sizeof(char));
     fread(file_contents, 1, file_len, vertex_shader_file);
     fclose(vertex_shader_file);
 
     vertex_shader = glCreateShader(GL_VERTEX_SHADER);
 
+    file_contents[file_len] = '\0';
     const char* const_file = file_contents;
     glShaderSource(vertex_shader, 1, &const_file, NULL);
     glCompileShader(vertex_shader);
@@ -75,12 +78,13 @@ unsigned int new_shader_program(char* program_name) {
     file_len = ftell(fragment_shader_file);
     fseek(fragment_shader_file, 0, SEEK_SET);
 
-    file_contents = malloc(file_len);
+    file_contents = malloc(file_len + sizeof(char));
     fread(file_contents, 1, file_len, fragment_shader_file);
     fclose(fragment_shader_file);
 
     fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
 
+    file_contents[file_len] = '\0';
     const char* const_file = file_contents;
     glShaderSource(fragment_shader, 1, &const_file, NULL);
     glCompileShader(fragment_shader);
@@ -111,8 +115,16 @@ unsigned int new_shader_program(char* program_name) {
     fprintf(stderr, info_log);
   }
 
+  // Cleanup
   glDeleteShader(vertex_shader);
   glDeleteShader(fragment_shader);  
 
+  free(vertex_shader_path);
+  free(fragment_shader_path);
+
   return shader_program;
+}
+
+unsigned int get_uniform(unsigned int shader, char* uniform_name) {
+  return glGetUniformLocation(shader, uniform_name);
 }

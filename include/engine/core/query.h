@@ -67,6 +67,6 @@ EntityList predicate_mask(bool (*predicate)(int));
  */
 int first_match(bool (*predicate)(int));
 
-/**@}*/
+///@}
 
 #endif

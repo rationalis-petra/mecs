@@ -15,7 +15,7 @@ debug_objects += build/libs/glad.od
 
 include = -I include/ -I libs/include
 
-.PHONY: debug run clean docs memcheck
+.PHONY: release debug run clean doc memcheck test
 
 
 debug: build/enigma_d
@@ -32,6 +32,7 @@ build/engine/math/matmath.od : src/engine/math/matmath.c
 
 build/engine/graphics/window.od : src/engine/graphics/window.c
 build/engine/graphics/shader.od : src/engine/graphics/shader.c
+build/engine/graphics/mesh.od : src/engine/graphics/mesh.c
 
 build/components/creature.od : src/components/creature.c
 build/components/info.od : src/components/info.c
@@ -56,10 +57,18 @@ run : debug
 	build/enigma_d
 
 clean:
-	find . -name '*.od' -delete
+	find . -name "*.od" -delete
+	find . -name "*.o" -delete
 
-docs :
+doc :
 	doxygen doxy_config
 
-memcheck :
+memcheck : debug
 	valgrind --track-origins=yes ./build/enigma_d
+
+test_objects = $(filter-out build/main.od, $(debug_objects))
+test : $(test_objects)
+	@echo "compiling tests..."
+	cc $(debug_flags) -o build/test test/test.c $^ $(include) -I . $(libs) 
+	@echo "running tests..."
+	./build/test

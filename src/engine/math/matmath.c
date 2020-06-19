@@ -4,6 +4,10 @@
 
 #include "engine/math.h"
 
+#ifdef DEBUG
+#include <stdio.h>
+#endif
+
 Mat4f mat4f_multiply(Mat4f mat1, Mat4f mat2) {
   Mat4f out = (Mat4f) malloc(sizeof(Mat4f) * 16);
 
@@ -100,3 +104,73 @@ Mat4f mat4f_rotate(float x, float y, float z) {
   return out;
 }
 
+Mat4f mat4f_look_at(Vec3f position, Vec3f target, Vec3f up) {
+  Mat4f out = (Mat4f) malloc(sizeof(Mat4f) * 16);
+
+  Vec3f camera_direction = vec3f_normalize(vec3f_difference(position, target));
+  Vec3f camera_right = vec3f_normalize(vec3f_cross(up, camera_direction));
+  Vec3f camera_up = vec3f_cross(camera_direction, camera_right);
+
+  // look at -> combine re-orientation & translation
+  out[0] = camera_right.x;
+  out[1] = camera_right.y;
+  out[2] = camera_right.z;
+  out[3] = 0;
+
+  out[4] = camera_up.x;
+  out[5] = camera_up.y;
+  out[6] = camera_up.z;
+  out[7] = 0;
+
+  out[8] = camera_direction.x;
+  out[9] = camera_direction.y;
+  out[10] = camera_direction.z;
+  out[11] = 0;
+
+  out[12] = -camera_right.x * position.x - camera_up.x * position.y - camera_direction.x * position.z;
+  out[13] = -camera_right.y * position.x - camera_up.y * position.y - camera_direction.y * position.z;
+  out[14] = -camera_right.z * position.x - camera_up.z * position.y - camera_direction.z * position.z;
+  out[15] = 1;
+
+  return out;
+}
+
+Mat4f mat4f_perspective(float fov, float aspect, float near, float far) {
+  Mat4f out = (Mat4f) malloc(sizeof(Mat4f) * 16);
+
+  #ifdef DEBUG
+  if (fov <= 0) {
+    fprintf(stderr, "error in mat4f_perspective in matmath: fov <= 0\n");
+  }
+  if (aspect == 0) {
+    fprintf(stderr, "error in mat4f_perspective in matmath: aspect == 0\n");
+  }
+  #endif
+
+  // ti = n/t = t inverse
+  // ri = n/r = r inverse
+  float ti = 1 / tan(fov / 2.0f);
+  float ri = ti * aspect;
+
+  out[0] = ti; 
+  out[1] = 0.0f;
+  out[2] = 0.0f;
+  out[3] = 0.0f;
+  
+  out[4] = 0.0f;
+  out[5] = ri;
+  out[6] = 0.0f;
+  out[7] = 0.0f;
+
+  out[8] = 0.0f;
+  out[9] = 0.0f;
+  out[10] = -(far+near) / (far - near);
+  out[11] = -1.0f;
+
+  out[12] = 0.0f;
+  out[13] = 0.0f;
+  out[14] = -2*far*near / (far - near);
+  out[15] = 0.0f;
+
+  return out;
+}

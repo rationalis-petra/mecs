@@ -1,0 +1,18 @@
+#define assert_that(expression) \
+  do  {				\
+    if (!(expression)) {	\
+      printf("failed!\n");	\
+      return;			\
+    }				\
+  }				\
+  while (0)			
+
+#define test_success		 \
+  do {				 \
+  printf("success!\n");		 \
+  } while(0)			 
+  
+
+#define run_test(fun_name)			\
+  printf("      " #fun_name "... ");			\
+  fun_name();

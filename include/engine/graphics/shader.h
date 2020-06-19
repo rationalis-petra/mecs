@@ -16,3 +16,16 @@
  * @return A handle to the shader program
  */
 unsigned int new_shader_program(char* program_name); 
+
+/**@brief Retreives a uniform id based on the shader program
+ *
+ * @details calls glGetUniform function and passes on the results
+ *
+ * @param[in] shader_id: The id of the shader returned when new_shader_program
+ *            passed on to the opengl function
+ *
+ * @param[in] uniform_name: The string name of the uniform we want to retrieve
+ *
+ * @return A handle to the uniform in shader_program with name uniform_name
+ */
+unsigned int get_uniform(unsigned int shader_id, char* uniform_name);

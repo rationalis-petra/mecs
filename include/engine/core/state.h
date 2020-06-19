@@ -15,6 +15,7 @@
 #include <stdbool.h>
 
 #define nullptr 0
+typedef unsigned int uint;
 
 extern bool running;
 
@@ -29,13 +30,24 @@ extern int num_types;
 extern void* (**new_methods)(void);
 extern void (**delete_methods)(void*);
 
-// Registries
+/// @addtogroup Registries
+/// @{
+
 extern void (**systems)(void);
+extern void (**sys_inits)(void);
+extern void (**sys_cleans)(void);
 extern int systems_capacity;
 extern int systems_len;
 
 extern int* registered_components;
 extern int num_components;
+
+
+extern unsigned int* registered_shaders;
+extern unsigned int num_shaders;
+
+extern unsigned int* registered_models;
+extern unsigned int num_models;
 
 ///@}
 #endif

@@ -3,10 +3,10 @@
 #define KEY_A 65
 #define KEY_S 83
 #define KEY_D 68
+#define KEY_SPACE 32
 
 /** @file
  */
-
 
 /** @brief Creates a new window and returns an integer handle to it 
  * 
@@ -28,12 +28,24 @@ int new_window(int width, int height);
  */
 void delete_window(int window);
 
+/** @brief returns a boolean value which is true if the user wants the window to close
+ *
+ * @details acts as a wrapper around the glfwWindowShouldClose() function 
+ */
 int window_should_close();
 
+/** @brief will swap buffers to display what has been rendered in the new frame
+ */
 void display();
 
+/** @brief will check for various IO events, such as key-presses, minimisation, etc.
+ */
 void poll_events();
 
-void draw_triangle_at();
+/** @brief will check if the key with id key is pressed
+ */
+int key_is_pressed(int key);
 
-int key_is_pressed();
+/** @brief returns the aspect ratio of the window
+ */
+float get_window_aspect();
