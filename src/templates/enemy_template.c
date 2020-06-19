@@ -7,15 +7,13 @@
 #include "components/transform.h"
 #include "components/info.h"
 
-int num_components;
-
 
 Template* enemy_template() {
-  void** components = malloc(num_components * sizeof(void*));
+  void** components = malloc(entity_size * sizeof(void*));
 
-  components[TransformType] = (void*) new_transform();
-  components[InfoType] = (void*) new_info();
-  components[CreatureType] = (void*) new_creature();
+  components[TransformType] =  new_transform();
+  components[InfoType] =  new_info();
+  components[CreatureType] =  new_creature();
 
   Info* info = components[InfoType];
   info->tags = EnemyTag;
@@ -35,8 +33,6 @@ Template* enemy_template() {
   Template* enemy = (Template*) malloc(sizeof(Template));
 
   enemy->components = components;
-  enemy->num_components = num_components;
-
 
   return enemy;
 }

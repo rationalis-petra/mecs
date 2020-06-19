@@ -1,8 +1,0 @@
-#ifndef ENEMY_TEMPLATE_H
-#define ENEMY_TEMPALTE_H
-
-#include "engine/template.h"
-
-Template* enemy_template();
-
-#endif

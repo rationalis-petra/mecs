@@ -1,4 +1,6 @@
 #include <stdlib.h>
+#include <math.h>
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -6,7 +8,6 @@
 #include "systems/utils.h"
 #include "engine.h"
 #include "components/components.h"
-
 
 #ifdef DEBUG
 #include <stdio.h>
@@ -35,41 +36,55 @@ void render_system() {
   // View matrix
   int player = first_match(&is_player);
   Transform* transform = (Transform*) get_component(player, TransformType);
+  Camera* camera = (Camera*) get_component(player, CameraType);
 
-  Vec3i play_pos = transform->position;
+  Vec3f play_pos = transform->position;
 
-  Vec3f camera_pos = {{{(float) play_pos.x / 10.0f, (float) play_pos.y / 10.0f, (float) play_pos.z / 10.0f}}};
-  Vec3f camera_target = {{{0.0f, 0.0f, 0.0f}}};
-  Vec3f camera_up = {{{0.0f, 1.0f, 0.0f}}};
+
+  Vec3f delta = {{{ camera->r * -cos(camera->theta) * cos(camera->phi),
+		    camera->r * sin(camera->theta),
+		    camera->r * -cos(camera->theta) * sin(camera->phi)}}};
+
+  Vec3f camera_pos = vec3f_sum(delta, play_pos);
+  Vec3f camera_target = play_pos;
+  Vec3f camera_up = {{{0.0f, 1.0f, 1.0f}}};
 
   Mat4f look_at = mat4f_look_at(camera_pos, camera_target, camera_up);
 
   Mat4f projection = mat4f_perspective(1.57079632679, get_window_aspect(), 0.1f, 100.0f);
-  
+
   glUseProgram(shader_program);
   glUniformMatrix4fv(view_uniform, 1, GL_FALSE, look_at);
   glUniformMatrix4fv(projection_uniform, 1, GL_FALSE, projection);
-  
+
   free(look_at);
   free(projection);
 
   // lighting
-  glUniform3f(object_colour, 1.0f, 0.5f, 0.31f);
+  glUniform3f(object_colour, 0.05f, 0.8f, 0.05f);
   glUniform3f(light_colour, 1.0f, 1.0f, 1.0f);
 
-  glUniform3f(light_pos, -2.0f, 3.0f, -1.0f);
+  glUniform3f(light_pos, 0.0f, 8.0f, 0.0f);
   glUniform3f(view_pos, camera_pos.x, camera_pos.y, camera_pos.z);
+
+  // draw player
+  Mat4f player_trans = mat4f_translate(play_pos.x, play_pos.y, play_pos.z);
+  glUniformMatrix4fv(model_uniform, 1, GL_FALSE, player_trans);
+  glBindVertexArray(VAO);
+  glDrawArrays(GL_TRIANGLES, 0, 36);
+  free(player_trans);
+
+  // enemies are more red
 
   EntityList enemies = predicate_mask(&is_enemy);
   for (int i = 0; i < enemies.len; i++) {
     transform = (Transform*) get_component(enemies.entities[i], TransformType);
 
-    Mat4f trans = mat4f_translate(transform->position.x / 100.0f, transform->position.y / 100.0f, transform->position.z / 100.0f);
+    Mat4f trans = mat4f_translate(transform->position.x, transform->position.y, transform->position.z);
 
+    glUniform3f(object_colour, 1.0f, 0.0f, 0.0f);
     glUniformMatrix4fv(model_uniform, 1, GL_FALSE, trans);
 
-
-    glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
 
     free(trans);
@@ -85,11 +100,11 @@ void render_init() {
   // Triangle setup, will modify
 float vertices[] = {
     -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-     0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 
-     0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 
-     0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 
-    -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 
-    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 
+     0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+     0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+     0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
 
     -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
      0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
@@ -126,8 +141,8 @@ float vertices[] = {
     -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
     -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
 };
-  glGenVertexArrays(1, &VAO);  
-  glGenBuffers(1, &VBO);  
+  glGenVertexArrays(1, &VAO);
+  glGenBuffers(1, &VBO);
 
   glBindVertexArray(VAO);
 
@@ -136,7 +151,7 @@ float vertices[] = {
 
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
   glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
-  glEnableVertexAttribArray(0);  
+  glEnableVertexAttribArray(0);
   glEnableVertexAttribArray(1);
 
 
@@ -145,7 +160,7 @@ float vertices[] = {
   model_uniform = get_uniform(shader_program, "model");
   view_uniform = get_uniform(shader_program, "view");
   projection_uniform = get_uniform(shader_program, "projection");
-  
+
   object_colour = get_uniform(shader_program, "object_colour");
   light_colour = get_uniform(shader_program, "light_colour");
 

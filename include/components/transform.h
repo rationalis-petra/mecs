@@ -7,7 +7,7 @@
 #include "engine/math/vecmath.h"
 
 typedef struct Transform {
-  Vec3i position;
+  Vec3f position;
   int rotation;
 } Transform;
 

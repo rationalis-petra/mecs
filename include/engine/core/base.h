@@ -15,13 +15,6 @@
 
 typedef unsigned int uint;
 
-/** @brief stops the engine normally
- * 
- * @details Intended to be the function to be called when we want to stop the engine without any errors - will
- *          wait until the current loop has finished then exit, allowing the application to clean-up resources
- */
-void stop();
-
 
 /** @brief creates a new entity in the engine from the provided tempalte
  * 
@@ -47,15 +40,24 @@ void delete_entity(int id);
  *          or output an error to the log and return null. The same will happen for invalid types
  *
  * @param[in] id: The id of a specific entity in the engine
- * 
+ *
  * @param[in] type: The (enum) type that you want to get. types can be registered through register_type()
- * 
+ *
  * @return a pointer to either null or the object you wanted
  */
 void* get_component(int id, int type);
 
-void delete_component(void* component, int type);
-
+/** @brief Adds a component as a valid type to the component system.
+ *
+ * @details Takes 
+ *
+ * @param[in] type: The type is an int which is associated with a specific component type - it corresponds to the
+ *                  index of all components in each record.
+ * 
+ * @param[in] new_function: a function which will create a component of type type.
+ *
+ * @param[in] delete_function: a function which should free all data in a component
+ */
 void register_component(int type, void* (*new_function)(), void (*delete_function)(void*));
 
 void register_system(void (*system)(), void (*sys_init)(), void (*sys_clean)());

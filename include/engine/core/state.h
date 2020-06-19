@@ -9,6 +9,10 @@
  *          should only be included in engine-specific .c files, as the game should not
  *          attempt to access these structures directly for safety reasons. 
  */
+#ifdef DEBUG
+extern bool entities_added;
+#endif
+
 ///@addtogroup State
 ///@{
 
@@ -41,7 +45,6 @@ extern int systems_len;
 
 extern int* registered_components;
 extern int num_components;
-
 
 extern unsigned int* registered_shaders;
 extern unsigned int num_shaders;

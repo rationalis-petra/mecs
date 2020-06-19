@@ -13,7 +13,6 @@
  *          components in the system.
  */
 typedef struct Template {
-  int num_components;
   void** components;
 } Template;
 

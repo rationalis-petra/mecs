@@ -1,4 +1,4 @@
-debug_flags = -Wall -g -DDEBUG
+debug_flags = -g -DDEBUG
 libs = -lm -lglfw -lGL -lX11 -lpthread -lXrandr -lXi -ldl
 
 dirs = components systems templates engine engine/core engine/graphics engine/math 
@@ -37,6 +37,7 @@ build/engine/graphics/mesh.od : src/engine/graphics/mesh.c
 build/components/creature.od : src/components/creature.c
 build/components/info.od : src/components/info.c
 build/components/transform.od : src/components/transform.c
+build/components/camera.od : src/components/camera.c
 
 build/templates/enemy_template.od : src/templates/enemy_template.c
 build/templates/player_template.od : src/templates/player_template.c

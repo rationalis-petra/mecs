@@ -27,6 +27,45 @@ Mat4f mat4f_multiply(Mat4f mat1, Mat4f mat2) {
   return out;
 }
 
+Mat4f mat4f_identity() {
+  Mat4f out = (Mat4f) malloc(sizeof(Mat4f) * 16);
+  out[0] = 1.0f;
+  out[1] = 0.0f;
+  out[2] = 0.0f;
+  out[3] = 0.0f;
+
+  out[4] = 0.0f;
+  out[5] = 1.0f;
+  out[6] = 0.0f;
+  out[7] = 0.0f;
+
+  out[8] = 0.0f;
+  out[9] = 0.0f;
+  out[10] = 1.0f;
+  out[11] = 0.0f;
+
+  out[12] = 0.0f;
+  out[13] = 0.0f;
+  out[14] = 0.0f;
+  out[15] = 0.0f;
+}
+
+Vec4f mat4f_act_on(Mat4f mat, Vec4f vec) {
+  Vec4f out = {{{0.0f, 0.0f, 0.0f, 0.0f}}};
+
+  // TODO big fix - this is v/dangerous + undefined
+  float* v = (float*) &vec;
+  float* o = (float*) &out;
+  // i = row
+  // j = column
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; i < 4; j++) {
+      o[i] += v[j] * mat[i * 4 +j];
+    }
+  }
+  return out;
+}
+
 Mat4f mat4f_scale(float x, float y, float z) {
   Mat4f out = (Mat4f) malloc(sizeof(Mat4f) * 16);
   out[0] = x;

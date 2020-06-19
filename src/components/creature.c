@@ -8,6 +8,5 @@ void* new_creature() {
 }
 
 void delete_creature(void* _creature) {
-  Creature* creature = (Creature*) _creature;
-  free(creature);
+  free(_creature);
 }

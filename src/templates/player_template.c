@@ -2,24 +2,22 @@
 #include <string.h>
 
 #include "engine.h"
+#include <stdio.h>
 
 #include "components/components.h"
-#include "components/transform.h"
-#include "components/info.h"
-
-int num_components;
 
 Template* player_template() {
-  void** components = malloc(num_components * sizeof(void*));
+  void** components = malloc(entity_size * sizeof(void*));
 
   components[TransformType] = new_transform();
   components[InfoType] = new_info();
   components[CreatureType] = new_creature();
+  components[CameraType] = new_camera();
 
   Transform* trans = components[TransformType];
-  trans->position.x = 0;
-  trans->position.y = 0;
-  trans->position.z = -30;
+  trans->position.x = 0.0f;
+  trans->position.y = 0.0f;
+  trans->position.z = 0.0f;
 
   Info* info = components[InfoType];
   info->tags = PlayerTag;
@@ -36,10 +34,16 @@ Template* player_template() {
   creature->intelligence = 10;
   creature->health = 100;
 
+  Camera* camera = (Camera*) components[CameraType];
+
+  camera->theta = 0.5235987756f;
+  camera->phi = 0.0f;
+  camera->r = 5.0f;
+  
+
   Template* player = (Template*) malloc(sizeof(Template));
 
   player->components = components;
-  player->num_components = num_components;
 
   return player;
 }

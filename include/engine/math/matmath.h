@@ -23,6 +23,16 @@ typedef float* Mat4f;
  */
 Mat4f mat4f_multiply(Mat4f mat1, Mat4f mat2);
 
+/** @brief pre-multiplies the vector vec by the matrix mat
+ *
+ */
+Vec4f mat4f_act_on(Mat4f mat, Vec4f vec);
+
+/**@brief returns the identity matrix in 4d-space
+ *
+ */
+Mat4f mat4f_identity();
+
 /** @brief creates a mstrix which will scale a vector by (x, y, z)
  * 
  */

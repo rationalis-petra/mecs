@@ -1,7 +1,7 @@
 #ifndef VECMATH_H
 #define VECMATH_H
 
-/** @file 
+/** @file
  * @brief a set of functions and types for doing math on vectors
  */
 
@@ -12,8 +12,8 @@ typedef struct Vec2##Prefix Vec2##Prefix; \
 struct Vec2##Prefix { \
     Type x; \
     Type y; \
-}; 
-    
+};
+
 
 #define define_vec3(Type, Prefix) \
 typedef struct Vec3##Prefix Vec3##Prefix; \
@@ -94,13 +94,17 @@ double vec2d_dot(Vec2d vec1, Vec2d vec2);
 float vec2f_dot(Vec2f vec1, Vec2f vec2);
 int vec2i_dot(Vec2i vec1, Vec2i vec2);
 
-Vec3d new_vec3d();
-Vec3f new_vec3f();
-Vec3i new_vec3i();
+Vec3d new_vec3d(double x, double y, double z);
+Vec3f new_vec3f(float x, float y, float z);
+Vec3i new_vec3i(int x, int y, int z);
 
 int vec3d_equals(Vec3d vec1, Vec3d vec2);
 int vec3f_equals(Vec3f vec1, Vec3f vec2);
 int vec3i_equals(Vec3i vec1, Vec3i vec2);
+
+Vec3d vec3d_multiply(double d, Vec3d vc);
+Vec3f vec3f_multiply(float f, Vec3f vec);
+Vec3i vec3i_multiply(int i, Vec3i vec);
 
 double vec3d_magnitude(Vec3d vec);
 float vec3f_magnitude(Vec3f vec);
@@ -125,6 +129,38 @@ int vec3i_dot(Vec3i vec, Vec3i vec2);
 Vec3d vec3d_cross(Vec3d vec1, Vec3d vec2);
 Vec3f vec3f_cross(Vec3f vec1, Vec3f vec2);
 Vec3i vec3i_cross(Vec3i vec1, Vec3i vec2);
+
+Vec4d new_vec4d(double x, double y, double z, double w);
+Vec4f new_vec4f(float x, float y, float z, float w);
+Vec4i new_vec4i(int x, int y, int z, int w);
+
+int vec4d_equals(Vec4d vec1, Vec4d vec2);
+int vec4f_equals(Vec4f vec1, Vec4f vec2);
+int vec4i_equals(Vec4i vec1, Vec4i vec2);
+
+Vec4d vec4d_multiply(double d, Vec4d vc);
+Vec4f vec4f_multiply(float f, Vec4f vec);
+Vec4i vec4i_multiply(int i, Vec4i vec);
+
+double vec4d_magnitude(Vec4d vec);
+float vec4f_magnitude(Vec4f vec);
+int vec4i_magnitude(Vec4i vec);
+
+Vec4d vec4d_normalize(Vec4d vec);
+Vec4f vec4f_normalize(Vec4f vec);
+Vec4i vec4i_normalize(Vec4i vec);
+
+Vec4d vec4d_sum(Vec4d vec1, Vec4d vec2);
+Vec4f vec4f_sum(Vec4f vec1, Vec4f vec2);
+Vec4i vec4i_sum(Vec4i vec1, Vec4i vec2);
+
+Vec4d vec4d_difference(Vec4d vec1, Vec4d vec2);
+Vec4f vec4f_difference(Vec4f vec1, Vec4f vec2);
+Vec4i vec4i_difference(Vec4i vec1, Vec4i vec2);
+
+double vec4d_dot(Vec4d vec1, Vec4d vec2);
+float vec4f_dot(Vec4f vec, Vec4f vec2);
+int vec4i_dot(Vec4i vec, Vec4i vec2);
 
 /// @}
 #endif

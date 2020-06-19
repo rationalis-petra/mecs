@@ -1,4 +1,0 @@
-
-int make_window(int width, int height);
-
-void close_window(int window);

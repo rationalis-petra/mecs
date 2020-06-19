@@ -27,18 +27,26 @@ int num_components = 0;
 void* (**new_methods)(void) = 0;
 void (**delete_methods)(void*) = 0;
 
+#ifdef DEBUG
+bool entities_added = false;
+#endif
 
+void delete_component(void* component, int type) {
+  delete_methods[type](component);
+}
 
 int add_entity(Template* (template)(void)) {
+  // TODO NULL all pointers so that the method does not have to
   Template* entity = template();
 
-  #ifdef DEBUG
+#ifdef DEBUG
   if (!entity)
     fprintf(stderr, "error in add_entity in engine: attempting to use template which returns null\n");
   if (!entity->components)
     fprintf(stderr, "error in add_entity in engine: attempring to add a template with no components\n");
-  #endif
-  
+  entities_added = true;
+#endif
+
   if (entity_len == entity_capacity) {
     int old_capacity = entity_capacity;
     entity_capacity = (entity_capacity == 0) ? 10 : entity_capacity * 2;
@@ -49,13 +57,13 @@ int add_entity(Template* (template)(void)) {
 
       // zero-out the newly allocated memory
       for (int i = old_capacity; i < entity_capacity; i++) {
-	entities[type][i] = 0;
+        entities[type][i] = 0;
       }
     }
 
   }
 
-  for (int type = 0; type < entity->num_components; type++) {
+  for (int type = 0; type < num_components; type++) {
     entities[type][entity_len] = entity->components[type];
   }
 
@@ -66,16 +74,21 @@ int add_entity(Template* (template)(void)) {
 }
 
 void* get_component(int entity, int type) {
-  #ifdef DEBUG
+#ifdef DEBUG
   if (entity > entity_len || entity < 0) {
     fprintf(stderr, "error in get_component in engine: attempt to get non-existent entity: %d\n", entity);
   }
-  #endif
+#endif
 
   return entities[type][entity];
 }
 
 void register_component(int type, void* (*new_function)(), void (*delete_function)(void*)) {
+#ifdef DEBUG
+  if (entities_added) {
+    fprintf(stderr, "error: registering a component when entities have already been added will result in undefined behaviour!\n");
+  }
+#endif
   if (type == num_components) {
 
     num_components++;
@@ -85,11 +98,11 @@ void register_component(int type, void* (*new_function)(), void (*delete_functio
 
     new_methods = (void* (**)()) realloc(new_methods, sizeof(void* (**)(void)) * num_components);
     delete_methods = (void (**)(void*)) realloc(delete_methods, sizeof(void (**)(void*)) * num_components);
-    
-    #ifdef DEBUG
+
+#ifdef DEBUG
     if (!(entities || registered_components || new_methods || delete_methods))
-	fprintf(stderr, "error in register_component: memory allocation failed!");
-    #endif
+      fprintf(stderr, "error in register_component: memory allocation failed!");
+#endif
 
     registered_components[type] = type;
     new_methods[type] = new_function;
@@ -103,11 +116,8 @@ void register_component(int type, void* (*new_function)(), void (*delete_functio
   }
 
   else {
-    fprintf(stderr, "error: failed to register component, %d\n", type);
+    fprintf(stderr, "error: failed to register component, %d, as there are %d registered components\n", type);
   }
-}
-void delete_component(void* component, int type) {
-  delete_methods[type](component);
 }
 
 void register_system(void (*system_function)(), void (*sys_init)(), void (*sys_clean)()) {
@@ -152,7 +162,9 @@ void clean() {
   // clean all components from grid
   for (int type = 0; type < num_components; type++) {
     for (int i = 0; i < entity_len; i++) {
-      (*delete_component)(entities[type][i], type);
+      if (!entities[type][i]) {
+        (*delete_component)(entities[type][i], type);
+      }
     }
     free(entities[type]);
   }
@@ -168,7 +180,7 @@ void clean() {
   free(new_methods);
   free(delete_methods);
   free(registered_components);
-  
+
   // graphics
   //free_shaders();
   //free_models();

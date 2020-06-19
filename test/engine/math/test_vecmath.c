@@ -1,6 +1,8 @@
 #include "engine/math.h"
 #include "test/tester.h"
-
+  
+int num_correct;
+int num_tests;
 
 void vec3f_equals_returns_true_for_equal_vals() {
   // arrange
@@ -162,6 +164,28 @@ void vec3f_dot_returns_correct_for_arbitrary_vectors() {
   assert_that(y1 == -4);
   assert_that(y2 == 6 );
   assert_that(y3 == 14);
+
+  test_success;
+}
+
+void vec3f_diff_returns_correct_for_arbitrary_vectors() {
+  // arrange
+  Vec3f i1 = {{{1.0f, 2.0f, 3.0f}}};
+  Vec3f i2 = {{{4.0f, 1.0f, 2.0f}}};
+  Vec3f i3 = {{{-10.0f, -2.0f, 2.0f}}};
+
+  // act
+  Vec3f o1 = vec3f_difference(i1, i2);
+  Vec3f o2 = vec3f_difference(i1, i3);
+  Vec3f o3 = vec3f_difference(i3, i2);
+
+  // assert
+  Vec3f a1 = {{{-3.0f, 1.0f, 1.0f}}};
+  Vec3f a2 = {{{11.0f, 4.0f, 1.0f}}};
+  Vec3f a3 = {{{-14.0f, -3.0f, 0.0f}}};
+  assert_that(vec3f_equals(o1, a1));
+  assert_that(vec3f_equals(o2, a2));
+  assert_that(vec3f_equals(o3, a3));
 
   test_success;
 }

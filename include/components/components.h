@@ -4,9 +4,12 @@
 #include "components/creature.h"
 #include "components/info.h"
 #include "components/transform.h"
+#include "components/camera.h"
+
+#define entity_size 4
 
 /**@defgroup Components
- * @brief Components are data structures which store information relating to a 
+ * @brief Components are data structures which store information relating to a
  *        specific behaviour(s)
  *
  * @details Components are one of the core parts of the ECS, although they are
@@ -21,6 +24,8 @@ enum ComponentType {
 		 TransformType,
 		 InfoType,
 		 CreatureType,
+		 CameraType,
 };
+
 
 #endif
