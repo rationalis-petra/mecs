@@ -10,14 +10,14 @@ extern int num_correct;
       return;			\
     }				\
   }				\
-  while (0)			
+  while (0)
 
 #define test_success		 \
   do {				 \
     num_correct++;		 \
     printf("success!\n");	 \
-  } while(0)			 
-  
+  } while(0)
+
 
 #define run_test(fun_name)				\
   num_tests++;						\

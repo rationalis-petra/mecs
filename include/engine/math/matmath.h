@@ -1,21 +1,9 @@
 #ifndef MATMATH_H
 #define MATMATH_H
 
-/**@file
- * @brief a set of functions and types for doing math on matrices
+/** @brief a typedef for a 4x4 float Matrix - we use /column-major/ ordering
+ *
  */
-/// @addtogroup Matrices
-/// @{
-
-/*
-#define define_mat4(Type, Prefix)		\
-  typedef Mat4##Prefix Type*;	  \
-*/
-
-//define_mat4(double, d);
-//define_mat4(float, f);
-//define_mat4(int, i);
-
 typedef float* Mat4f;
 
 /** @brief multiplies two matrices

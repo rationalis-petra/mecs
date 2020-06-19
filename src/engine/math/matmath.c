@@ -47,22 +47,26 @@ Mat4f mat4f_identity() {
   out[12] = 0.0f;
   out[13] = 0.0f;
   out[14] = 0.0f;
-  out[15] = 0.0f;
+  out[15] = 1.0f;
+  return out;
 }
 
 Vec4f mat4f_act_on(Mat4f mat, Vec4f vec) {
   Vec4f out = {{{0.0f, 0.0f, 0.0f, 0.0f}}};
 
-  // TODO big fix - this is v/dangerous + undefined
-  float* v = (float*) &vec;
-  float* o = (float*) &out;
-  // i = row
-  // j = column
   for (int i = 0; i < 4; i++) {
-    for (int j = 0; i < 4; j++) {
-      o[i] += v[j] * mat[i * 4 +j];
-    }
+    out.x += vec.x * mat[i*4];
   }
+  for (int i = 0; i < 4; i++) {
+    out.y += vec.y * mat[i*4 + 1];
+  }
+  for (int i = 0; i < 4; i++) {
+    out.z += vec.z * mat[i*4 + 2];
+  }
+  for (int i = 0; i < 4; i++) {
+    out.w += vec.w * mat[i*4 + 3];
+  }
+
   return out;
 }
 

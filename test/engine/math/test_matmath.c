@@ -6,9 +6,9 @@ int num_correct;
 
 void mat4f_act_on_correct_for_identity_mat() {
   // arrange
-  Vec4f i1 = {{{2.0f, -2.0f, 4.0f}}};
-  Vec4f i2 = {{{-1.0f, 0.0f, 1.0f}}};
-  Vec4f i3 = {{{4.0f, -2.0f, -4.0f}}};
+  Vec4f i1 = {{{2.0f, -2.0f, 4.0f, 1.0f}}};
+  Vec4f i2 = {{{-1.0f, 0.0f, 1.0f, 1.0f}}};
+  Vec4f i3 = {{{4.0f, -2.0f, -4.0f, 1.0f}}};
 
   Mat4f id = mat4f_identity();
 
@@ -50,6 +50,12 @@ void mat4f_look_at_translates_front_to_correct_coords() {
 }
 
 void test_matmath() {
+  // mat4f_eq
+  // identity correct
+  // scale correct
+  // rotation correct
+  // translation correct
+
   run_test(mat4f_act_on_correct_for_identity_mat);
 
   run_test(mat4f_look_at_translates_front_to_correct_coords);

@@ -1,6 +1,6 @@
 #include "engine/math.h"
 #include "test/tester.h"
-  
+
 int num_correct;
 int num_tests;
 

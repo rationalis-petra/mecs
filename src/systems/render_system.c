@@ -94,6 +94,22 @@ void render_system() {
   poll_events();
 
   free(enemies.entities);
+
+  // Draw ground plane
+  // the model matrix
+  Mat4f scale = mat4f_scale(100.0f, 1.0f, 100.0f);
+  Mat4f trans = mat4f_translate(0.0f, -1.0f, 0.0f);
+  Mat4f model = mat4f_multiply(scale, trans);
+
+  // the plane should be grey
+  glUniform3f(object_colour, 0.6f, 0.6f, 0.6f);
+  glUniformMatrix4fv(model_uniform, 1, GL_FALSE, model);
+
+  glDrawArrays(GL_TRIANGLES, 0, 36);
+
+  free(trans);
+  free(scale);
+  free(model);
 }
 
 void render_init() {
@@ -168,6 +184,7 @@ float vertices[] = {
   view_pos = get_uniform(shader_program, "view_pos");
 
   light_program = new_shader_program("light");
+
 }
 
 void render_clean() {
