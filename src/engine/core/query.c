@@ -5,8 +5,6 @@
 #include "engine.h"
 #include "engine/core/state.h"
 
-int entity_len;
-int entity_capacity;
 
 EntityList component_mask(int n_args, ...) {
   va_list comps;
@@ -14,10 +12,10 @@ EntityList component_mask(int n_args, ...) {
   EntityList l;
   l.len = 0;
   l.entities = (int*) malloc(sizeof(int) * entity_len);
-  
+
   for (int entity = 0; entity < entity_len; entity++) {
   va_start(comps, n_args);
-  start: 
+  start:
     for (int i = 0; i < n_args; i++) {
       if (!get_component(entity, va_arg(comps, int))) {
 	goto start;

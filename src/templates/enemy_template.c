@@ -8,19 +8,17 @@
 #include "components/info.h"
 
 
-Template* enemy_template() {
-  void** components = malloc(entity_size * sizeof(void*));
+void enemy_template(Template* enemy) {
+  enemy->components[TransformType] =  new_transform();
+  enemy->components[InfoType] =  new_info();
+  enemy->components[CreatureType] =  new_creature();
 
-  components[TransformType] =  new_transform();
-  components[InfoType] =  new_info();
-  components[CreatureType] =  new_creature();
-
-  Info* info = components[InfoType];
+  Info* info = enemy->components[InfoType];
   info->tags = EnemyTag;
   info->name = malloc(sizeof(char) * 5);
   strcpy(info->name, "Dave");
 
-  Creature* creature = (Creature*) components[CreatureType];
+  Creature* creature =  enemy->components[CreatureType];
 
   creature->strength = 10;
   creature->dexterity = 10;
@@ -29,11 +27,5 @@ Template* enemy_template() {
   creature->charisma = 10;
   creature->intelligence = 10;
   creature->health = 20;
-
-  Template* enemy = (Template*) malloc(sizeof(Template));
-
-  enemy->components = components;
-
-  return enemy;
 }
 

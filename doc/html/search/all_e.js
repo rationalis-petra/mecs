@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['shader_2eh_34',['shader.h',['../shader_8h.html',1,'']]],
-  ['state_35',['State',['../group__State.html',1,'']]],
-  ['state_2eh_36',['state.h',['../state_8h.html',1,'']]],
-  ['stop_37',['stop',['../group__Base.html#ga8c528baf37154d347366083f0f816846',1,'base.h']]],
-  ['strength_38',['strength',['../structCreature.html#a4bfbebfd14d24fe97f123e86f5777f72',1,'Creature']]]
+  ['r_37',['r',['../structCamera.html#ad684f8d8cd4aaf24d07e8b799ef474b0',1,'Camera']]],
+  ['register_5fcomponent_38',['register_component',['../group__Base.html#gaa52e43d04399652a6f1826a22aa1e5a7',1,'base.h']]],
+  ['registries_39',['Registries',['../group__Registries.html',1,'']]]
 ];

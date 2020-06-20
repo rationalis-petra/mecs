@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tags_84',['tags',['../structInfo.html#a3818c1e985f87b093b9b86e3c671eaed',1,'Info']]]
+  ['r_94',['r',['../structCamera.html#ad684f8d8cd4aaf24d07e8b799ef474b0',1,'Camera']]]
 ];

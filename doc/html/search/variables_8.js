@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wisdom_85',['wisdom',['../structCreature.html#ace1964847338d2dca907f1ef5c611c02',1,'Creature']]]
+  ['strength_95',['strength',['../structCreature.html#a4bfbebfd14d24fe97f123e86f5777f72',1,'Creature']]]
 ];

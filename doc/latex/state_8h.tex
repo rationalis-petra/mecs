@@ -11,6 +11,11 @@ A file containing the variables for the state of the engine.
 \item 
 \#define {\bfseries nullptr}~0
 \end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned int {\bfseries uint}
+\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -30,6 +35,10 @@ void($\ast$$\ast$ {\bfseries delete\+\_\+methods} )(void $\ast$)
 \item 
 void($\ast$$\ast$ {\bfseries systems} )(void)
 \item 
+void($\ast$$\ast$ {\bfseries sys\+\_\+inits} )(void)
+\item 
+void($\ast$$\ast$ {\bfseries sys\+\_\+cleans} )(void)
+\item 
 int {\bfseries systems\+\_\+capacity}
 \item 
 int {\bfseries systems\+\_\+len}
@@ -37,6 +46,14 @@ int {\bfseries systems\+\_\+len}
 int $\ast$ {\bfseries registered\+\_\+components}
 \item 
 int {\bfseries num\+\_\+components}
+\item 
+unsigned int $\ast$ {\bfseries registered\+\_\+shaders}
+\item 
+unsigned int {\bfseries num\+\_\+shaders}
+\item 
+unsigned int $\ast$ {\bfseries registered\+\_\+models}
+\item 
+unsigned int {\bfseries num\+\_\+models}
 \end{DoxyCompactItemize}
 
 

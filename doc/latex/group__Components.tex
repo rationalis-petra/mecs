@@ -8,6 +8,8 @@ Components are data structures which store information relating to a specific be
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+struct \mbox{\hyperlink{structCamera}{Camera}}
+\begin{DoxyCompactList}\small\item\em The camera struct allows a camera to be attached to the entity which contains it. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structCreature}{Creature}}
 \begin{DoxyCompactList}\small\item\em The creature struct contains the basic stat block for all creatures, and auxilliary information. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structInfo}{Info}}
@@ -15,6 +17,8 @@ struct \mbox{\hyperlink{structInfo}{Info}}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
+typedef struct \mbox{\hyperlink{structCamera}{Camera}} \mbox{\hyperlink{group__Components_ga78750a39b09d6562fd9b910c7743cfca}{Camera}}
+\begin{DoxyCompactList}\small\item\em The camera struct allows a camera to be attached to the entity which contains it. \end{DoxyCompactList}\item 
 typedef struct \mbox{\hyperlink{structCreature}{Creature}} \mbox{\hyperlink{group__Components_ga508eccd4f0c8029b4da3a0b557e7ab1c}{Creature}}
 \begin{DoxyCompactList}\small\item\em The creature struct contains the basic stat block for all creatures, and auxilliary information. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Components_ga107c14b934a12b9e6d0d8d71d8c3f99d}\label{group__Components_ga107c14b934a12b9e6d0d8d71d8c3f99d}} 
@@ -31,6 +35,12 @@ enum \mbox{\hyperlink{group__Components_ga305263dd89ad9fde1863aece00907351}{Tag}
 \begin{DoxyCompactList}\small\item\em The tag enum is a definition of flags which are bit-\/aligned. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__Components_gad776d41ede9e2486aa09ad3120f334ee}\label{group__Components_gad776d41ede9e2486aa09ad3120f334ee}} 
+void $\ast$ {\bfseries new\+\_\+camera} ()
+\item 
+\mbox{\Hypertarget{group__Components_gaee2a364dd83976814b250f7fb32944a4}\label{group__Components_gaee2a364dd83976814b250f7fb32944a4}} 
+void {\bfseries delete\+\_\+camera} (void $\ast$\+\_\+camera)
 \item 
 \mbox{\Hypertarget{group__Components_gab07e6fc62a2f7b0ad37b92312a942b60}\label{group__Components_gab07e6fc62a2f7b0ad37b92312a942b60}} 
 void $\ast$ {\bfseries new\+\_\+creature} ()
@@ -52,7 +62,17 @@ Components are data structures which store information relating to a specific be
 Components are one of the core parts of the E\+CS, although they are completely defined by the user, exisiting only as void$\ast$ in the engine itself. The components module contains all user-\/defined types as well as an enum indexing them all. To see details on accessing components, see \mbox{\hyperlink{group__Query}{Query}} 
 
 \doxysubsection{Typedef Documentation}
-\mbox{\Hypertarget{group__Components_ga508eccd4f0c8029b4da3a0b557e7ab1c}\label{group__Components_ga508eccd4f0c8029b4da3a0b557e7ab1c}} 
+\mbox{\Hypertarget{group__Components_ga78750a39b09d6562fd9b910c7743cfca}\label{group__Components_ga78750a39b09d6562fd9b910c7743cfca}} 
+\index{Components@{Components}!Camera@{Camera}}
+\index{Camera@{Camera}!Components@{Components}}
+\doxysubsubsection{\texorpdfstring{Camera}{Camera}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structCamera}{Camera}} \mbox{\hyperlink{structCamera}{Camera}}}
+
+
+
+The camera struct allows a camera to be attached to the entity which contains it. 
+
+The camera struct contains information about it\textquotesingle{}s position relative to a target \mbox{\Hypertarget{group__Components_ga508eccd4f0c8029b4da3a0b557e7ab1c}\label{group__Components_ga508eccd4f0c8029b4da3a0b557e7ab1c}} 
 \index{Components@{Components}!Creature@{Creature}}
 \index{Creature@{Creature}!Components@{Components}}
 \doxysubsubsection{\texorpdfstring{Creature}{Creature}}

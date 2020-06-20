@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['math_94',['Math',['../group__Math.html',1,'']]],
-  ['matrices_95',['Matrices',['../group__Matrices.html',1,'']]]
+  ['math_108',['Math',['../group__Math.html',1,'']]],
+  ['matrices_109',['Matrices',['../group__Matrices.html',1,'']]]
 ];

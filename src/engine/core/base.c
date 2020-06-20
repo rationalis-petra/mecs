@@ -35,17 +35,15 @@ void delete_component(void* component, int type) {
   delete_methods[type](component);
 }
 
-int add_entity(Template* (template)(void)) {
-  // TODO NULL all pointers so that the method does not have to
-  Template* entity = template();
-
-#ifdef DEBUG
-  if (!entity)
-    fprintf(stderr, "error in add_entity in engine: attempting to use template which returns null\n");
-  if (!entity->components)
-    fprintf(stderr, "error in add_entity in engine: attempring to add a template with no components\n");
-  entities_added = true;
-#endif
+int add_entity(void (entity_creator)(Template*)) {
+  // create a new template, null all pointers, then pass it to the template function so the
+  // entity may be constructed
+  Template* template = malloc(sizeof(Template));
+  template->components = (void**) malloc(sizeof(void*) * num_components);
+  for (int i = 0; i < num_components; i++) {
+    template->components[i] = NULL;
+  }
+  entity_creator(template);
 
   if (entity_len == entity_capacity) {
     int old_capacity = entity_capacity;
@@ -57,17 +55,16 @@ int add_entity(Template* (template)(void)) {
 
       // zero-out the newly allocated memory
       for (int i = old_capacity; i < entity_capacity; i++) {
-        entities[type][i] = 0;
+        entities[type][i] = NULL;
       }
     }
-
   }
 
   for (int type = 0; type < num_components; type++) {
-    entities[type][entity_len] = entity->components[type];
+    entities[type][entity_len] = template->components[type];
   }
 
-  delete_template(entity);
+  delete_template(template);
   entity_len++;
 
   return entity_len-1;

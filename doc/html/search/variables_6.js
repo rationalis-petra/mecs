@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['strength_83',['strength',['../structCreature.html#a4bfbebfd14d24fe97f123e86f5777f72',1,'Creature']]]
+  ['phi_93',['phi',['../structCamera.html#aa53430276d7fd4992302e238aa98c044',1,'Camera']]]
 ];

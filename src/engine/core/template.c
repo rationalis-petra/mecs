@@ -14,7 +14,7 @@ void delete_template(Template* template) {
     fprintf(stderr, "error in delete_template: attempt to delete template with null components\n");
   #endif
 
-  
+
   free(template->components);
   free(template);
 }

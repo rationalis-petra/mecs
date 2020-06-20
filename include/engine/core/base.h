@@ -16,18 +16,18 @@
 typedef unsigned int uint;
 
 
-/** @brief creates a new entity in the engine from the provided tempalte
+/** @brief creates a new entity in the engine from the provided template
  * 
  * @details The template contains two arrays: one which contains components for the engine to give the entity,
  *          and another detailing what type thet are. The exact implementation of the template function is left
  *          to the user, all that matters is that they provice a valid template.
  *
- * @param[in] template: A function which returns a Template object
+ * @param[in] template_creator: a function which creates a template object
  * 
  * @return entity_id: The handle to the created entity within the engine. Allows the engine user to access the 
  *         entity's components
  */
-int add_entity(Template* (template)(void));
+int add_entity(void (template_creator)(Template*));
 
 
 void delete_entity(int id);
@@ -65,6 +65,8 @@ void register_system(void (*system)(), void (*sys_init)(), void (*sys_clean)());
 void init();
 
 void run();
+
+void stop();
 
 void clean();
 

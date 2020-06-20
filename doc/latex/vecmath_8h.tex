@@ -17,71 +17,161 @@ a set of functions and types for doing math on vectors
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries define\+\_\+vec2} (double, d) define\+\_\+vec2(float
+{\bfseries define\+\_\+vec2} (double, d)
 \item 
-f {\bfseries define\+\_\+vec2} (int, i) define\+\_\+vec2(unsigned int
+{\bfseries define\+\_\+vec2} (float, f) define\+\_\+vec2(int
 \item 
-f u {\bfseries define\+\_\+vec3} (double, d) define\+\_\+vec3(float
+i {\bfseries define\+\_\+vec2} (unsigned int, u) define\+\_\+vec3(double
 \item 
-f u f {\bfseries define\+\_\+vec3} (int, i) define\+\_\+vec3(unsigned int
+i d {\bfseries define\+\_\+vec3} (float, f) define\+\_\+vec3(int
 \item 
-f u f u {\bfseries define\+\_\+vec4} (double, d) define\+\_\+vec4(float
+i d i {\bfseries define\+\_\+vec3} (unsigned int, u) define\+\_\+vec4(double
 \item 
-f u f u f {\bfseries define\+\_\+vec4} (int, i) define\+\_\+vec4(unsigned int
+i d i d {\bfseries define\+\_\+vec4} (float, f) define\+\_\+vec4(int
 \item 
-f u f u f u double {\bfseries vec2d\+\_\+magnitude} (Vec2d $\ast$vec)
+i d i d i {\bfseries define\+\_\+vec4} (unsigned int, u) Vec2d new \+\_\+vec2d()
 \item 
-float {\bfseries vec2f\+\_\+magnitude} (Vec2f $\ast$vec)
+Vec2f {\bfseries new\+\_\+vec2f} ()
 \item 
-int {\bfseries vec2i\+\_\+magnitude} (Vec2i $\ast$vec)
+Vec2i {\bfseries new\+\_\+vec2i} ()
 \item 
-Vec2d {\bfseries vec2d\+\_\+sum} (Vec2d $\ast$vec1, Vec2d $\ast$vec2)
+int {\bfseries vec2d\+\_\+equals} (Vec2d vec1, Vec2d vec2)
 \item 
-Vec2f {\bfseries vec2f\+\_\+sum} (Vec2f $\ast$vec1, Vec2f $\ast$vec2)
+int {\bfseries vec2f\+\_\+equals} (Vec2f vec1, Vec2f vec2)
 \item 
-Vec2i {\bfseries vec2i\+\_\+sum} (Vec2i $\ast$vec1, Vec2i $\ast$vec2)
+int {\bfseries vec2i\+\_\+equals} (Vec2i vec1, Vec2i vec2)
 \item 
-Vec2d {\bfseries vec2d\+\_\+difference} (Vec2d $\ast$vec1, Vec2d $\ast$vec2)
+Vec2d {\bfseries vec2d\+\_\+normalize} (Vec2d vec)
 \item 
-Vec2f {\bfseries vec2f\+\_\+difference} (Vec2f $\ast$vec1, Vec2f $\ast$vec2)
+Vec2f {\bfseries vec2f\+\_\+normalize} (Vec2f vec)
 \item 
-Vec2i {\bfseries vec2i\+\_\+difference} (Vec2i $\ast$vec1, Vec2i $\ast$vec2)
+Vec2i {\bfseries vec2i\+\_\+normalize} (Vec2i vec)
 \item 
-double {\bfseries vec2d\+\_\+dot} (Vec2d $\ast$vec1, Vec2d $\ast$vec2)
+double {\bfseries vec2d\+\_\+magnitude} (Vec2d vec)
 \item 
-float {\bfseries vec2f\+\_\+dot} (Vec2f $\ast$vec1, Vec2f $\ast$vec2)
+float {\bfseries vec2f\+\_\+magnitude} (Vec2f vec)
 \item 
-int {\bfseries vec2i\+\_\+dot} (Vec2i $\ast$vec1, Vec2i $\ast$vec2)
+int {\bfseries vec2i\+\_\+magnitude} (Vec2i vec)
 \item 
-double {\bfseries vec3d\+\_\+magnitude} (Vec3d $\ast$vec)
+Vec2d {\bfseries vec2d\+\_\+sum} (Vec2d vec1, Vec2d vec2)
 \item 
-float {\bfseries vec3f\+\_\+magnitude} (Vec3f $\ast$vec)
+Vec2f {\bfseries vec2f\+\_\+sum} (Vec2f vec1, Vec2f vec2)
 \item 
-int {\bfseries vec3i\+\_\+magnitude} (Vec3i $\ast$vec)
+Vec2i {\bfseries vec2i\+\_\+sum} (Vec2i vec1, Vec2i vec2)
 \item 
-Vec3d {\bfseries vec3d\+\_\+sum} (Vec3d $\ast$vec1, Vec3d $\ast$vec2)
+Vec2d {\bfseries vec2d\+\_\+difference} (Vec2d vec1, Vec2d vec2)
 \item 
-Vec3f {\bfseries vec3f\+\_\+sum} (Vec3f $\ast$vec1, Vec3f $\ast$vec2)
+Vec2f {\bfseries vec2f\+\_\+difference} (Vec2f vec1, Vec2f vec2)
 \item 
-Vec3i {\bfseries vec3i\+\_\+sum} (Vec3i $\ast$vec1, Vec3i $\ast$vec2)
+Vec2i {\bfseries vec2i\+\_\+difference} (Vec2i vec1, Vec2i vec2)
 \item 
-Vec3d {\bfseries vec3d\+\_\+difference} (Vec3d $\ast$vec1, Vec3d $\ast$vec2)
+double {\bfseries vec2d\+\_\+dot} (Vec2d vec1, Vec2d vec2)
 \item 
-Vec3f {\bfseries vec3f\+\_\+difference} (Vec3f $\ast$vec1, Vec3f $\ast$vec2)
+float {\bfseries vec2f\+\_\+dot} (Vec2f vec1, Vec2f vec2)
 \item 
-Vec3i {\bfseries vec3i\+\_\+difference} (Vec3i $\ast$vec1, Vec3i $\ast$vec2)
+int {\bfseries vec2i\+\_\+dot} (Vec2i vec1, Vec2i vec2)
 \item 
-double {\bfseries vec3d\+\_\+dot} (Vec3d $\ast$vec1, Vec3d $\ast$vec2)
+Vec3d {\bfseries new\+\_\+vec3d} (double x, double y, double z)
 \item 
-float {\bfseries vec3f\+\_\+dot} (Vec3f $\ast$vec, Vec3f $\ast$vec2)
+Vec3f {\bfseries new\+\_\+vec3f} (float x, float y, float z)
 \item 
-int {\bfseries vec3i\+\_\+dot} (Vec3i $\ast$vec, Vec3i $\ast$vec2)
+Vec3i {\bfseries new\+\_\+vec3i} (int x, int y, int z)
 \item 
-Vec3d {\bfseries vec3d\+\_\+cross} (Vec3d $\ast$vec1, Vec3d $\ast$vec2)
+int {\bfseries vec3d\+\_\+equals} (Vec3d vec1, Vec3d vec2)
 \item 
-Vec3f {\bfseries vec3f\+\_\+cross} (Vec3f $\ast$vec1, Vec3f $\ast$vec2)
+int {\bfseries vec3f\+\_\+equals} (Vec3f vec1, Vec3f vec2)
 \item 
-Vec3i {\bfseries vec3i\+\_\+cross} (Vec3i $\ast$vec1, Vec3i $\ast$vec2)
+int {\bfseries vec3i\+\_\+equals} (Vec3i vec1, Vec3i vec2)
+\item 
+Vec3d {\bfseries vec3d\+\_\+multiply} (double d, Vec3d vc)
+\item 
+Vec3f {\bfseries vec3f\+\_\+multiply} (float f, Vec3f vec)
+\item 
+Vec3i {\bfseries vec3i\+\_\+multiply} (int i, Vec3i vec)
+\item 
+double {\bfseries vec3d\+\_\+magnitude} (Vec3d vec)
+\item 
+float {\bfseries vec3f\+\_\+magnitude} (Vec3f vec)
+\item 
+int {\bfseries vec3i\+\_\+magnitude} (Vec3i vec)
+\item 
+Vec3d {\bfseries vec3d\+\_\+normalize} (Vec3d vec)
+\item 
+Vec3f {\bfseries vec3f\+\_\+normalize} (Vec3f vec)
+\item 
+Vec3i {\bfseries vec3i\+\_\+normalize} (Vec3i vec)
+\item 
+Vec3d {\bfseries vec3d\+\_\+sum} (Vec3d vec1, Vec3d vec2)
+\item 
+Vec3f {\bfseries vec3f\+\_\+sum} (Vec3f vec1, Vec3f vec2)
+\item 
+Vec3i {\bfseries vec3i\+\_\+sum} (Vec3i vec1, Vec3i vec2)
+\item 
+Vec3d {\bfseries vec3d\+\_\+difference} (Vec3d vec1, Vec3d vec2)
+\item 
+Vec3f {\bfseries vec3f\+\_\+difference} (Vec3f vec1, Vec3f vec2)
+\item 
+Vec3i {\bfseries vec3i\+\_\+difference} (Vec3i vec1, Vec3i vec2)
+\item 
+double {\bfseries vec3d\+\_\+dot} (Vec3d vec1, Vec3d vec2)
+\item 
+float {\bfseries vec3f\+\_\+dot} (Vec3f vec, Vec3f vec2)
+\item 
+int {\bfseries vec3i\+\_\+dot} (Vec3i vec, Vec3i vec2)
+\item 
+Vec3d {\bfseries vec3d\+\_\+cross} (Vec3d vec1, Vec3d vec2)
+\item 
+Vec3f {\bfseries vec3f\+\_\+cross} (Vec3f vec1, Vec3f vec2)
+\item 
+Vec3i {\bfseries vec3i\+\_\+cross} (Vec3i vec1, Vec3i vec2)
+\item 
+Vec4d {\bfseries new\+\_\+vec4d} (double x, double y, double z, double w)
+\item 
+Vec4f {\bfseries new\+\_\+vec4f} (float x, float y, float z, float w)
+\item 
+Vec4i {\bfseries new\+\_\+vec4i} (int x, int y, int z, int w)
+\item 
+int {\bfseries vec4d\+\_\+equals} (Vec4d vec1, Vec4d vec2)
+\item 
+int {\bfseries vec4f\+\_\+equals} (Vec4f vec1, Vec4f vec2)
+\item 
+int {\bfseries vec4i\+\_\+equals} (Vec4i vec1, Vec4i vec2)
+\item 
+Vec4d {\bfseries vec4d\+\_\+multiply} (double d, Vec4d vc)
+\item 
+Vec4f {\bfseries vec4f\+\_\+multiply} (float f, Vec4f vec)
+\item 
+Vec4i {\bfseries vec4i\+\_\+multiply} (int i, Vec4i vec)
+\item 
+double {\bfseries vec4d\+\_\+magnitude} (Vec4d vec)
+\item 
+float {\bfseries vec4f\+\_\+magnitude} (Vec4f vec)
+\item 
+int {\bfseries vec4i\+\_\+magnitude} (Vec4i vec)
+\item 
+Vec4d {\bfseries vec4d\+\_\+normalize} (Vec4d vec)
+\item 
+Vec4f {\bfseries vec4f\+\_\+normalize} (Vec4f vec)
+\item 
+Vec4i {\bfseries vec4i\+\_\+normalize} (Vec4i vec)
+\item 
+Vec4d {\bfseries vec4d\+\_\+sum} (Vec4d vec1, Vec4d vec2)
+\item 
+Vec4f {\bfseries vec4f\+\_\+sum} (Vec4f vec1, Vec4f vec2)
+\item 
+Vec4i {\bfseries vec4i\+\_\+sum} (Vec4i vec1, Vec4i vec2)
+\item 
+Vec4d {\bfseries vec4d\+\_\+difference} (Vec4d vec1, Vec4d vec2)
+\item 
+Vec4f {\bfseries vec4f\+\_\+difference} (Vec4f vec1, Vec4f vec2)
+\item 
+Vec4i {\bfseries vec4i\+\_\+difference} (Vec4i vec1, Vec4i vec2)
+\item 
+double {\bfseries vec4d\+\_\+dot} (Vec4d vec1, Vec4d vec2)
+\item 
+float {\bfseries vec4f\+\_\+dot} (Vec4f vec, Vec4f vec2)
+\item 
+int {\bfseries vec4i\+\_\+dot} (Vec4i vec, Vec4i vec2)
 \end{DoxyCompactItemize}
 
 
