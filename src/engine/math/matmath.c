@@ -8,6 +8,15 @@
 #include <stdio.h>
 #endif
 
+int mat4f_equals(Mat4f mat1, Mat4f mat2) {
+  for (int i = 0; i < 16; i++) {
+    if (mat1[i] != mat2[i]) {
+      return 0;
+    }
+  }
+  return 1;
+}
+
 Mat4f mat4f_multiply(Mat4f mat1, Mat4f mat2) {
   Mat4f out = (Mat4f) malloc(sizeof(Mat4f) * 16);
 
@@ -156,23 +165,23 @@ Mat4f mat4f_look_at(Vec3f position, Vec3f target, Vec3f up) {
 
   // look at -> combine re-orientation & translation
   out[0] = camera_right.x;
-  out[1] = camera_right.y;
-  out[2] = camera_right.z;
+  out[1] = camera_up.x;
+  out[2] = camera_direction.x;
   out[3] = 0;
 
-  out[4] = camera_up.x;
+  out[4] = camera_right.y;
   out[5] = camera_up.y;
-  out[6] = camera_up.z;
+  out[6] = camera_direction.y;
   out[7] = 0;
 
-  out[8] = camera_direction.x;
-  out[9] = camera_direction.y;
+  out[8] = camera_right.z;
+  out[9] = camera_up.z;
   out[10] = camera_direction.z;
   out[11] = 0;
 
-  out[12] = -camera_right.x * position.x - camera_up.x * position.y - camera_direction.x * position.z;
-  out[13] = -camera_right.y * position.x - camera_up.y * position.y - camera_direction.y * position.z;
-  out[14] = -camera_right.z * position.x - camera_up.z * position.y - camera_direction.z * position.z;
+  out[12] = -camera_right.x * position.x - camera_right.y * position.y - camera_right.z * position.z;
+  out[13] = -camera_up.x * position.x - camera_up.y * position.y - camera_up.z * position.z;
+  out[14] = -camera_direction.x * position.x - camera_direction.y * position.y - camera_direction.z * position.z;
   out[15] = 1;
 
   return out;
@@ -195,11 +204,11 @@ Mat4f mat4f_perspective(float fov, float aspect, float near, float far) {
   float ti = 1 / tan(fov / 2.0f);
   float ri = ti * aspect;
 
-  out[0] = ti; 
+  out[0] = ti;
   out[1] = 0.0f;
   out[2] = 0.0f;
   out[3] = 0.0f;
-  
+
   out[4] = 0.0f;
   out[5] = ri;
   out[6] = 0.0f;
@@ -216,4 +225,17 @@ Mat4f mat4f_perspective(float fov, float aspect, float near, float far) {
   out[15] = 0.0f;
 
   return out;
+}
+
+void mat4f_print(Mat4f matrix) {
+  for (int i = 0; i < 4; i++) {
+    printf("[");
+    for (int j = 0; j < 4; j++) {
+      printf("%f", matrix[j*4 + i]);
+      if (j != 3) {
+        printf(", ");
+      }
+    }
+    printf("]\n");
+  }
 }

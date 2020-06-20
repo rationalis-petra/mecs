@@ -47,7 +47,7 @@ void render_system() {
 
   Vec3f camera_pos = vec3f_sum(delta, play_pos);
   Vec3f camera_target = play_pos;
-  Vec3f camera_up = {{{0.0f, 1.0f, 1.0f}}};
+  Vec3f camera_up = {{{0.0f, 1.0f, 0.0f}}};
 
   Mat4f look_at = mat4f_look_at(camera_pos, camera_target, camera_up);
 

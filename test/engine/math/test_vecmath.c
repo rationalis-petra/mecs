@@ -26,6 +26,45 @@ void vec3f_equals_returns_false_for_inequal_vals() {
   test_success;
 }
 
+void vec3f_difference_returns_zero_for_equal_vectors() {
+  // arrange
+  Vec3f x1 = {{{1.0f, 2.0f, 3.0f}}};
+  Vec3f y1 = {{{1.0f, 2.0f, 3.0f}}};
+
+  Vec3f z = {{{0.0f, 0.0f, 0.0f}}};
+
+  // act
+  Vec3f o1 = vec3f_difference(x1, y1);
+
+  // assert
+  assert_that(vec3f_equals(o1, z));
+
+  test_success;
+}
+
+void vec3f_difference_returns_correct_for_arbitrary_vectors() {
+  // arrange
+  Vec3f i1 = {{{1.0f, 2.0f, 3.0f}}};
+  Vec3f i2 = {{{4.0f, 1.0f, 2.0f}}};
+  Vec3f i3 = {{{-10.0f, -2.0f, 2.0f}}};
+
+  // act
+  Vec3f o1 = vec3f_difference(i1, i2);
+  Vec3f o2 = vec3f_difference(i1, i3);
+  Vec3f o3 = vec3f_difference(i3, i2);
+
+  // assert
+  Vec3f a1 = {{{-3.0f, 1.0f, 1.0f}}};
+  Vec3f a2 = {{{11.0f, 4.0f, 1.0f}}};
+  Vec3f a3 = {{{-14.0f, -3.0f, 0.0f}}};
+  assert_that(vec3f_equals(o1, a1));
+  assert_that(vec3f_equals(o2, a2));
+  assert_that(vec3f_equals(o3, a3));
+
+  test_success;
+}
+
+
 void vec3f_magnitude_returns_zero_for_zero_vector() {
   // arrange
   Vec3f o = {{{0.0f, 0.0f, 0.0f}}};
@@ -123,7 +162,7 @@ void vec3f_cross_returns_correct_for_basis_vectors() {
   assert_that(vec3f_equals(a1, mz));
   assert_that(vec3f_equals(a2, mx));
   assert_that(vec3f_equals(a3, my));
-  
+
   test_success;
 }
 
@@ -168,38 +207,19 @@ void vec3f_dot_returns_correct_for_arbitrary_vectors() {
   test_success;
 }
 
-void vec3f_diff_returns_correct_for_arbitrary_vectors() {
-  // arrange
-  Vec3f i1 = {{{1.0f, 2.0f, 3.0f}}};
-  Vec3f i2 = {{{4.0f, 1.0f, 2.0f}}};
-  Vec3f i3 = {{{-10.0f, -2.0f, 2.0f}}};
-
-  // act
-  Vec3f o1 = vec3f_difference(i1, i2);
-  Vec3f o2 = vec3f_difference(i1, i3);
-  Vec3f o3 = vec3f_difference(i3, i2);
-
-  // assert
-  Vec3f a1 = {{{-3.0f, 1.0f, 1.0f}}};
-  Vec3f a2 = {{{11.0f, 4.0f, 1.0f}}};
-  Vec3f a3 = {{{-14.0f, -3.0f, 0.0f}}};
-  assert_that(vec3f_equals(o1, a1));
-  assert_that(vec3f_equals(o2, a2));
-  assert_that(vec3f_equals(o3, a3));
-
-  test_success;
-}
-
 void test_vecmath() {
   run_test(vec3f_equals_returns_true_for_equal_vals);
   run_test(vec3f_equals_returns_false_for_inequal_vals);
+
+  run_test(vec3f_difference_returns_zero_for_equal_vectors);
+  run_test(vec3f_difference_returns_correct_for_arbitrary_vectors);
 
   run_test(vec3f_magnitude_returns_zero_for_zero_vector);
   run_test(vec3f_magnitude_returns_correct_for_axis_aligned_vectors);
   run_test(vec3f_magnitude_returns_correct_for_arbitrary_vectors);
 
   run_test(vec3f_normalize_returns_vectors_unit_magnitude);
-  
+
   run_test(vec3f_cross_returns_correct_for_basis_vectors);
   run_test(vec3f_cross_returns_correct_for_arbitrary_vectors);
 
