@@ -20,8 +20,9 @@
  * @}
  */
 
+#include "engine/core/types.h"
 #include "engine/core/base.h"
 #include "engine/core/query.h"
-#include "engine/core/template.h"
+#include "engine/core/resources.h"
 
 #endif

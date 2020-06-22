@@ -14,6 +14,11 @@
 /** @file
  */
 
+typedef struct Cursor {
+    double x;
+    double y;
+} Cursor;
+
 /** @brief Creates a new window and returns an integer handle to it 
  * 
  * @details Requests a new glfw window with OpenGL version 3.3 and returns
@@ -51,6 +56,10 @@ void poll_events();
 /** @brief will check if the key with id key is pressed
  */
 int key_is_pressed(int key);
+
+/**@brief returns the (x, y) position of the mouse cursor
+ */
+Cursor get_cursor_pos();
 
 /** @brief returns the aspect ratio of the window
  */

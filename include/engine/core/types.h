@@ -1,5 +1,5 @@
-#ifndef TEMPLATE_H
-#define TEMPLATE_H
+#ifndef TYPES_H
+#define TYPES_H
 
 ///@addtogroup Base
 ///@{
@@ -18,5 +18,14 @@ typedef struct Template {
 
 void delete_template(Template* template);
 
+typedef struct GenIndex {
+  unsigned int index;
+  unsigned int generation;
+} GenIndex;
+
+typedef struct IntList {
+  int element;
+  struct IntLIst* next;
+} IntList;
 ///@}
 #endif

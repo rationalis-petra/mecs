@@ -6,6 +6,11 @@
  */
 typedef float* Mat4f;
 
+/** @brief Tests if two matrices are equal
+ *
+ */
+int mat4f_equals(Mat4f mat1, Mat4f mat2);
+
 /** @brief multiplies two matrices
  *
  */
@@ -54,6 +59,9 @@ Mat4f mat4f_look_at(Vec3f position, Vec3f target, Vec3f up);
  *          height are calculated from the ratio (which is width / height).
  */
 Mat4f mat4f_perspective(float fov, float ratio, float near, float far);
+
+/** @brief Prints a representation of the matrix, for debugging purposes*/
+void mat4f_print(Mat4f matrxi);
 
 /// @}
 

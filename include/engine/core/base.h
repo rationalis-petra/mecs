@@ -11,9 +11,7 @@
 
 #include <stdio.h>
 
-#include "engine/core/template.h"
-
-typedef unsigned int uint;
+#include "engine/core/types.h"
 
 
 /** @brief creates a new entity in the engine from the provided template

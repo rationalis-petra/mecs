@@ -9,6 +9,7 @@
 #include "systems/systems.h"
 #include "systems/utils.h"
 
+Cursor cursor_pos;
 
 void input_system() {
   int player = first_match(&is_player);
@@ -35,26 +36,20 @@ void input_system() {
     pos->y += 0.1;
   }
   else {
-    pos->y -= 0.1 * pos->y;
+    pos->y -= 0.01 * pos->y;
   }
 
   // camera
   Camera* camera = (Camera*) get_component(player, CameraType);
-  if(key_is_pressed(KEY_LEFT)) {
-    camera->phi -= 0.01;
-  }
-  if(key_is_pressed(KEY_RIGHT)) {
-    camera->phi += 0.01;
-  }
-  if (key_is_pressed(KEY_UP)) {
-    camera->theta += 0.01;
-  }
-  if (key_is_pressed(KEY_DOWN)) {
-    camera->theta-= 0.01;
-  }
+
+  Cursor new_cursor_pos = get_cursor_pos();
+  camera->phi += 0.003 * (new_cursor_pos.x - cursor_pos.x);
+  camera->theta += 0.001 * (new_cursor_pos.y - cursor_pos.y);
+  cursor_pos = new_cursor_pos;
 }
 
 void input_init() {
+  cursor_pos = get_cursor_pos();
 }
 
 void input_clean() {

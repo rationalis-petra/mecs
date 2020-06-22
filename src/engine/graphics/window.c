@@ -9,6 +9,7 @@
 #endif
 
 GLFWwindow* window = NULL;
+Cursor cursor = {{{0.0d, 0.0d}}};
 float aspect;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
@@ -73,6 +74,11 @@ void poll_events() {
 
 int key_is_pressed(int key) {
   return (glfwGetKey(window, key) == GLFW_PRESS);
+}
+
+Cursor get_cursor_pos() {
+  glfwGetCursorPos(window, &cursor.x, &cursor.y);
+  return cursor;
 }
 
 float get_window_aspect() {

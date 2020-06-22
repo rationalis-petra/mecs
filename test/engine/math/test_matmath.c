@@ -25,28 +25,24 @@ void mat4f_act_on_correct_for_identity_mat() {
   test_success;
 }
 
-void mat4f_look_at_translates_front_to_correct_coords() {
+void mat4f_translate_to_pos_0() {
   // arrange
-  Vec3f camera_pos1 = {{{3.0f, 0.0f, 4}}};
-  Vec3f camera_pos2 = {{{1.0f, 0.0f, 2.0f}}};
-
-  Vec3f camera_target = {{{2.0f, 0.0f, 3.0f}}};
+  Vec3f camera_pos = {{{4.0f, -4.0f, 4.0f}}};
+  Vec3f camera_target = {{{4.0f, -4.0f, 3.0f}}};
   Vec3f camera_up = {{{0.0f, 1.0f, 0.0f}}};
 
-  Mat4f view1 = mat4f_look_at(camera_pos1, camera_target, camera_up);
-  Mat4f view2 = mat4f_look_at(camera_pos2, camera_target, camera_up);
-
   // act
-  Vec4f point = {{{2.0f, 0.0f, 3.0f}}};
-  Vec4f o1 = mat4f_act_on(view1, point);
-  Vec4f o2 = mat4f_act_on(view2, point);
+  Mat4f look = mat4f_look_at(camera_pos, camera_target, camera_up);
+  Mat4f trans = mat4f_translate(-4.0f, -4.0f, -4.0f);
 
   // assert
-  Vec4f res = {{{0.0f, 0.0f, -1.0f}}};
-  assert_that(vec4f_equals (o1, res));
-  assert_that(vec4f_equals (o2, res));
+  assert_that(mat4f_equals(look, trans));
 
   test_success;
+}
+
+void mat4f_rotates_front_to_correct_pos() {
+
 }
 
 void test_matmath() {
@@ -56,7 +52,7 @@ void test_matmath() {
   // rotation correct
   // translation correct
 
-  run_test(mat4f_act_on_correct_for_identity_mat);
+  run_test(mat4f_translate_to_pos_0);
 
-  run_test(mat4f_look_at_translates_front_to_correct_coords);
+  run_test(mat4f_act_on_correct_for_identity_mat);
 }

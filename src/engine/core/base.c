@@ -15,17 +15,17 @@ void*** entities = 0;
 int entity_capacity = 0;
 int entity_len = 0;
 
-void (**systems)(void) = nullptr;
-void (**sys_inits)(void) = nullptr;
-void (**sys_cleans)(void) = nullptr;
+void (**systems)(void) = NULL;
+void (**sys_inits)(void) = NULL;
+void (**sys_cleans)(void) = NULL;
 int systems_capacity = 0;
 int systems_len = 0;
 
 int* registered_components = 0;
 int num_components = 0;
 
-void* (**new_methods)(void) = 0;
-void (**delete_methods)(void*) = 0;
+void* (**new_methods)(void) = NULL;
+void (**delete_methods)(void*) = NULL;
 
 #ifdef DEBUG
 bool entities_added = false;
@@ -113,7 +113,7 @@ void register_component(int type, void* (*new_function)(), void (*delete_functio
   }
 
   else {
-    fprintf(stderr, "error: failed to register component, %d, as there are %d registered components\n", type);
+    fprintf(stderr, "error: failed to register component, %d, as there are %d registered components\n", type, num_components);
   }
 }
 

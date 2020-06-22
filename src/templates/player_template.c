@@ -35,6 +35,6 @@ void player_template(Template* player) {
   Camera* camera = player->components[CameraType];
 
   camera->theta = 0.5235987756f;
-  camera->phi = 0.0f;
+  camera->phi = 1.57079632679f; // pi / 2
   camera->r = 5.0f;
 }

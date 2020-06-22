@@ -18,4 +18,3 @@ void delete_template(Template* template) {
   free(template->components);
   free(template);
 }
-
