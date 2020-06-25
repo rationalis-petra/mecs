@@ -93,7 +93,6 @@ void render_system() {
   display();
   poll_events();
 
-  free(enemies.entities);
 
   // Draw ground plane
   // the model matrix

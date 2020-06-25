@@ -13,6 +13,7 @@ void enemy_template(Template* enemy, va_list inpos) {
   enemy->components[TransformType] =  new_transform();
   enemy->components[InfoType] =  new_info();
   enemy->components[CreatureType] =  new_creature();
+  enemy->components[RigidBodyType] = new_rigidbody();
 
   Info* info = enemy->components[InfoType];
   info->tags = EnemyTag;
@@ -23,10 +24,6 @@ void enemy_template(Template* enemy, va_list inpos) {
   transform->position.x = (float) va_arg(inpos, double);
   transform->position.y = (float) va_arg(inpos, double);
   transform->position.z = (float) va_arg(inpos, double);
-
-#ifndef NDEBUG
-  fprintf(stderr, "pos is now: (%f, %f, %f)\n", transform->position.x, transform->position.y, transform->position.z);
-#endif
 
   Creature* creature =  enemy->components[CreatureType];
 

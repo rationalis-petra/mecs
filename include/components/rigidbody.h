@@ -1,5 +1,7 @@
-#ifndef COLLIDER_H
-#define COLLIDER_H
+#ifndef RIGIDBODY_H
+#define RIGIDBODY_H
+
+#include "engine.h"
 
 /** @file
  * @brief contains the collider struct
@@ -13,14 +15,16 @@
  * @details The camera struct contains information about it's position relative
  *          to a target
  */
-typedef float* Mesh;
-typedef struct Collider {
-  Mesh* mesh;   ///< The angle of inclination from the camera to the target
-} Collider;
+typedef struct RigidBody {
+  // all collision boxes are square
+  float mass;
+  Vec3f velocity;  ///
+  Vec3f force;     /// any forces that are acting on the object - gets reset to 0 when physics is called
+} RigidBody;
 
-void* new_collider();
+void* new_rigidbody();
 
-void delete_collider(void* _collider);
+void delete_rigidbody(void* rigidbody);
 ///@}
 
 #endif

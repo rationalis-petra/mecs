@@ -89,6 +89,10 @@ void init();
  */
 void run();
 
+/** @brief Returns an instance of the UpdateArgs struct
+ */
+UpdateArgs get_update_args();
+
 /** @brief stops the main loop from running, call to end the system
  */
 void stop();

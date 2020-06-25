@@ -4,10 +4,13 @@
 #include <string.h>
 #include <stdarg.h>
 
+#include <GLFW/glfw3.h>
+
 #include "engine.h"
 #include "engine/core/state.h"
 
 bool running = false;
+UpdateArgs internal_args;
 // Assets: assets
 // GenerationalIndexAllocator
 // AnyMap components - the anymap can store exactly one of every type we put into it
@@ -153,12 +156,24 @@ void init() {
 void run() {
   running = true;
   while(running) {
+    glfwSetTime(0.0);
     for (int i = 0; i < systems_len; i++) {
       systems[i]();
     }
+
+    while (query_result_list != NULL) {
+      EntityListList* intermediate = query_result_list->tail;
+      free(query_result_list->head);
+      free(query_result_list);
+      query_result_list = intermediate;
+    }
+    internal_args.dt = glfwGetTime();
   }
 }
 
+UpdateArgs get_update_args() {
+  return internal_args;
+}
 
 void clean() {
   // clean all components from grid

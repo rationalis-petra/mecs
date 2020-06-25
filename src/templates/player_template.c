@@ -11,6 +11,7 @@ void player_template(Template* player, va_list _nouse) {
   player->components[InfoType] = new_info();
   player->components[CreatureType] = new_creature();
   player->components[CameraType] = new_camera();
+  player->components[RigidBodyType] = new_rigidbody();
 
   Transform* trans = player->components[TransformType];
   trans->position.x = 0.0f;

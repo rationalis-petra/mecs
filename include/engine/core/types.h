@@ -27,5 +27,14 @@ typedef struct IntList {
   int element;
   struct IntLIst* next;
 } IntList;
+
+
+/** @brief Contains potentially useful update arguments, which are most often useful in
+ *
+ */
+typedef struct UpdateArgs {
+  float dt;  ///< The time since the last frame was called
+} UpdateArgs;
+
 ///@}
 #endif

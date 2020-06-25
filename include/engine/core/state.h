@@ -9,16 +9,24 @@
  *          should only be included in engine-specific .c files, as the game should not
  *          attempt to access these structures directly for safety reasons.
  */
+
+#include <stdbool.h>
+#include "query.h"
+#include "types.h"
+
+typedef struct EnityListLIst {
+    struct EntityListList* tail;
+    int* head;
+} EntityListList;
+
 #ifndef NDEBUG
 extern bool entities_added;
 #endif
 
+extern EntityListList* query_result_list;
+
 ///@addtogroup State
 ///@{
-
-#include <stdbool.h>
-
-#include "types.h"
 
 #define nullptr 0
 typedef unsigned int uint;

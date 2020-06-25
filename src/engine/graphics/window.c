@@ -43,6 +43,8 @@ int new_window(int width, int height)
   gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 #endif
 
+  glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+  //
   glfwSetFramebufferSizeCallback(window, &framebuffer_size_callback);
 
   glViewport(0, 0, width, height);

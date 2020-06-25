@@ -8,10 +8,8 @@
 #include "systems/systems.h"
 #include "systems/utils.h"
 
-int frame;
 
 void enemy_system() {
-  frame++;
   int player = first_match(&is_player);
   Transform* player_transform = (Transform*) get_component(player, TransformType);
   Vec3f player_pos = player_transform->position;
@@ -32,15 +30,9 @@ void enemy_system() {
     }
   }
 
-  if (frame > 400) {
-    frame = 0;
-  }
-
-  free(enemies.entities);
 }
 
 void enemy_init() {
-  frame = 0;
 }
 
 void enemy_clean() {

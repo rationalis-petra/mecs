@@ -6,15 +6,21 @@
 #include <stdio.h>
 #endif
 
-void* new_collider() {
-  return malloc(sizeof(Collider));
+void* new_rigidbody() {
+  RigidBody* rigidbody = malloc(sizeof(RigidBody));
+
+  rigidbody->mass = 0.0f;
+  rigidbody->force.x = 0.0f, rigidbody->force.y = 0.0f; rigidbody->force.z = 0.0f;
+  rigidbody->velocity.x = 0.0f, rigidbody->velocity.y = 0.0f; rigidbody->velocity.z = 0.0f;
+
+  return rigidbody;
 }
 
-void delete_collider(void* _collider) {
+void delete_rigidbody(void* rigidbody) {
   #ifndef NDEBUG
-  if (!_collider) {
-    fprintf(stderr, "error in function delete_collider in component Collider: collider is null\n");
+  if (!rigidbody) {
+    fprintf(stderr, "error in function delete_rigidbody in component Rigidbody: Rigidbody is null\n");
   }
   #endif
-  free(_collider);
+  free(rigidbody);
 }
