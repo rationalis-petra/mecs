@@ -1,13 +1,13 @@
 #include <stdlib.h>
 
-#ifdef DEBUG
+#ifndef NDEBUG
 #include <stdio.h>
 #endif
 
 #include "engine.h"
 
 void delete_template(Template* template) {
-  #ifdef DEBUG
+  #ifndef NDEBUG
   if (!template)
     fprintf(stderr, "error in delete_tempalte: attempt to delete null template\n");
   if (!template->components)

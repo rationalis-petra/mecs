@@ -4,12 +4,12 @@
 #include "engine/graphics.h"
 #include "engine/math.h"
 
-#ifdef DEBUG
+#ifndef NDEBUG
 #include <stdio.h>
 #endif
 
 GLFWwindow* window = NULL;
-Cursor cursor = {{{0.0d, 0.0d}}};
+Cursor cursor = {{{0.0, 0.0}}};
 float aspect;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
@@ -28,14 +28,14 @@ int new_window(int width, int height)
 
   window = glfwCreateWindow(1280, 720, "LearnOpenGL", NULL, NULL);
   aspect = (float) 1280 / 720;
-#ifdef DEBUG
+#ifndef NDEBUG
   if (!window) {
     fprintf(stderr, "error in new_window: failed to create GLFW window\n");
   }
 #endif
   glfwMakeContextCurrent(window);
 
-#ifdef DEBUG
+#ifndef NDEBUG
   if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
     fprintf(stderr, "error in new_window: failed to initialize GLAD\n");
   }

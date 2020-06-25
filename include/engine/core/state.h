@@ -9,7 +9,7 @@
  *          should only be included in engine-specific .c files, as the game should not
  *          attempt to access these structures directly for safety reasons.
  */
-#ifdef DEBUG
+#ifndef NDEBUG
 extern bool entities_added;
 #endif
 
@@ -58,12 +58,12 @@ extern unsigned int num_models;
 ///@}
 
 
-extern void** resources;
+extern void*** resources;
 extern unsigned int num_resource_types;
 extern unsigned int* num_resources;
 extern unsigned int* resources_capacity;
 extern unsigned int** generations;
-extern IntList* free_indices;
+extern IntList** free_indices;
 
 extern void* (**resource_loaders)(char* path, char* args);
 extern void (**resource_destructors)(void* resource);

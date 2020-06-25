@@ -27,7 +27,7 @@ int num_components = 0;
 void* (**new_methods)(void) = NULL;
 void (**delete_methods)(void*) = NULL;
 
-#ifdef DEBUG
+#ifndef NDEBUG
 bool entities_added = false;
 #endif
 
@@ -71,7 +71,7 @@ int add_entity(void (entity_creator)(Template*)) {
 }
 
 void* get_component(int entity, int type) {
-#ifdef DEBUG
+#ifndef NDEBUG
   if (entity > entity_len || entity < 0) {
     fprintf(stderr, "error in get_component in engine: attempt to get non-existent entity: %d\n", entity);
   }
@@ -81,7 +81,7 @@ void* get_component(int entity, int type) {
 }
 
 void register_component(int type, void* (*new_function)(), void (*delete_function)(void*)) {
-#ifdef DEBUG
+#ifndef NDEBUG
   if (entities_added) {
     fprintf(stderr, "error: registering a component when entities have already been added will result in undefined behaviour!\n");
   }
@@ -96,7 +96,7 @@ void register_component(int type, void* (*new_function)(), void (*delete_functio
     new_methods = (void* (**)()) realloc(new_methods, sizeof(void* (**)(void)) * num_components);
     delete_methods = (void (**)(void*)) realloc(delete_methods, sizeof(void (**)(void*)) * num_components);
 
-#ifdef DEBUG
+#ifndef NDEBUG
     if (!(entities || registered_components || new_methods || delete_methods))
       fprintf(stderr, "error in register_component: memory allocation failed!");
 #endif
@@ -159,7 +159,7 @@ void clean() {
   // clean all components from grid
   for (int type = 0; type < num_components; type++) {
     for (int i = 0; i < entity_len; i++) {
-      if (!entities[type][i]) {
+      if (entities[type][i]) {
         (*delete_component)(entities[type][i], type);
       }
     }

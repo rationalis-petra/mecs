@@ -11,7 +11,7 @@ void* new_info() {
 void delete_info(void* _info) {
   Info* info = (Info*) _info;
 
-  #ifdef DEBUG
+  #ifndef NDEBUG
   if (!info) {
     fprintf(stderr, "error in delete_info in component Info: attemt to delete null Info");
   }

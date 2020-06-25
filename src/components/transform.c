@@ -1,11 +1,11 @@
 #include <stdlib.h>
 
-#ifdef DEBUG
-#include <stdio.h>
-#endif
-
 #include "components/transform.h"
 #include "engine/math/vecmath.h"
+
+#ifndef NDEBUG
+#include <stdio.h>
+#endif
 
 
 void* new_transform() {
@@ -21,7 +21,7 @@ void* new_transform() {
 
 void delete_transform(void* _transform) {
   Transform* transform = (Transform*) _transform;
-  #ifdef DEBUG
+  #ifndef NDEBUG
   if (!transform) {
     fprintf(stderr, "error in function delete_transform in component Transform: transform is null");
   }

@@ -50,7 +50,7 @@ int first_match(bool (*predicate)(int)) {
     }
   }
 
-#ifdef DEBUG
+#ifndef NDEBUG
   fprintf(stderr, "error in function first_match: no match found\n");
 #endif
 

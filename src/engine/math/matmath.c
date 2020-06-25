@@ -4,7 +4,7 @@
 
 #include "engine/math.h"
 
-#ifdef DEBUG
+#ifndef NDEBUG
 #include <stdio.h>
 #endif
 
@@ -190,7 +190,7 @@ Mat4f mat4f_look_at(Vec3f position, Vec3f target, Vec3f up) {
 Mat4f mat4f_perspective(float fov, float aspect, float near, float far) {
   Mat4f out = (Mat4f) malloc(sizeof(Mat4f) * 16);
 
-  #ifdef DEBUG
+  #ifndef NDEBUG
   if (fov <= 0) {
     fprintf(stderr, "error in mat4f_perspective in matmath: fov <= 0\n");
   }

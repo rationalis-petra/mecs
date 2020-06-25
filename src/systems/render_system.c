@@ -9,7 +9,7 @@
 #include "engine.h"
 #include "components/components.h"
 
-#ifdef DEBUG
+#ifndef NDEBUG
 #include <stdio.h>
 #endif
 
