@@ -6,6 +6,7 @@ A file containing the variables for the state of the engine.
 
 
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -18,6 +19,9 @@ typedef unsigned int {\bfseries uint}
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{state_8h_ac8372079bb9da1a07b1b9060da67302c}\label{state_8h_ac8372079bb9da1a07b1b9060da67302c}} 
+bool {\bfseries entities\+\_\+added}
 \item 
 bool {\bfseries running}
 \item 
@@ -54,6 +58,22 @@ unsigned int {\bfseries num\+\_\+shaders}
 unsigned int $\ast$ {\bfseries registered\+\_\+models}
 \item 
 unsigned int {\bfseries num\+\_\+models}
+\item 
+void $\ast$$\ast$$\ast$ {\bfseries resources}
+\item 
+unsigned int {\bfseries num\+\_\+resource\+\_\+types}
+\item 
+unsigned int $\ast$ {\bfseries num\+\_\+resources}
+\item 
+unsigned int $\ast$ {\bfseries resources\+\_\+capacity}
+\item 
+unsigned int $\ast$$\ast$ {\bfseries generations}
+\item 
+\mbox{\hyperlink{structIntList}{Int\+List}} $\ast$$\ast$ {\bfseries free\+\_\+indices}
+\item 
+void $\ast$($\ast$$\ast$ {\bfseries resource\+\_\+loaders} )(char $\ast$path, char $\ast$args)
+\item 
+void($\ast$$\ast$ {\bfseries resource\+\_\+destructors} )(void $\ast$resource)
 \end{DoxyCompactItemize}
 
 

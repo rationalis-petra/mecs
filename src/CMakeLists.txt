@@ -16,7 +16,7 @@ include_directories(
 
 
 add_library(game components/camera.c
-                 components/collider.c
+                 components/rigidbody.c
                  components/creature.c
                  components/info.c
                  components/transform.c

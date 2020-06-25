@@ -10,6 +10,8 @@ Components are data structures which store information relating to a specific be
 \item 
 struct \mbox{\hyperlink{structCamera}{Camera}}
 \begin{DoxyCompactList}\small\item\em The camera struct allows a camera to be attached to the entity which contains it. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structCollider}{Collider}}
+\item 
 struct \mbox{\hyperlink{structCreature}{Creature}}
 \begin{DoxyCompactList}\small\item\em The creature struct contains the basic stat block for all creatures, and auxilliary information. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structInfo}{Info}}
@@ -19,6 +21,11 @@ struct \mbox{\hyperlink{structInfo}{Info}}
 \item 
 typedef struct \mbox{\hyperlink{structCamera}{Camera}} \mbox{\hyperlink{group__Components_ga78750a39b09d6562fd9b910c7743cfca}{Camera}}
 \begin{DoxyCompactList}\small\item\em The camera struct allows a camera to be attached to the entity which contains it. \end{DoxyCompactList}\item 
+typedef float $\ast$ \mbox{\hyperlink{group__Components_gaa8fb8d8a67b877a4b5651737ae3b0cc5}{Mesh}}
+\begin{DoxyCompactList}\small\item\em The collider struct contains a pointer to a collision mesh, usually simpler than the render mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Components_gac7ce2421e86f69258527bf6b58fc420b}\label{group__Components_gac7ce2421e86f69258527bf6b58fc420b}} 
+typedef struct \mbox{\hyperlink{structCollider}{Collider}} {\bfseries Collider}
+\item 
 typedef struct \mbox{\hyperlink{structCreature}{Creature}} \mbox{\hyperlink{group__Components_ga508eccd4f0c8029b4da3a0b557e7ab1c}{Creature}}
 \begin{DoxyCompactList}\small\item\em The creature struct contains the basic stat block for all creatures, and auxilliary information. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Components_ga107c14b934a12b9e6d0d8d71d8c3f99d}\label{group__Components_ga107c14b934a12b9e6d0d8d71d8c3f99d}} 
@@ -41,6 +48,12 @@ void $\ast$ {\bfseries new\+\_\+camera} ()
 \item 
 \mbox{\Hypertarget{group__Components_gaee2a364dd83976814b250f7fb32944a4}\label{group__Components_gaee2a364dd83976814b250f7fb32944a4}} 
 void {\bfseries delete\+\_\+camera} (void $\ast$\+\_\+camera)
+\item 
+\mbox{\Hypertarget{group__Components_ga8f61dcb045f1f7adf62422691f70fb75}\label{group__Components_ga8f61dcb045f1f7adf62422691f70fb75}} 
+void $\ast$ {\bfseries new\+\_\+collider} ()
+\item 
+\mbox{\Hypertarget{group__Components_ga9fe0c63333bb380e6cf2b35c2bb7e869}\label{group__Components_ga9fe0c63333bb380e6cf2b35c2bb7e869}} 
+void {\bfseries delete\+\_\+collider} (void $\ast$\+\_\+collider)
 \item 
 \mbox{\Hypertarget{group__Components_gab07e6fc62a2f7b0ad37b92312a942b60}\label{group__Components_gab07e6fc62a2f7b0ad37b92312a942b60}} 
 void $\ast$ {\bfseries new\+\_\+creature} ()
@@ -82,4 +95,14 @@ The camera struct contains information about it\textquotesingle{}s position rela
 
 The creature struct contains the basic stat block for all creatures, and auxilliary information. 
 
-Based off the standard D\&D stat-\/block, contains basic informatino on strength, dexterity, armour, health, etc. 
+Based off the standard D\&D stat-\/block, contains basic informatino on strength, dexterity, armour, health, etc. \mbox{\Hypertarget{group__Components_gaa8fb8d8a67b877a4b5651737ae3b0cc5}\label{group__Components_gaa8fb8d8a67b877a4b5651737ae3b0cc5}} 
+\index{Components@{Components}!Mesh@{Mesh}}
+\index{Mesh@{Mesh}!Components@{Components}}
+\doxysubsubsection{\texorpdfstring{Mesh}{Mesh}}
+{\footnotesize\ttfamily typedef float$\ast$ \mbox{\hyperlink{group__Components_gaa8fb8d8a67b877a4b5651737ae3b0cc5}{Mesh}}}
+
+
+
+The collider struct contains a pointer to a collision mesh, usually simpler than the render mesh. 
+
+The camera struct contains information about it\textquotesingle{}s position relative to a target 

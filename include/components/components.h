@@ -5,13 +5,11 @@
 #include "components/info.h"
 #include "components/transform.h"
 #include "components/camera.h"
-#include "components/collider.h"
+#include "components/rigidbody.h"
 
 #ifndef NDEBUG
 #include <stdio.h>
 #endif
-
-#define entity_size 5
 
 /**@defgroup Components
  * @brief Components are data structures which store information relating to a
@@ -30,7 +28,7 @@ enum ComponentType {
 		 InfoType,
 		 CreatureType,
 		 CameraType,
-		 ColliderType,
+		 RigidBodyType,
 };
 
 

@@ -10,7 +10,6 @@
 
 void* new_transform() {
   Transform* transform = (Transform*) malloc(sizeof(Transform));
-
   transform->position.x = 0;
   transform->position.y = 0;
   transform->position.z = 0;

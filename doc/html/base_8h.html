@@ -67,7 +67,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">base.h File Reference</div>  </div>
@@ -77,21 +76,15 @@ $(function() {
 <p>Core engine functionality - may get moved to other files over time and become an aggregating include.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &quot;engine/core/template.h&quot;</code><br />
+<code>#include &quot;engine/core/types.h&quot;</code><br />
 </div>
 <p><a href="base_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ga91ad9478d81a7aaf2593e8d9c3d06a14"><td class="memItemLeft" align="right" valign="top">
-typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>uint</b></td></tr>
-<tr class="separator:ga91ad9478d81a7aaf2593e8d9c3d06a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga431df771c524d1e0d9e081f2278945c6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Base.html#ga431df771c524d1e0d9e081f2278945c6">add_entity</a> (<a class="el" href="structTemplate.html">Template</a> *(template)(void))</td></tr>
-<tr class="memdesc:ga431df771c524d1e0d9e081f2278945c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a new entity in the engine from the provided tempalte  <a href="group__Base.html#ga431df771c524d1e0d9e081f2278945c6">More...</a><br /></td></tr>
-<tr class="separator:ga431df771c524d1e0d9e081f2278945c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga83db62c13dbbd59578700e80dc7e51a4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Base.html#ga83db62c13dbbd59578700e80dc7e51a4">add_entity</a> (void(template_creator)(<a class="el" href="structTemplate.html">Template</a> *))</td></tr>
+<tr class="memdesc:ga83db62c13dbbd59578700e80dc7e51a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a new entity in the engine from the provided template  <a href="group__Base.html#ga83db62c13dbbd59578700e80dc7e51a4">More...</a><br /></td></tr>
+<tr class="separator:ga83db62c13dbbd59578700e80dc7e51a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga68c8b4e494c1d53f74f111d95dc0339a"><td class="memItemLeft" align="right" valign="top">
 void&#160;</td><td class="memItemRight" valign="bottom"><b>delete_entity</b> (int id)</td></tr>
 <tr class="separator:ga68c8b4e494c1d53f74f111d95dc0339a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,6 +103,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
 <tr class="memitem:ga13a43e6d814de94978c515cb084873b1"><td class="memItemLeft" align="right" valign="top">
 void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()</td></tr>
 <tr class="separator:ga13a43e6d814de94978c515cb084873b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8c528baf37154d347366083f0f816846"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> ()</td></tr>
+<tr class="separator:ga8c528baf37154d347366083f0f816846"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2bbe646c052baf99f04a367ef6031d74"><td class="memItemLeft" align="right" valign="top">
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clean</b> ()</td></tr>
 <tr class="separator:ga2bbe646c052baf99f04a367ef6031d74"><td class="memSeparator" colspan="2">&#160;</td></tr>

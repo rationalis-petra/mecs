@@ -80,6 +80,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCamera.html">Camera</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The camera struct allows a camera to be attached to the entity which contains it.  <a href="structCamera.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCollider.html">Collider</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCreature.html">Creature</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The creature struct contains the basic stat block for all creatures, and auxilliary information.  <a href="structCreature.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -92,6 +94,12 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ga78750a39b09d6562fd9b910c7743cfca"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structCamera.html">Camera</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Components.html#ga78750a39b09d6562fd9b910c7743cfca">Camera</a></td></tr>
 <tr class="memdesc:ga78750a39b09d6562fd9b910c7743cfca"><td class="mdescLeft">&#160;</td><td class="mdescRight">The camera struct allows a camera to be attached to the entity which contains it.  <a href="group__Components.html#ga78750a39b09d6562fd9b910c7743cfca">More...</a><br /></td></tr>
 <tr class="separator:ga78750a39b09d6562fd9b910c7743cfca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa8fb8d8a67b877a4b5651737ae3b0cc5"><td class="memItemLeft" align="right" valign="top">typedef float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Components.html#gaa8fb8d8a67b877a4b5651737ae3b0cc5">Mesh</a></td></tr>
+<tr class="memdesc:gaa8fb8d8a67b877a4b5651737ae3b0cc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The collider struct contains a pointer to a collision mesh, usually simpler than the render mesh.  <a href="group__Components.html#gaa8fb8d8a67b877a4b5651737ae3b0cc5">More...</a><br /></td></tr>
+<tr class="separator:gaa8fb8d8a67b877a4b5651737ae3b0cc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac7ce2421e86f69258527bf6b58fc420b"><td class="memItemLeft" align="right" valign="top"><a id="gac7ce2421e86f69258527bf6b58fc420b"></a>
+typedef struct <a class="el" href="structCollider.html">Collider</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Collider</b></td></tr>
+<tr class="separator:gac7ce2421e86f69258527bf6b58fc420b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga508eccd4f0c8029b4da3a0b557e7ab1c"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structCreature.html">Creature</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Components.html#ga508eccd4f0c8029b4da3a0b557e7ab1c">Creature</a></td></tr>
 <tr class="memdesc:ga508eccd4f0c8029b4da3a0b557e7ab1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The creature struct contains the basic stat block for all creatures, and auxilliary information.  <a href="group__Components.html#ga508eccd4f0c8029b4da3a0b557e7ab1c">More...</a><br /></td></tr>
 <tr class="separator:ga508eccd4f0c8029b4da3a0b557e7ab1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,6 +125,12 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><b>new_camera</b> ()</
 <tr class="memitem:gaee2a364dd83976814b250f7fb32944a4"><td class="memItemLeft" align="right" valign="top"><a id="gaee2a364dd83976814b250f7fb32944a4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>delete_camera</b> (void *_camera)</td></tr>
 <tr class="separator:gaee2a364dd83976814b250f7fb32944a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8f61dcb045f1f7adf62422691f70fb75"><td class="memItemLeft" align="right" valign="top"><a id="ga8f61dcb045f1f7adf62422691f70fb75"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>new_collider</b> ()</td></tr>
+<tr class="separator:ga8f61dcb045f1f7adf62422691f70fb75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9fe0c63333bb380e6cf2b35c2bb7e869"><td class="memItemLeft" align="right" valign="top"><a id="ga9fe0c63333bb380e6cf2b35c2bb7e869"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>delete_collider</b> (void *_collider)</td></tr>
+<tr class="separator:ga9fe0c63333bb380e6cf2b35c2bb7e869"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab07e6fc62a2f7b0ad37b92312a942b60"><td class="memItemLeft" align="right" valign="top"><a id="gab07e6fc62a2f7b0ad37b92312a942b60"></a>
 void *&#160;</td><td class="memItemRight" valign="bottom"><b>new_creature</b> ()</td></tr>
 <tr class="separator:gab07e6fc62a2f7b0ad37b92312a942b60"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,6 +179,23 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>delete_info</b> (void
 
 <p>The creature struct contains the basic stat block for all creatures, and auxilliary information. </p>
 <p>Based off the standard D&amp;D stat-block, contains basic informatino on strength, dexterity, armour, health, etc. </p>
+
+</div>
+</div>
+<a id="gaa8fb8d8a67b877a4b5651737ae3b0cc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa8fb8d8a67b877a4b5651737ae3b0cc5">&#9670;&nbsp;</a></span>Mesh</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef float* <a class="el" href="group__Components.html#gaa8fb8d8a67b877a4b5651737ae3b0cc5">Mesh</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The collider struct contains a pointer to a collision mesh, usually simpler than the render mesh. </p>
+<p>The camera struct contains information about it's position relative to a target </p>
 
 </div>
 </div>

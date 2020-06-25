@@ -16,4 +16,8 @@ void combat_clean();
 void render_system();
 void render_init();
 void render_clean();
+
+void physics_system();
+void physics_init();
+void physics_clean();
 #endif

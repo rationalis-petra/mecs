@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "components/collider.h"
+#include "components/rigidbody.h"
 
 #ifndef NDEBUG
 #include <stdio.h>

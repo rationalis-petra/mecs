@@ -3,7 +3,7 @@
 
 #include "engine.h"
 
-void enemy_template(Template* template);
-void player_template(Template* template);
+void enemy_template(Template* template, va_list);
+void player_template(Template* template, va_list);
 
 #endif

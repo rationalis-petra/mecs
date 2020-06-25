@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['strength_95',['strength',['../structCreature.html#a4bfbebfd14d24fe97f123e86f5777f72',1,'Creature']]]
+  ['r_117',['r',['../structCamera.html#ad684f8d8cd4aaf24d07e8b799ef474b0',1,'Camera']]]
 ];

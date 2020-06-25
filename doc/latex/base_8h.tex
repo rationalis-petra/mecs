@@ -6,17 +6,12 @@ Core engine functionality -\/ may get moved to other files over time and become 
 
 
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}engine/core/template.\+h\char`\"{}}\newline
-\doxysubsection*{Typedefs}
-\begin{DoxyCompactItemize}
-\item 
-typedef unsigned int {\bfseries uint}
-\end{DoxyCompactItemize}
+{\ttfamily \#include \char`\"{}engine/core/types.\+h\char`\"{}}\newline
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{group__Base_ga431df771c524d1e0d9e081f2278945c6}{add\+\_\+entity}} (\mbox{\hyperlink{structTemplate}{Template}} $\ast$(template)(void))
-\begin{DoxyCompactList}\small\item\em creates a new entity in the engine from the provided tempalte \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Base_ga83db62c13dbbd59578700e80dc7e51a4}{add\+\_\+entity}} (void(template\+\_\+creator)(\mbox{\hyperlink{structTemplate}{Template}} $\ast$))
+\begin{DoxyCompactList}\small\item\em creates a new entity in the engine from the provided template \end{DoxyCompactList}\item 
 void {\bfseries delete\+\_\+entity} (int id)
 \item 
 void $\ast$ \mbox{\hyperlink{group__Base_gac4a80c3a238d32f76cfd6a6b5c3c8586}{get\+\_\+component}} (int id, int type)
@@ -28,6 +23,8 @@ void {\bfseries register\+\_\+system} (void($\ast$system)(), void($\ast$sys\+\_\
 void {\bfseries init} ()
 \item 
 void {\bfseries run} ()
+\item 
+void {\bfseries stop} ()
 \item 
 void {\bfseries clean} ()
 \end{DoxyCompactItemize}

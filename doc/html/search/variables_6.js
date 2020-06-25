@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['phi_93',['phi',['../structCamera.html#aa53430276d7fd4992302e238aa98c044',1,'Camera']]]
+  ['name_115',['name',['../structInfo.html#a5acc2da66717d052d39db0e9f84cf75d',1,'Info']]]
 ];

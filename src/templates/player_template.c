@@ -6,7 +6,7 @@
 
 #include "components/components.h"
 
-void player_template(Template* player) {
+void player_template(Template* player, va_list _nouse) {
   player->components[TransformType] = new_transform();
   player->components[InfoType] = new_info();
   player->components[CreatureType] = new_creature();

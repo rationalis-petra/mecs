@@ -79,21 +79,28 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTemplate.html">Template</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct for containing intermediate results of a new entity.  <a href="structTemplate.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGenIndex.html">GenIndex</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structIntList.html">IntList</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga91ad9478d81a7aaf2593e8d9c3d06a14"><td class="memItemLeft" align="right" valign="top"><a id="ga91ad9478d81a7aaf2593e8d9c3d06a14"></a>
-typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>uint</b></td></tr>
-<tr class="separator:ga91ad9478d81a7aaf2593e8d9c3d06a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae1eceda9d35f6ef989b038cd7d0ac811"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structTemplate.html">Template</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Base.html#gae1eceda9d35f6ef989b038cd7d0ac811">Template</a></td></tr>
 <tr class="memdesc:gae1eceda9d35f6ef989b038cd7d0ac811"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct for containing intermediate results of a new entity.  <a href="group__Base.html#gae1eceda9d35f6ef989b038cd7d0ac811">More...</a><br /></td></tr>
 <tr class="separator:gae1eceda9d35f6ef989b038cd7d0ac811"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9f53dbc5487c25640a158e2a7cebf955"><td class="memItemLeft" align="right" valign="top"><a id="ga9f53dbc5487c25640a158e2a7cebf955"></a>
+typedef struct <a class="el" href="structGenIndex.html">GenIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GenIndex</b></td></tr>
+<tr class="separator:ga9f53dbc5487c25640a158e2a7cebf955"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0229770df58b0e8d7ed37a4f1fbe5295"><td class="memItemLeft" align="right" valign="top"><a id="ga0229770df58b0e8d7ed37a4f1fbe5295"></a>
+typedef struct <a class="el" href="structIntList.html">IntList</a>&#160;</td><td class="memItemRight" valign="bottom"><b>IntList</b></td></tr>
+<tr class="separator:ga0229770df58b0e8d7ed37a4f1fbe5295"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga431df771c524d1e0d9e081f2278945c6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Base.html#ga431df771c524d1e0d9e081f2278945c6">add_entity</a> (<a class="el" href="structTemplate.html">Template</a> *(template)(void))</td></tr>
-<tr class="memdesc:ga431df771c524d1e0d9e081f2278945c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a new entity in the engine from the provided tempalte  <a href="group__Base.html#ga431df771c524d1e0d9e081f2278945c6">More...</a><br /></td></tr>
-<tr class="separator:ga431df771c524d1e0d9e081f2278945c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga83db62c13dbbd59578700e80dc7e51a4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Base.html#ga83db62c13dbbd59578700e80dc7e51a4">add_entity</a> (void(template_creator)(<a class="el" href="structTemplate.html">Template</a> *))</td></tr>
+<tr class="memdesc:ga83db62c13dbbd59578700e80dc7e51a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a new entity in the engine from the provided template  <a href="group__Base.html#ga83db62c13dbbd59578700e80dc7e51a4">More...</a><br /></td></tr>
+<tr class="separator:ga83db62c13dbbd59578700e80dc7e51a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga68c8b4e494c1d53f74f111d95dc0339a"><td class="memItemLeft" align="right" valign="top"><a id="ga68c8b4e494c1d53f74f111d95dc0339a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>delete_entity</b> (int id)</td></tr>
 <tr class="separator:ga68c8b4e494c1d53f74f111d95dc0339a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,6 +119,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
 <tr class="memitem:ga13a43e6d814de94978c515cb084873b1"><td class="memItemLeft" align="right" valign="top"><a id="ga13a43e6d814de94978c515cb084873b1"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()</td></tr>
 <tr class="separator:ga13a43e6d814de94978c515cb084873b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8c528baf37154d347366083f0f816846"><td class="memItemLeft" align="right" valign="top"><a id="ga8c528baf37154d347366083f0f816846"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> ()</td></tr>
+<tr class="separator:ga8c528baf37154d347366083f0f816846"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2bbe646c052baf99f04a367ef6031d74"><td class="memItemLeft" align="right" valign="top"><a id="ga2bbe646c052baf99f04a367ef6031d74"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clean</b> ()</td></tr>
 <tr class="separator:ga2bbe646c052baf99f04a367ef6031d74"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,8 +150,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>delete_template</b> (
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga431df771c524d1e0d9e081f2278945c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga431df771c524d1e0d9e081f2278945c6">&#9670;&nbsp;</a></span>add_entity()</h2>
+<a id="ga83db62c13dbbd59578700e80dc7e51a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga83db62c13dbbd59578700e80dc7e51a4">&#9670;&nbsp;</a></span>add_entity()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -149,18 +159,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>delete_template</b> (
         <tr>
           <td class="memname">int add_entity </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structTemplate.html">Template</a> *&#160;</td>
-          <td class="paramname">template)(void</td><td>)</td>
+          <td class="paramtype">void(template_creator)(<a class="el" href="structTemplate.html">Template</a> *)&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>creates a new entity in the engine from the provided tempalte </p>
+<p>creates a new entity in the engine from the provided template </p>
 <p>The template contains two arrays: one which contains components for the engine to give the entity, and another detailing what type thet are. The exact implementation of the template function is left to the user, all that matters is that they provice a valid template.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">template</td><td>A function which returns a <a class="el" href="structTemplate.html" title="A struct for containing intermediate results of a new entity.">Template</a> object</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">template_creator</td><td>a function which creates a template object</td></tr>
   </table>
   </dd>
 </dl>

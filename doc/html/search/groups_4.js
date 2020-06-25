@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['registries_111',['Registries',['../group__Registries.html',1,'']]]
+  ['registries_135',['Registries',['../group__Registries.html',1,'']]],
+  ['resources_136',['Resources',['../group__Resources.html',1,'']]]
 ];

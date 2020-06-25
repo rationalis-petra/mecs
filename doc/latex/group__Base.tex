@@ -9,20 +9,27 @@ The basic functions for interfacing with the E\+CS.
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structTemplate}{Template}}
-\begin{DoxyCompactList}\small\item\em A struct for containing intermediate results of a new entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A struct for containing intermediate results of a new entity. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structGenIndex}{Gen\+Index}}
+\item 
+struct \mbox{\hyperlink{structIntList}{Int\+List}}
+\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{group__Base_ga91ad9478d81a7aaf2593e8d9c3d06a14}\label{group__Base_ga91ad9478d81a7aaf2593e8d9c3d06a14}} 
-typedef unsigned int {\bfseries uint}
-\item 
 typedef struct \mbox{\hyperlink{structTemplate}{Template}} \mbox{\hyperlink{group__Base_gae1eceda9d35f6ef989b038cd7d0ac811}{Template}}
-\begin{DoxyCompactList}\small\item\em A struct for containing intermediate results of a new entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A struct for containing intermediate results of a new entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Base_ga9f53dbc5487c25640a158e2a7cebf955}\label{group__Base_ga9f53dbc5487c25640a158e2a7cebf955}} 
+typedef struct \mbox{\hyperlink{structGenIndex}{Gen\+Index}} {\bfseries Gen\+Index}
+\item 
+\mbox{\Hypertarget{group__Base_ga0229770df58b0e8d7ed37a4f1fbe5295}\label{group__Base_ga0229770df58b0e8d7ed37a4f1fbe5295}} 
+typedef struct \mbox{\hyperlink{structIntList}{Int\+List}} {\bfseries Int\+List}
+\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{group__Base_ga431df771c524d1e0d9e081f2278945c6}{add\+\_\+entity}} (\mbox{\hyperlink{structTemplate}{Template}} $\ast$(template)(void))
-\begin{DoxyCompactList}\small\item\em creates a new entity in the engine from the provided tempalte \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Base_ga83db62c13dbbd59578700e80dc7e51a4}{add\+\_\+entity}} (void(template\+\_\+creator)(\mbox{\hyperlink{structTemplate}{Template}} $\ast$))
+\begin{DoxyCompactList}\small\item\em creates a new entity in the engine from the provided template \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Base_ga68c8b4e494c1d53f74f111d95dc0339a}\label{group__Base_ga68c8b4e494c1d53f74f111d95dc0339a}} 
 void {\bfseries delete\+\_\+entity} (int id)
 \item 
@@ -38,6 +45,9 @@ void {\bfseries init} ()
 \item 
 \mbox{\Hypertarget{group__Base_ga13a43e6d814de94978c515cb084873b1}\label{group__Base_ga13a43e6d814de94978c515cb084873b1}} 
 void {\bfseries run} ()
+\item 
+\mbox{\Hypertarget{group__Base_ga8c528baf37154d347366083f0f816846}\label{group__Base_ga8c528baf37154d347366083f0f816846}} 
+void {\bfseries stop} ()
 \item 
 \mbox{\Hypertarget{group__Base_ga2bbe646c052baf99f04a367ef6031d74}\label{group__Base_ga2bbe646c052baf99f04a367ef6031d74}} 
 void {\bfseries clean} ()
@@ -66,21 +76,21 @@ A struct for containing intermediate results of a new entity.
 The template struct stores an array of pointers to copmonets the engine uses the array to load the different components into the correct entity slots. The num\+\_\+components variable is set in the new\+\_\+template function to the current number of components in the system. 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{group__Base_ga431df771c524d1e0d9e081f2278945c6}\label{group__Base_ga431df771c524d1e0d9e081f2278945c6}} 
+\mbox{\Hypertarget{group__Base_ga83db62c13dbbd59578700e80dc7e51a4}\label{group__Base_ga83db62c13dbbd59578700e80dc7e51a4}} 
 \index{Base@{Base}!add\_entity@{add\_entity}}
 \index{add\_entity@{add\_entity}!Base@{Base}}
 \doxysubsubsection{\texorpdfstring{add\_entity()}{add\_entity()}}
-{\footnotesize\ttfamily int add\+\_\+entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTemplate}{Template}} $\ast$}]{template)(void }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int add\+\_\+entity (\begin{DoxyParamCaption}\item[{void(template\+\_\+creator)(\mbox{\hyperlink{structTemplate}{Template}} $\ast$)}]{ }\end{DoxyParamCaption})}
 
 
 
-creates a new entity in the engine from the provided tempalte 
+creates a new entity in the engine from the provided template 
 
 The template contains two arrays\+: one which contains components for the engine to give the entity, and another detailing what type thet are. The exact implementation of the template function is left to the user, all that matters is that they provice a valid template.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em template} & A function which returns a \mbox{\hyperlink{structTemplate}{Template}} object\\
+\mbox{\texttt{ in}}  & {\em template\+\_\+creator} & a function which creates a template object\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

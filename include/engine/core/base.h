@@ -10,24 +10,29 @@
 ///@{
 
 #include <stdio.h>
+#include <stdarg.h>
 
 #include "engine/core/types.h"
 
 
 /** @brief creates a new entity in the engine from the provided template
  * 
- * @details The template contains two arrays: one which contains components for the engine to give the entity,
- *          and another detailing what type thet are. The exact implementation of the template function is left
- *          to the user, all that matters is that they provice a valid template.
+ * @details The function which will allow an entity to be created, then inserted into the ecs
  *
- * @param[in] template_creator: a function which creates a template object
- * 
+ * @param[in] template_creator: a function which creates a template object, potentially accepting some arguments
+ *
+ * @param[in] args: a variable number of arguments to pass to the template_creator function
+ *
  * @return entity_id: The handle to the created entity within the engine. Allows the engine user to access the 
  *         entity's components
  */
-int add_entity(void (template_creator)(Template*));
+int add_entity(void (template_creator)(Template*, va_list), ...);
 
 
+/** @brief deletes the entity with given id
+ *
+ * @param[in] id: the id of the entity which should be deleted
+ */
 void delete_entity(int id);
 
 
@@ -58,14 +63,42 @@ void* get_component(int id, int type);
  */
 void register_component(int type, void* (*new_function)(), void (*delete_function)(void*));
 
+/** @brief Add a system to the list of usable systems.
+ *
+ * @details Will add the main function, init function and clean function to the
+ *          ECS' internal state. Hence, the system will run when run() is called,
+ *          and initi will run when init() is called, etc.
+ *
+ * @param[in] System: a function, which represents the system, and will get called every update
+ *
+ * @param[in] Init: a function which only gets called once, when init() is called. Should be
+ *            used to initialize any internal state
+ *
+ * @param[in] Delete: a function which only gets called once, when clean() is called. Should
+ *            be used to de-allocate any system state (if necessary)
+ */
 void register_system(void (*system)(), void (*sys_init)(), void (*sys_clean)());
 
+/** @brief Initialises the state of the systems
+ *
+ * @details This primarily calls all system initialisers, but may do more in the future
+ */
 void init();
 
+/** @brief Triggers the main loop
+ */
 void run();
 
+/** @brief stops the main loop from running, call to end the system
+ */
 void stop();
 
+/** @brief performs a memory cleanup by calling all delete functions
+ *
+ * @details This function should only be called once, as it will result in all
+ * memory being de-alloc'd, rendering the system in an unusable state afterwards.
+ * This may change in the future
+ */
 void clean();
 
 ///@}

@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdarg.h>
 
 #include "engine.h"
 
@@ -8,7 +9,7 @@
 #include "components/info.h"
 
 
-void enemy_template(Template* enemy) {
+void enemy_template(Template* enemy, va_list inpos) {
   enemy->components[TransformType] =  new_transform();
   enemy->components[InfoType] =  new_info();
   enemy->components[CreatureType] =  new_creature();
@@ -17,6 +18,15 @@ void enemy_template(Template* enemy) {
   info->tags = EnemyTag;
   info->name = malloc(sizeof(char) * 5);
   strcpy(info->name, "Dave");
+
+  Transform* transform = enemy->components[TransformType];
+  transform->position.x = (float) va_arg(inpos, double);
+  transform->position.y = (float) va_arg(inpos, double);
+  transform->position.z = (float) va_arg(inpos, double);
+
+#ifndef NDEBUG
+  fprintf(stderr, "pos is now: (%f, %f, %f)\n", transform->position.x, transform->position.y, transform->position.z);
+#endif
 
   Creature* creature =  enemy->components[CreatureType];
 

@@ -46,6 +46,10 @@ void input_system() {
   camera->phi += 0.003 * (new_cursor_pos.x - cursor_pos.x);
   camera->theta += 0.001 * (new_cursor_pos.y - cursor_pos.y);
   cursor_pos = new_cursor_pos;
+
+  if (key_is_pressed(KEY_ESC)) {
+    stop();
+  }
 }
 
 void input_init() {

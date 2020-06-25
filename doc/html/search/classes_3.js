@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['template_59',['Template',['../structTemplate.html',1,'']]],
-  ['transform_60',['Transform',['../structTransform.html',1,'']]]
+  ['info_73',['Info',['../structInfo.html',1,'']]],
+  ['intlist_74',['IntList',['../structIntList.html',1,'']]]
 ];

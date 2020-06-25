@@ -26,8 +26,8 @@ int new_window(int width, int height)
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-  window = glfwCreateWindow(1280, 720, "LearnOpenGL", NULL, NULL);
-  aspect = (float) 1280 / 720;
+  window = glfwCreateWindow(width, height, "LearnOpenGL", NULL, NULL);
+  aspect = (float) width / height;
 #ifndef NDEBUG
   if (!window) {
     fprintf(stderr, "error in new_window: failed to create GLFW window\n");
@@ -45,7 +45,7 @@ int new_window(int width, int height)
 
   glfwSetFramebufferSizeCallback(window, &framebuffer_size_callback);
 
-  glViewport(0, 0, 1280, 720);
+  glViewport(0, 0, width, height);
 
   glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 

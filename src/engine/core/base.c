@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdarg.h>
 
 #include "engine.h"
 #include "engine/core/state.h"
@@ -35,7 +36,7 @@ void delete_component(void* component, int type) {
   delete_methods[type](component);
 }
 
-int add_entity(void (entity_creator)(Template*)) {
+int add_entity(void (entity_creator)(Template*, va_list), ...) {
   // create a new template, null all pointers, then pass it to the template function so the
   // entity may be constructed
   Template* template = malloc(sizeof(Template));
@@ -43,7 +44,11 @@ int add_entity(void (entity_creator)(Template*)) {
   for (int i = 0; i < num_components; i++) {
     template->components[i] = NULL;
   }
-  entity_creator(template);
+
+  va_list args;
+  va_start(args, entity_creator);
+  entity_creator(template, args);
+  va_end (args);
 
   if (entity_len == entity_capacity) {
     int old_capacity = entity_capacity;
