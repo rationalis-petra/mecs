@@ -17,11 +17,6 @@ unsigned int VBO;
 unsigned int VAO;
 unsigned int shader_program;
 
-unsigned int light_program;
-unsigned int light_model;
-unsigned int light_view;
-unsigned int light_projection;
-
 unsigned int model_uniform;
 unsigned int view_uniform;
 unsigned int projection_uniform;
@@ -32,7 +27,11 @@ unsigned int object_colour;
 unsigned int light_pos;
 unsigned int view_pos;
 
-void render_system() {
+unsigned int is_floor;
+unsigned int texture;
+
+
+void render_system(void) {
   // View matrix
   int player = first_match(&is_player);
   Transform* transform = (Transform*) get_component(player, TransformType);
@@ -66,6 +65,8 @@ void render_system() {
 
   glUniform3f(light_pos, 0.0f, 8.0f, 0.0f);
   glUniform3f(view_pos, camera_pos.x, camera_pos.y, camera_pos.z);
+
+  glUniform1i(is_floor, 0);
 
   // draw player
   Mat4f player_trans = mat4f_translate(play_pos.x, play_pos.y, play_pos.z);
@@ -111,7 +112,7 @@ void render_system() {
   free(model);
 }
 
-void render_init() {
+void render_init(void) {
   // Triangle setup, will modify
 float vertices[] = {
     -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
@@ -182,11 +183,12 @@ float vertices[] = {
   light_pos = get_uniform(shader_program, "light_pos");
   view_pos = get_uniform(shader_program, "view_pos");
 
-  light_program = new_shader_program("light");
+  is_floor = get_uniform(shader_program, "is_floor");
+  texture = get_uniform(shader_program, "our_texture");
 
 }
 
-void render_clean() {
+void render_clean(void) {
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
 }

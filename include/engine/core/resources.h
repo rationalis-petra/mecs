@@ -24,7 +24,8 @@
  */
 int register_resource_type(char* path, void* (resource_loader)(char* path, char* args), void (resource_destructor)(void* resource));
 
-/** @brief creates a new resource of a specific type using the function provided in register_resource_type
+/** @brief looks for a resource which was loaded with the path given. If no such resource can be located, will load
+ *
  *
  * @details This will take a resource type, path and optional arguments, and call the correct resource_loader function,
  *          storing the result for use as a shared resource. it will return a index to use.
@@ -35,7 +36,7 @@ int register_resource_type(char* path, void* (resource_loader)(char* path, char*
  *
  * @param[in] args: any additional arguments to provide to the resource loader
  */
-GenIndex load_resource(int type, char* path, char* args);
+GenIndex get_resource(int type, char* path, char* args);
 
 /** @brief deletes a resource with a given id
  *

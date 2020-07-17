@@ -18,8 +18,14 @@ int main(int argc, char** argv)
 
   register_system(&input_system, &input_init, &input_clean);
   register_system(&enemy_system, &enemy_init, &enemy_clean);
-  register_system(&render_system, &render_init, &render_clean);
+
+  register_system(&ai_system, &ai_init, &ai_clean);
   register_system(&physics_system, &physics_init, &physics_clean);
+
+  register_system(&render_system, &render_init, &render_clean);
+
+  int TextureType = register_resource_type("resources/textures", &load_texture, &delete_texture);
+  load_resource(TextureType, "floor-tile.jpg", "");
 
   add_entity(&player_template);
 

@@ -23,6 +23,7 @@ add_library(game components/camera.c
                  systems/enemy_system.c
                  systems/input_system.c
                  systems/render_system.c
+                 systems/ai_system.c
                  systems/physics_system.c
                  systems/utils.c
                  templates/enemy_template.c

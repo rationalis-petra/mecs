@@ -26,7 +26,6 @@ void enemy_template(Template* enemy, va_list inpos) {
   transform->position.z = (float) va_arg(inpos, double);
 
   Creature* creature =  enemy->components[CreatureType];
-
   creature->strength = 10;
   creature->dexterity = 10;
   creature->constitution = 10;
@@ -34,5 +33,5 @@ void enemy_template(Template* enemy, va_list inpos) {
   creature->charisma = 10;
   creature->intelligence = 10;
   creature->health = 20;
-}
 
+}

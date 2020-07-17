@@ -88,7 +88,7 @@ void* get_component(int entity, int type) {
   return entities[type][entity];
 }
 
-void register_component(int type, void* (*new_function)(), void (*delete_function)(void*)) {
+void register_component(int type, void* (*new_function)(void), void (*delete_function)(void*)) {
 #ifndef NDEBUG
   if (entities_added) {
     fprintf(stderr, "error: registering a component when entities have already been added will result in undefined behaviour!\n");
@@ -125,7 +125,7 @@ void register_component(int type, void* (*new_function)(), void (*delete_functio
   }
 }
 
-void register_system(void (*system_function)(), void (*sys_init)(), void (*sys_clean)()) {
+void register_system(void (*system_function)(void), void (*sys_init)(void), void (*sys_clean)(void)) {
   if (systems_capacity == systems_len) {
     systems_capacity += 10;
     systems = realloc(systems, sizeof(void (*)()) * systems_capacity);
@@ -143,17 +143,17 @@ void register_system(void (*system_function)(), void (*sys_init)(), void (*sys_c
   systems_len++;
 }
 
-void stop() {
+void stop(void) {
   running = false;
 }
 
-void init() {
+void init(void) {
   for (int i = 0; i < systems_len; i++){
     sys_inits[i]();
   }
 }
 
-void run() {
+void run(void) {
   running = true;
   while(running) {
     glfwSetTime(0.0);
@@ -171,11 +171,11 @@ void run() {
   }
 }
 
-UpdateArgs get_update_args() {
+UpdateArgs get_update_args(void) {
   return internal_args;
 }
 
-void clean() {
+void clean(void) {
   // clean all components from grid
   for (int type = 0; type < num_components; type++) {
     for (int i = 0; i < entity_len; i++) {

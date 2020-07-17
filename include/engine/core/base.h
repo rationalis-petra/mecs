@@ -61,7 +61,7 @@ void* get_component(int id, int type);
  *
  * @param[in] delete_function: a function which should free all data in a component
  */
-void register_component(int type, void* (*new_function)(), void (*delete_function)(void*));
+void register_component(int type, void* (*new_function)(void), void (*delete_function)(void*));
 
 /** @brief Add a system to the list of usable systems.
  *
@@ -77,25 +77,25 @@ void register_component(int type, void* (*new_function)(), void (*delete_functio
  * @param[in] Delete: a function which only gets called once, when clean() is called. Should
  *            be used to de-allocate any system state (if necessary)
  */
-void register_system(void (*system)(), void (*sys_init)(), void (*sys_clean)());
+void register_system(void (*system)(void), void (*sys_init)(void), void (*sys_clean)(void));
 
 /** @brief Initialises the state of the systems
  *
  * @details This primarily calls all system initialisers, but may do more in the future
  */
-void init();
+void init(void);
 
 /** @brief Triggers the main loop
  */
-void run();
+void run(void);
 
 /** @brief Returns an instance of the UpdateArgs struct
  */
-UpdateArgs get_update_args();
+UpdateArgs get_update_args(void);
 
 /** @brief stops the main loop from running, call to end the system
  */
-void stop();
+void stop(void);
 
 /** @brief performs a memory cleanup by calling all delete functions
  *
@@ -103,7 +103,7 @@ void stop();
  * memory being de-alloc'd, rendering the system in an unusable state afterwards.
  * This may change in the future
  */
-void clean();
+void clean(void);
 
 ///@}
 #endif

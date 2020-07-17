@@ -7,7 +7,6 @@
 
 #include "engine/graphics.h"
 
-
 const char shader_path[] = "resources/shaders/";
 
 unsigned int new_shader_program(char* program_name) {

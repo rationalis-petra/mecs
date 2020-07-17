@@ -34,7 +34,6 @@ int register_resource_type(char* path, void* (*resource_loader)(char* path, char
   free_indices = realloc(free_indices, sizeof(IntList) * num_resource_types);
   generations = realloc(generations, sizeof(int*) * num_resource_types);
 
-
  // assign values to memory
   resources[num_resource_types] = 0;
   resource_loaders[num_resource_types] = resource_loader;
@@ -46,13 +45,13 @@ int register_resource_type(char* path, void* (*resource_loader)(char* path, char
   free_indices[num_resource_types] = 0;
   generations[num_resource_types] = 0;
 
-
   // return, *then* increment
   return num_resource_types-1;
 }
 
 
-GenIndex load_resource(int type, char* path, char* args) {
+GenIndex get_resource(int type, char* path, char* args) {
+
 #ifndef NDEBUG
   if (type > num_resource_types) {
     fprintf(stderr, "error, attempted to get type of type %d, but there are only %d types registered. Undefined behaviour", type, num_resource_types);
@@ -81,11 +80,10 @@ GenIndex load_resource(int type, char* path, char* args) {
       // reallocate and zero-out
 
     }
-   
+
 
   }
 }
-
 
 void delete_resource(int type, GenIndex resource_id) {
 #ifndef NDEBUG

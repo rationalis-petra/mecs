@@ -12,7 +12,7 @@
 
 Cursor cursor_pos;
 
-void input_system() {
+void input_system(void) {
   int player = first_match(&is_player);
   Transform* player_transform = (Transform*) get_component(player, TransformType);
   Vec3f* pos = &player_transform->position;
@@ -45,10 +45,10 @@ void input_system() {
   }
   if (key_is_pressed(KEY_SPACE)) {
     // check if the cube is on the plane or not
-    if (pos->y < 1e-5f) {
+    if (pos->y < 1.e-3f) {
      // then, increase upward velocity
       RigidBody* rigidbody = get_component(player, RigidBodyType);
-      Vec3f up = {{{0.0f, 10.0f, 0.0f}}};
+      Vec3f up = {{{0.0f, 5.0f, 0.0f}}};
       rigidbody->velocity = vec3f_sum(rigidbody->velocity, up);
     }
   }
@@ -64,9 +64,9 @@ void input_system() {
 
 }
 
-void input_init() {
+void input_init(void) {
   cursor_pos = get_cursor_pos();
 }
 
-void input_clean() {
+void input_clean(void) {
 }

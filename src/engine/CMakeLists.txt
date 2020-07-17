@@ -6,4 +6,5 @@ add_library(engine core/base.c
                    graphics/shader.c
                    graphics/window.c
                    math/matmath.c
-                   math/vecmath.c)
+                   math/vecmath.c
+                   resources/texture.c)

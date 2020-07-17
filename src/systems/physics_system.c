@@ -10,25 +10,31 @@
 #include "systems/systems.h"
 #include "systems/utils.h"
 
-const int friction_coefficient = 0.01f;
+const float friction_coefficient = 0.01f;
+int frame = 0;
 
-
-void physics_system() {
+void physics_system(void) {
     UpdateArgs args = get_update_args();
     // The physics system works on objects which has the component RigidBody
     // Physics - velocity, mass, etc.
+
+    // Step 1: Calculate Force
+    // Step 2: Calculate Velocity
+    // Step 3: Calculate Contraints
+    // Step 4: Apply constraints
+    // Step 5: Update position
+
     EntityList physicals = component_mask(2, TransformType, RigidBodyType);
     for (int id = 0; id < physicals.len; id++) {
         Transform*  transform = get_component(id, TransformType);
         RigidBody* rigidbody = get_component(id, RigidBodyType);
 
-        // things will decelerate due to friction
+        // step 1: Calculate Force
         Vec3f decel_force = vec3f_multiply(friction_coefficient, rigidbody->velocity);
         Vec3f total_force = vec3f_sum(decel_force, rigidbody->force);
         rigidbody->velocity = vec3f_sum(total_force, rigidbody->velocity);
 
-        // gravity:
-        if (transform->position.y > 0.1f) {
+        if (transform->position.y > 0.01f) {
             rigidbody->velocity.y -= 9.8 * args.dt;
         }
         else {
@@ -39,9 +45,6 @@ void physics_system() {
         if (transform->position.y < 0) { transform->position.y = 0; }
 
 
-        // for now, we use two-stage collision system:
-        // stage one: compare collision spheres - fastest & least granular option
-        // stage two: compare collision cubes - slower & less granular
         Vec3f m_centre = transform->position;
         for (int id2 = 0; id2 < physicals.len; id2++) {
             if (id == id2) continue;
@@ -76,10 +79,10 @@ void physics_system() {
     }
 }
 
-void physics_init() {
+void physics_init(void) {
 
 }
 
-void physics_clean() {
+void physics_clean(void) {
    
 }

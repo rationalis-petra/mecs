@@ -3,4 +3,5 @@
 #include "engine/core.h"
 #include "engine/math.h"
 #include "engine/graphics.h"
+#include "engine/resources.h"
 #endif
