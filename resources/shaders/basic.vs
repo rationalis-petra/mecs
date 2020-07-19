@@ -23,5 +23,5 @@ void main()
 
    frag_pos = vec3(model * vec4(aPos, 1.0));
    normal = aNormal;
-   tex_coord = tex_coord;
+   tex_coord = aTexCoord;
 }

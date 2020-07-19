@@ -11,14 +11,20 @@
 
 const char texture_path[] = "resources/textures/";
 
-void* load_texture(char* path, char* info) {
+void* load_texture(char* path) {
     int width, height, nr_channels;
-    unsigned char* data = stbi_load(path, &width, &height, &nr_channels, 0);
+    unsigned char* data = stbi_load("resources/textures/floor-tile.jpg", &width, &height, &nr_channels, 0);
     #ifndef NDEBUG
     if (!data) {
-        fprintf(stderr, "errir in load_texture: unable to load image from disk\n");
+        fprintf(stderr, "error in load_texture: unable to load image from disk\n");
     }
     #endif
+
+    // set the texture wrapping/filtering options (on the currently bound texture object)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     unsigned int* texture = malloc(sizeof(unsigned int));
     glGenTextures(1, texture);

@@ -1,5 +1,5 @@
-#ifndef CREATURE_H
-#define CREATURE_H
+#ifndef __CREATURE_H
+#define __CREATURE_H
 
 /** @file
  * @brief contains the creture struct

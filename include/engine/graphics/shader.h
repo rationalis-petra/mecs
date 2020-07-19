@@ -1,3 +1,5 @@
+#ifndef __SHADER_H
+#define __SHADER_H
 
 /**@file
  */
@@ -29,3 +31,5 @@ unsigned int new_shader_program(char* program_name);
  * @return A handle to the uniform in shader_program with name uniform_name
  */
 unsigned int get_uniform(unsigned int shader_id, char* uniform_name);
+
+#endif

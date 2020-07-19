@@ -35,8 +35,8 @@ void main()
     result= (diffuse + ambient + specular) * object_colour;
   }
   else {
-    vec4 obj_tex_colour = texture(floor_texture, tex_coord);
-    result = (diffuse + ambient + specular) * object_colour;
+    vec3 obj_tex_colour = texture(floor_texture, tex_coord).xyz;
+    result = (diffuse + ambient + specular) * obj_tex_colour;
   }
 
   FragColor = vec4(result, 1.0);

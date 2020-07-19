@@ -1,3 +1,5 @@
+#ifndef __WINDOW_H
+#define __WINDOW_H
 
 #define KEY_W 87
 #define KEY_A 65
@@ -69,3 +71,5 @@ Cursor get_cursor_pos();
 /** @brief returns the aspect ratio of the window
  */
 float get_window_aspect();
+
+#endif

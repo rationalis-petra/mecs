@@ -1,5 +1,5 @@
-#ifndef ENEMY_TEMPLATE_H
-#define ENEMY_TEMPLATE_H
+#ifndef __ENEMY_TEMPLATE_H
+#define __ENEMY_TEMPLATE_H
 
 #include "engine.h"
 

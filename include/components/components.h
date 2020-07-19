@@ -1,5 +1,5 @@
-#ifndef COMPONENTS_H
-#define COMPONENTS_H
+#ifndef __COMPONENTS_H
+#define __COMPONENTS_H
 
 #include "components/creature.h"
 #include "components/info.h"

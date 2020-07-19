@@ -1,5 +1,5 @@
-#ifndef MATMATH_H
-#define MATMATH_H
+#ifndef __MATMATH_H
+#define __MATMATH_H
 
 /** @brief a typedef for a 4x4 float Matrix - we use /column-major/ ordering
  *

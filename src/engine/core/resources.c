@@ -6,112 +6,111 @@
 #include "engine.h"
 #include "engine/core/state.h"
 
+
+struct Resource {
+  char* path;
+  void* resource;
+};
+
+Resource** resources = NULL;
+unsigned int** generations = NULL;
+
 unsigned int num_resource_types = 0;
-void*** resources = NULL;
+unsigned int* resource_capacities = NULL;
 
-unsigned int resource_type_capacity = 0;
-unsigned int* num_resources = 0;
-unsigned int* resources_capacity = 0;
+IntList** free_indices = NULL;
+GenDict** resource_names = NULL;
 
-unsigned int** generations = 0;
-IntList** free_indices = 0;
-
-void* (**resource_loaders)(char* path, char* args) = NULL;
+void* (**resource_loaders)(char* path) = NULL;
 void (**resource_destructors)(void* resource) = NULL;
 
-int register_resource_type(char* path, void* (*resource_loader)(char* path, char* args), void (*resource_destructor)(void* resource)) {
+int register_resource_type(void* (*resource_loader)(char* path), void (*resource_destructor)(void* resource)) {
 
   // allocate the memory & adjust capacity
+  unsigned int index = num_resource_types;
   num_resource_types++;
+  resource_capacities = realloc(resource_capacities, sizeof(int) * num_resource_types);
 
-  resources = realloc(resources, sizeof(void*) * num_resource_types);
-  resource_loaders = realloc(resource_loaders,  sizeof(void* (**)(void)) * num_resource_types);
-  resource_destructors = realloc(resource_destructors, sizeof(void (**)) * num_resource_types);
-
-  num_resources = realloc(num_resources, sizeof(int) * num_resource_types);
-  resources_capacity = realloc(resources_capacity, sizeof(int) * num_resource_types);
-
-  free_indices = realloc(free_indices, sizeof(IntList) * num_resource_types);
+  resources = realloc(resources, sizeof(Resource*) * num_resource_types);
   generations = realloc(generations, sizeof(int*) * num_resource_types);
 
- // assign values to memory
-  resources[num_resource_types] = 0;
-  resource_loaders[num_resource_types] = resource_loader;
-  resource_destructors[num_resource_types] = resource_destructor;
+  free_indices = realloc(free_indices, sizeof(IntList*) * num_resource_types);
+  resource_names = realloc(resource_names, sizeof(GenDict*) * num_resource_types);
 
-  num_resources[num_resource_types] = 0;
-  resources_capacity[num_resource_types] = 0;
+  resource_loaders = realloc(resource_loaders, sizeof(void* (**)(char*)) * num_resource_types);
+  resource_destructors = realloc(resource_destructors, sizeof(void (**)(void*)) * num_resource_types);
 
-  free_indices[num_resource_types] = 0;
-  generations[num_resource_types] = 0;
+  // now populate the newly allocated memoryinfo
+  resource_capacities[index] = 0;
+  resources[index] = NULL;
+  generations[index] = NULL;
+  free_indices[index] = new_intlist();
+  resource_names[index] = new_dict();
+  resource_loaders[index] = resource_loader;
+  resource_destructors[index] = resource_destructor;
 
-  // return, *then* increment
-  return num_resource_types-1;
+  // return the index of this type
+  return index;
 }
 
 
-GenIndex get_resource(int type, char* path, char* args) {
-
+GenIndex get_index(int type, char* path) {
 #ifndef NDEBUG
-  if (type > num_resource_types) {
+  if (type >= num_resource_types) {
     fprintf(stderr, "error, attempted to get type of type %d, but there are only %d types registered. Undefined behaviour", type, num_resource_types);
   }
 #endif
 
-  GenIndex new_index;
+  GenIndex index;
+  if (dict_get(resource_names[type], path, &index)) {
+    // the resource does not exist -
+    int free;
+    if (intlist_pop(free_indices[type], &free)) {
+      // there are no free slots - double the size of the resource array
+      int old_cap = resource_capacities[type];
+      resource_capacities[type] = old_cap == 0 ? 10 : old_cap * 2;
+      resources[type] = realloc(resources[type], sizeof(Resource) * resource_capacities[type]);
+      generations[type] = realloc(generations[type], sizeof(int) * resource_capacities[type]);
 
-  void* resources_t = resources[type];
-  int resource_num = num_resources[type];
-  int resource_cap = resources_capacity[type];
-
-  // step 1: check for free indices
-  if (!&free_indices[type]) {
-    new_index.index = free_indices[type]->element;
-    new_index.generation = generations[type];
-
-    IntList* e = free_indices[type]->element;
-    free(&free_indices[type]);
-    free_indices[type] = e;
-  }
-
-  // step 2. assign new value in array
-  else {
-    if (resource_num == resource_cap) {
-      // reallocate and zero-out
-
+      memset(generations[type] + old_cap, 0, sizeof(int) * resource_capacities[type]);
+      for (int i = old_cap + 1; i < resource_capacities[type]; i++) {
+        intlist_push(free_indices[type], i);
+      }
+      free = old_cap;
     }
+    index.index = free;
+    generations[type][free]++;
 
+    resources[type][free].resource = resource_loaders[type](path);
+    resources[type][free].path = malloc(strlen(path) + 1);
+    strcpy(resources[type][free].path, path);
+  }
+  return index;
+}
 
+void* get_resource(int type, GenIndex resource_id) {
+#ifndef NDEBUG
+  if (type >= num_resource_types) {
+    fprintf(stderr, "error, attempted to get type %d, but there are only %d types registered. Undefined behaviour", type, num_resource_types);
+  }
+  if (resource_id.index >= resource_capacities[type]) {
+    fprintf(stderr, "error, attempted to get index %d, byt the array has size %d. Undefined behaviour", resource_id.index, resource_capacities[type]);
+  }
+#endif
+
+  if (generations[type][resource_id.index] != resource_id.generation) {
+    fprintf(stderr, "error, attempted to get GenIndex generation %d, but the actual generation is %d", resource_id.generation, generations[type][resource_id.index]);
+    return NULL;
+  }
+  else {
+    return resources[type][resource_id.index].resource;
   }
 }
 
 void delete_resource(int type, GenIndex resource_id) {
-#ifndef NDEBUG
-  if (type > num_resource_types) {
-    fprintf(stderr, "attempted to delete type, id = %d, but only %d are registered", type, num_resource_types);
-  }
-  if (num_resources != NULL) {
-    if (num_resources[type] < resource_id.index) {
-      fprintf(stderr, "attempted to delete resource of type %d and index %d, but that type array only has capacity %d", type, resource_id.index, num_resources[type]);
-    }
-  }
-#endif
 
-  if (generations[type] == resource_id.generation) {
-    // free the resource
-    generations[type]++;
-    resource_destructors[type](&resources[type][resource_id.index]);
+}
 
-    // add a new free index to the list
-    IntList* new_head = malloc(sizeof(IntList));
-    new_head->element = resource_id.index;
-    new_head->next = &free_indices[type];
+void delete_resource_named(int type, char* path) {
 
-    free_indices[type] = new_head;
-  }
-#ifndef NDEBUG
-  else {
-    fprintf(stderr, "attempted to delete resource (type = %d, index = %f), but was already deleted", type, resource_id.index);
-  }
-#endif
 }

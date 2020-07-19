@@ -1,107 +1,137 @@
 [
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/enigma.dir/src/main.c.o   -c /home/connorfr/Projects/Programming/enigma/src/main.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/enigma.dir/src/main.c.o   -c /home/connorfr/Projects/Programming/enigma/src/main.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/main.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/game.dir/components/camera.c.o   -c /home/connorfr/Projects/Programming/enigma/src/components/camera.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/components/camera.c.o   -c /home/connorfr/Projects/Programming/enigma/src/components/camera.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/components/camera.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/game.dir/components/collider.c.o   -c /home/connorfr/Projects/Programming/enigma/src/components/collider.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/components/collider.c"
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/components/rigidbody.c.o   -c /home/connorfr/Projects/Programming/enigma/src/components/rigidbody.c",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/components/rigidbody.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/game.dir/components/creature.c.o   -c /home/connorfr/Projects/Programming/enigma/src/components/creature.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/components/creature.c.o   -c /home/connorfr/Projects/Programming/enigma/src/components/creature.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/components/creature.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/game.dir/components/info.c.o   -c /home/connorfr/Projects/Programming/enigma/src/components/info.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/components/info.c.o   -c /home/connorfr/Projects/Programming/enigma/src/components/info.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/components/info.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/game.dir/components/transform.c.o   -c /home/connorfr/Projects/Programming/enigma/src/components/transform.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/components/transform.c.o   -c /home/connorfr/Projects/Programming/enigma/src/components/transform.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/components/transform.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/game.dir/systems/enemy_system.c.o   -c /home/connorfr/Projects/Programming/enigma/src/systems/enemy_system.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/systems/enemy_system.c.o   -c /home/connorfr/Projects/Programming/enigma/src/systems/enemy_system.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/systems/enemy_system.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/game.dir/systems/input_system.c.o   -c /home/connorfr/Projects/Programming/enigma/src/systems/input_system.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/systems/input_system.c.o   -c /home/connorfr/Projects/Programming/enigma/src/systems/input_system.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/systems/input_system.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/game.dir/systems/render_system.c.o   -c /home/connorfr/Projects/Programming/enigma/src/systems/render_system.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/systems/render_system.c.o   -c /home/connorfr/Projects/Programming/enigma/src/systems/render_system.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/systems/render_system.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/game.dir/systems/utils.c.o   -c /home/connorfr/Projects/Programming/enigma/src/systems/utils.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/systems/ai_system.c.o   -c /home/connorfr/Projects/Programming/enigma/src/systems/ai_system.c",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/systems/ai_system.c"
+},
+{
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/systems/physics_system.c.o   -c /home/connorfr/Projects/Programming/enigma/src/systems/physics_system.c",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/systems/physics_system.c"
+},
+{
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/systems/utils.c.o   -c /home/connorfr/Projects/Programming/enigma/src/systems/utils.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/systems/utils.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/game.dir/templates/enemy_template.c.o   -c /home/connorfr/Projects/Programming/enigma/src/templates/enemy_template.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/templates/enemy_template.c.o   -c /home/connorfr/Projects/Programming/enigma/src/templates/enemy_template.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/templates/enemy_template.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/game.dir/templates/player_template.c.o   -c /home/connorfr/Projects/Programming/enigma/src/templates/player_template.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/templates/player_template.c.o   -c /home/connorfr/Projects/Programming/enigma/src/templates/player_template.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/templates/player_template.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/engine.dir/core/base.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/core/base.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/core/base.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/core/base.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/engine/core/base.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/engine.dir/core/query.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/core/query.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/core/query.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/core/query.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/engine/core/query.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/engine.dir/core/resources.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/core/resources.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/core/resources.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/core/resources.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/engine/core/resources.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/engine.dir/core/types.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/core/types.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/core/types.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/core/types.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/engine/core/types.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/engine.dir/graphics/mesh.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/graphics/mesh.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/graphics/mesh.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/graphics/mesh.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/engine/graphics/mesh.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/engine.dir/graphics/shader.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/graphics/shader.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/graphics/shader.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/graphics/shader.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/engine/graphics/shader.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/engine.dir/graphics/window.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/graphics/window.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/graphics/window.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/graphics/window.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/engine/graphics/window.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/engine.dir/math/matmath.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/math/matmath.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/math/matmath.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/math/matmath.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/engine/math/matmath.c"
 },
 {
-  "directory": "/home/connorfr/Projects/Programming/enigma/bin/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/include/engine -I/libs/include    -o CMakeFiles/engine.dir/math/vecmath.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/math/vecmath.c",
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/math/vecmath.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/math/vecmath.c",
   "file": "/home/connorfr/Projects/Programming/enigma/src/engine/math/vecmath.c"
+},
+{
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/resources/texture.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/resources/texture.c",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/resources/texture.c"
+},
+{
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/structures/int_list.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/structures/int_list.c",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/structures/int_list.c"
+},
+{
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/structures/gen_dict.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/structures/gen_dict.c",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/structures/gen_dict.c"
+},
+{
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/libs",
+  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/glad.dir/src/glad.c.o   -c /home/connorfr/Projects/Programming/enigma/libs/src/glad.c",
+  "file": "/home/connorfr/Projects/Programming/enigma/libs/src/glad.c"
 }
 ]

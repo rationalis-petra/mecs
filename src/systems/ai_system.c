@@ -19,7 +19,7 @@ void ai_system(void) {
 void ai_init(void) {
 
 
-  char* programName = "../enigma-ai/agent";
+  char* programName = "resources/agents/basic_ai";
   switch (fork()) {
     case 0:
       execlp(programName, programName, NULL);

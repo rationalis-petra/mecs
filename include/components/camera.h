@@ -1,5 +1,5 @@
-#ifndef CAMERA_H
-#define CAMERA_H
+#ifndef __CAMERA_H
+#define __CAMERA_H
 
 /** @file
  * @brief contains the camera struct

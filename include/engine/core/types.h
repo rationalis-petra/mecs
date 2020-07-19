@@ -1,5 +1,5 @@
-#ifndef TYPES_H
-#define TYPES_H
+#ifndef __TYPES_H
+#define __TYPES_H
 
 ///@addtogroup Base
 ///@{
@@ -22,12 +22,6 @@ typedef struct GenIndex {
   unsigned int index;
   unsigned int generation;
 } GenIndex;
-
-typedef struct IntList {
-  int element;
-  struct IntLIst* next;
-} IntList;
-
 
 /** @brief Contains potentially useful update arguments, which are most often useful in
  *

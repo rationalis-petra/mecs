@@ -2,6 +2,7 @@
 
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_EXPORT_COMPILE_COMMANDS on)
+set( CMAKE_C_FLAGS "-g -Wall" )
 # Projectn's Name
 
 project(enigma)
@@ -14,7 +15,6 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/include/
-    ${PROJECT_SOURCE_DIR}/include/engine/
     ${PROJECT_SOURCE_DIR}/libs/include/)
 
 add_subdirectory(src)

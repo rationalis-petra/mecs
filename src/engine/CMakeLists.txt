@@ -7,4 +7,6 @@ add_library(engine core/base.c
                    graphics/window.c
                    math/matmath.c
                    math/vecmath.c
-                   resources/texture.c)
+                   resources/texture.c
+                   structures/int_list.c
+                   structures/gen_dict.c)

@@ -1,6 +1,3 @@
-#ifndef CORE_H
-#define CORE_H
-
 /** @defgroup Core
  *
  * @{
@@ -25,4 +22,3 @@
 #include "engine/core/query.h"
 #include "engine/core/resources.h"
 
-#endif

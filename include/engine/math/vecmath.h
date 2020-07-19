@@ -1,5 +1,5 @@
-#ifndef VECMATH_H
-#define VECMATH_H
+#ifndef __VECMATH_H
+#define __VECMATH_H
 
 /** @file
  * @brief a set of functions and types for doing math on vectors

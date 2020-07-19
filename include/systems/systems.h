@@ -1,5 +1,5 @@
-#ifndef SYSTEMS_H
-#define SYSTEMS_H
+#ifndef __SYSTEMS_H
+#define __SYSTEMS_H
 
 void input_system(void);
 void input_init(void);

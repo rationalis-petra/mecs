@@ -1,5 +1,5 @@
-#ifndef QUERY_H
-#define QUERY_H
+#ifndef __QUERY_H
+#define __QUERY_H
 /** @file
  * Often, we want to ask the engine for a collection of entities matching
  * a certain criteria, e.g. all entities with a transform, or all entites

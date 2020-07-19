@@ -1,5 +1,5 @@
-#ifndef INFO_H
-#define INFO_H
+#ifndef __INFO_H
+#define __INFO_H
 
 /**@file 
  * @brief the info component stores useful yet miscellaneous information

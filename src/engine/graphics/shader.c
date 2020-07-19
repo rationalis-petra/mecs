@@ -36,7 +36,7 @@ unsigned int new_shader_program(char* program_name) {
   FILE* fragment_shader_file = fopen(fragment_shader_path, "r");
   char* file_contents;
 
-  int  success;
+  int  success = 1;
   char info_log[512];
 
   long file_len;

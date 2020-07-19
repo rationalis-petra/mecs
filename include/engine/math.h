@@ -1,6 +1,3 @@
-#ifndef OPAL_MATH_H
-#define OPAL_MATH_H
-
 /** @defgroup Math
  *
  * @{
@@ -14,5 +11,3 @@
  */
 #include "engine/math/vecmath.h"
 #include "engine/math/matmath.h"
-
-#endif

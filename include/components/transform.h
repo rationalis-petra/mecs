@@ -1,6 +1,5 @@
-// #derive (component, Transform)
-#ifndef TRANSFORM_H
-#define TRANSFORM_H
+#ifndef __TRANSFORM_H
+#define __TRANSFORM_H
 /**@file
  */
 

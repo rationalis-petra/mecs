@@ -1,5 +1,5 @@
-#ifndef BASE_H
-#define BASE_H
+#ifndef __BASE_H
+#define __BASE_H
 
 /** @file
  *

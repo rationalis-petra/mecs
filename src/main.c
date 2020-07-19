@@ -24,8 +24,8 @@ int main(int argc, char** argv)
 
   register_system(&render_system, &render_init, &render_clean);
 
-  int TextureType = register_resource_type("resources/textures", &load_texture, &delete_texture);
-  load_resource(TextureType, "floor-tile.jpg", "");
+  int TextureType = register_resource_type(&load_texture, &delete_texture);
+  get_index(TextureType, "floor-tile.jpg");
 
   add_entity(&player_template);
 

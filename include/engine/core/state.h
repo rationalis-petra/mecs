@@ -1,5 +1,5 @@
-#ifndef STATE_H
-#define STATE_H
+#ifndef __STATE_H
+#define __STATE_H
 
 /**@file
  * @brief A file containing the variables for the state of the engine
@@ -13,6 +13,7 @@
 #include <stdbool.h>
 #include "query.h"
 #include "types.h"
+#include "engine/structures.h"
 
 typedef struct EnityListLIst {
     struct EntityListList* tail;
@@ -66,14 +67,15 @@ extern unsigned int num_models;
 ///@}
 
 
-extern void*** resources;
+typedef struct Resource Resource;
+extern Resource** resources;
 extern unsigned int num_resource_types;
 extern unsigned int* num_resources;
 extern unsigned int* resources_capacity;
 extern unsigned int** generations;
 extern IntList** free_indices;
 
-extern void* (**resource_loaders)(char* path, char* args);
+extern void* (**resource_loaders)(char* path);
 extern void (**resource_destructors)(void* resource);
 
 ///@}

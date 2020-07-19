@@ -1,5 +1,5 @@
-#ifndef RIGIDBODY_H
-#define RIGIDBODY_H
+#ifndef __RIGIDBODY_H
+#define __RIGIDBODY_H
 
 #include "engine.h"
 

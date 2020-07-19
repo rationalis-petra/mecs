@@ -1,5 +1,5 @@
-#ifndef ENGINE_H
-#define ENGINE_H
+#ifndef __ENGINE_H
+#define __ENGINE_H
 #include "engine/core.h"
 #include "engine/math.h"
 #include "engine/graphics.h"
