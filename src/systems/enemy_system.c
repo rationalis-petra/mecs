@@ -11,7 +11,7 @@
 
 void enemy_system(void) {
   int player = first_match(&is_player);
-  Transform* player_transform = (Transform*) get_component(player, TransformType);
+  Transform* player_transform =  get_component(player, TransformType);
   Vec3f player_pos = player_transform->position;
   EntityList enemies = predicate_mask(&is_enemy);
 

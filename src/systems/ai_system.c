@@ -2,10 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <signal.h>
+
 #include <arpa/inet.h>
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
+#include <pthread.h>
 
 #include "engine.h"
 #include "components/components.h"
@@ -13,23 +16,138 @@
 #include "systems/systems.h"
 #include "systems/utils.h"
 
+#define PORTNUM 2300
+
+int mysocket;
+int child_pid;
+
+struct sockaddr_in dest;
+struct sockaddr_in serv;
+
+struct {
+  bool ready_read;
+  bool ready_send;
+  bool end;
+  char* msg;
+} shared_state;
+
+pthread_t throw_ra;
+
+void communicate_with_ai(void) {
+  socklen_t socksize = sizeof(dest);
+  int consocket = accept(mysocket, (struct sockaddr*) &dest, &socksize);
+
+  while(!shared_state.end) {
+    while (!shared_state.ready_send) {
+       sleep (0.1);
+    }
+    shared_state.ready_send = false;
+
+    // ready send string now
+    send(consocket, shared_state.msg, strlen(shared_state.msg), 0);
+    free(shared_state.msg);
+
+    shared_state.msg = malloc(500);
+    memset(shared_state.msg, '\0', 500);
+
+    read(consocket, shared_state.msg, 500);
+
+    shared_state.ready_read = true;
+  }
+
+  char* end_msg = "end\n";
+  send(consocket, end_msg, strlen(end_msg), 0);
+  char last_msg[100];
+  //read(consocket, last_msg, 100);
+
+  close(consocket);
+  close(mysocket);
+
+  kill(child_pid, SIGKILL);
+  pthread_exit(EXIT_SUCCESS);
+}
+
+char* stringify_state() {
+ // take the enemies, player and turn to string!
+  char* tmp_state = calloc(100, sizeof(char));
+  char* state = calloc(500, sizeof(char));
+
+  int player = first_match(&is_player);
+  Transform* player_transform = get_component(player, TransformType);
+  Vec3f player_position = player_transform->position;
+  sprintf(state, "((%f %f %f)", player_position.x, player_position.y, player_position.z);
+
+  EntityList enemies = predicate_mask(&is_enemy);
+
+  for (int i = 0; i < enemies.len; i++) {
+    int enemy = enemies.entities[i];
+    Transform* enemy_transform = get_component(enemy, TransformType);
+    Vec3f enemy_position = enemy_transform->position;
+
+    sprintf(tmp_state, "(%f %f %f)", enemy_position.x, enemy_position.y, enemy_position.z);
+    strcat(state, tmp_state);
+  }
+  free(tmp_state);
+  // append a newline
+  state = realloc(state, strlen(state) + 3);
+  strcat(state, ")\n");
+
+  return state;
+}
+
 void ai_system(void) {
+  if(shared_state.ready_read) {
+    shared_state.ready_read = false;
+
+    // read the response and turn it into a response
+    // the response will be a vector (x y z)
+    int player = first_match(&is_player);
+    RigidBody* rb = get_component(player, RigidBodyType);
+    Vec3f new_vel;
+
+    sscanf(shared_state.msg, "(%f %f %f)", &(new_vel.x), &(new_vel.y), &(new_vel.z));
+    rb->velocity = new_vel;
+
+    free(shared_state.msg);
+    shared_state.msg = stringify_state();
+    shared_state.ready_send = true;
+  }
 }
 
 void ai_init(void) {
+  shared_state.end = false;
 
+ 
+  char* programName = "resources/agents/basic-ai";
 
-  char* programName = "resources/agents/basic_ai";
-  switch (fork()) {
+  switch ((child_pid = fork())) {
     case 0:
+      sleep(0.5);
       execlp(programName, programName, NULL);
       break;
     case -1:
       // error??
       break;
   }
+
+  memset(&serv, 0, sizeof(serv));
+
+  serv.sin_family = AF_INET;
+  serv.sin_addr.s_addr = htonl(INADDR_ANY);
+  serv.sin_port = htons(PORTNUM);
+
+  mysocket = socket(AF_INET, SOCK_STREAM, 0);
+  bind(mysocket, (struct sockaddr*) &serv, sizeof(struct sockaddr));
+
+  listen(mysocket, 5);
+
+  pthread_create(&throw_ra, NULL, communicate_with_ai, NULL);
+  shared_state.msg = stringify_state();
+  shared_state.ready_send = true;
+  shared_state.ready_read = false;
 }
 
 void ai_clean(void) {
+  shared_state.end = true;
   // delete/free scheme_environment
 }

@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>
+#include <pthread.h>
 
 #include <GLFW/glfw3.h>
 
@@ -203,4 +204,5 @@ void clean(void) {
   //free_models();
 
   delete_window(0);
+  pthread_exit(EXIT_SUCCESS);
 }
