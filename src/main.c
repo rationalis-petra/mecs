@@ -1,4 +1,8 @@
+#ifndef NDEBUF
 #include <stdio.h>
+#endif
+#include <pthread.h>
+#include <stdlib.h>
 #include "engine.h"
 
 #include "components/components.h"
@@ -36,5 +40,6 @@ int main(int argc, char** argv)
   run();
   clean();
 
+  sleep(1);
   return 0;
 }

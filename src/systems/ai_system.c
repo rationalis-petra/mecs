@@ -38,18 +38,22 @@ void communicate_with_ai(void) {
   int consocket = accept(mysocket, (struct sockaddr*) &dest, &socksize);
 
   while(!shared_state.end) {
-    while (!shared_state.ready_send) {
+    while (!(shared_state.ready_send || shared_state.end)) {
        sleep (0.1);
+    }
+    if (shared_state.end) {
+      break;
     }
     shared_state.ready_send = false;
 
-    // ready send string now
+    // perform a blocking IO operation, sending the current simulation
+    // state to the AI
     send(consocket, shared_state.msg, strlen(shared_state.msg), 0);
     free(shared_state.msg);
 
-    shared_state.msg = malloc(500);
-    memset(shared_state.msg, '\0', 500);
+    shared_state.msg = calloc(500);
 
+    // perform a blocking IO operation reading the AI response
     read(consocket, shared_state.msg, 500);
 
     shared_state.ready_read = true;
@@ -58,55 +62,25 @@ void communicate_with_ai(void) {
   char* end_msg = "end\n";
   send(consocket, end_msg, strlen(end_msg), 0);
   char last_msg[100];
-  //read(consocket, last_msg, 100);
+  read(consocket, last_msg, 100);
 
   close(consocket);
   close(mysocket);
 
-  kill(child_pid, SIGKILL);
   pthread_exit(EXIT_SUCCESS);
-}
-
-char* stringify_state() {
- // take the enemies, player and turn to string!
-  char* tmp_state = calloc(100, sizeof(char));
-  char* state = calloc(500, sizeof(char));
-
-  int player = first_match(&is_player);
-  Transform* player_transform = get_component(player, TransformType);
-  Vec3f player_position = player_transform->position;
-  sprintf(state, "((%f %f %f)", player_position.x, player_position.y, player_position.z);
-
-  EntityList enemies = predicate_mask(&is_enemy);
-
-  for (int i = 0; i < enemies.len; i++) {
-    int enemy = enemies.entities[i];
-    Transform* enemy_transform = get_component(enemy, TransformType);
-    Vec3f enemy_position = enemy_transform->position;
-
-    sprintf(tmp_state, "(%f %f %f)", enemy_position.x, enemy_position.y, enemy_position.z);
-    strcat(state, tmp_state);
-  }
-  free(tmp_state);
-  // append a newline
-  state = realloc(state, strlen(state) + 3);
-  strcat(state, ")\n");
-
-  return state;
 }
 
 void ai_system(void) {
   if(shared_state.ready_read) {
     shared_state.ready_read = false;
 
-    // read the response and turn it into a response
+    // read the response and turn it into a player movement vector
     // the response will be a vector (x y z)
     int player = first_match(&is_player);
     RigidBody* rb = get_component(player, RigidBodyType);
-    Vec3f new_vel;
+    Vec3f* p_vel = &(rb->velocity);
 
-    sscanf(shared_state.msg, "(%f %f %f)", &(new_vel.x), &(new_vel.y), &(new_vel.z));
-    rb->velocity = new_vel;
+    sscanf(shared_state.msg, "\n(%f %f %f)", &(p_vel->x), &(p_vel->y), &(p_vel->z));
 
     free(shared_state.msg);
     shared_state.msg = stringify_state();
@@ -118,12 +92,11 @@ void ai_init(void) {
   shared_state.end = false;
 
  
-  char* programName = "resources/agents/basic-ai";
+  char* program_name = "resources/agents/basic-ai";
 
   switch ((child_pid = fork())) {
     case 0:
-      sleep(0.5);
-      execlp(programName, programName, NULL);
+      execlp(program_name, program_name, NULL);
       break;
     case -1:
       // error??

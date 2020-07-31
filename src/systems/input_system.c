@@ -61,6 +61,7 @@ void input_system(void) {
   camera->theta += 0.001 * (new_cursor_pos.y - cursor_pos.y);
   cursor_pos = new_cursor_pos;
   // queue_event(type=force, id=player_id, inp=Vec3f{x, 0.0, y});
+  //
 
 }
 
