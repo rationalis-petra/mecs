@@ -13,7 +13,7 @@ void delete_info(void* _info) {
 
   #ifndef NDEBUG
   if (!info) {
-    fprintf(stderr, "error in delete_info in component Info: attemt to delete null Info");
+    perror( "error in delete_info in component Info: attemt to delete null Info");
   }
   #endif
 

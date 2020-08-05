@@ -22,7 +22,7 @@ void delete_transform(void* _transform) {
   Transform* transform = (Transform*) _transform;
   #ifndef NDEBUG
   if (!transform) {
-    fprintf(stderr, "error in function delete_transform in component Transform: transform is null");
+    perror( "error in function delete_transform in component Transform: transform is null");
   }
   #endif
   

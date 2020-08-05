@@ -25,12 +25,12 @@ unsigned int new_shader_program(char* program_name) {
 
   strcpy(vertex_shader_path, shader_path);
   strcat(vertex_shader_path, program_name);
-  strcat(vertex_shader_path, ".vs");
+  strcat(vertex_shader_path, ".vert");
 
   char* fragment_shader_path = malloc((len+3) * sizeof(char));
   strcpy(fragment_shader_path, shader_path);
   strcat(fragment_shader_path, program_name);
-  strcat(fragment_shader_path, ".fs");
+  strcat(fragment_shader_path, ".frag");
 
   FILE* vertex_shader_file = fopen(vertex_shader_path, "r");
   FILE* fragment_shader_file = fopen(fragment_shader_path, "r");
@@ -63,8 +63,8 @@ unsigned int new_shader_program(char* program_name) {
 
     if (!success) {
       glGetShaderInfoLog(vertex_shader, 512, NULL, info_log);
-      fprintf(stderr, "error in new_window: failed to compile vertex shader\n");
-      fprintf(stderr, info_log);
+      perror("error in new_window: failed to compile vertex shader\n");
+      perror(info_log);
     }
   }
   else {
@@ -93,8 +93,8 @@ unsigned int new_shader_program(char* program_name) {
 
     if (!success) {
       glGetShaderInfoLog(fragment_shader, 512, NULL, info_log);
-      fprintf(stderr, "error in new_window: failed to compile fragment shader\n");
-      fprintf(stderr, info_log);
+      perror("error in new_window: failed to compile fragment shader\n");
+      perror(info_log);
     }
   }
   else {
@@ -110,8 +110,8 @@ unsigned int new_shader_program(char* program_name) {
   glGetProgramiv(shader_program, GL_LINK_STATUS, &success);
   if (!success) {
     glGetProgramInfoLog(shader_program, 512, NULL, info_log);
-    fprintf(stderr, "error in new_window: filed to link shaders\n");
-    fprintf(stderr, info_log);
+    perror("error in new_window: filed to link shaders\n");
+    perror(info_log);
   }
 
   // Cleanup

@@ -67,7 +67,7 @@ void render_system(void) {
   glUniform3f(light_pos, 0.0f, 8.0f, 0.0f);
   glUniform3f(view_pos, camera_pos.x, camera_pos.y, camera_pos.z);
 
-  glUniform1i(is_floor, 0);
+  glUniform1i(is_floor, false);
 
   // draw player
   Mat4f player_trans = mat4f_translate(play_pos.x, play_pos.y, play_pos.z);
@@ -102,7 +102,7 @@ void render_system(void) {
   Mat4f trans = mat4f_translate(0.0f, -1.0f, 0.0f);
   Mat4f model = mat4f_multiply(scale, trans);
 
-  glUniform1i(is_floor, 1);
+  glUniform1i(is_floor, true);
   glBindTexture(GL_TEXTURE_2D, texture);
 
   // the plane should be grey

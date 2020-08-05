@@ -19,7 +19,7 @@ void* new_rigidbody() {
 void delete_rigidbody(void* rigidbody) {
   #ifndef NDEBUG
   if (!rigidbody) {
-    fprintf(stderr, "error in function delete_rigidbody in component Rigidbody: Rigidbody is null\n");
+    perror( "error in function delete_rigidbody in component Rigidbody: Rigidbody is null\n");
   }
   #endif
   free(rigidbody);

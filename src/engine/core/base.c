@@ -92,7 +92,7 @@ void* get_component(int entity, int type) {
 void register_component(int type, void* (*new_function)(void), void (*delete_function)(void*)) {
 #ifndef NDEBUG
   if (entities_added) {
-    fprintf(stderr, "error: registering a component when entities have already been added will result in undefined behaviour!\n");
+    perror( "error: registering a component when entities have already been added will result in undefined behaviour!\n");
   }
 #endif
   if (type == num_components) {
@@ -107,7 +107,7 @@ void register_component(int type, void* (*new_function)(void), void (*delete_fun
 
 #ifndef NDEBUG
     if (!(entities || registered_components || new_methods || delete_methods))
-      fprintf(stderr, "error in register_component: memory allocation failed!");
+      perror( "error in register_component: memory allocation failed!");
 #endif
 
     registered_components[type] = type;

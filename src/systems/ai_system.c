@@ -51,7 +51,7 @@ void communicate_with_ai(void) {
     send(consocket, shared_state.msg, strlen(shared_state.msg), 0);
     free(shared_state.msg);
 
-    shared_state.msg = calloc(500);
+    shared_state.msg = calloc(sizeof(char), 500);
 
     // perform a blocking IO operation reading the AI response
     read(consocket, shared_state.msg, 500);
@@ -62,7 +62,7 @@ void communicate_with_ai(void) {
   char* end_msg = "end\n";
   send(consocket, end_msg, strlen(end_msg), 0);
   char last_msg[100];
-  read(consocket, last_msg, 100);
+  //read(consocket, last_msg, 100);
 
   close(consocket);
   close(mysocket);

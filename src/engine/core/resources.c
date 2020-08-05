@@ -12,14 +12,21 @@ struct Resource {
   void* resource;
 };
 
-Resource** resources = NULL;
-unsigned int** generations = NULL;
+/* Resources are stored in a 2d array. The first 'dimension' can be thought of
+ * as column headers, where each column stores resources of a particular type.
+ * Hence, the get_resource function takes both type and ID.
+ *
+ * Each index i of an array has an associated 'generation'. Only identifiers
+ * with the correct generation may access, and generations are incremented
+ * each time a resource is deleted
+ */
+Resource** resources = NULL;              // the actual 2d array containing resources
+unsigned int** generations = NULL;        // for use in generational indexing (above)
+unsigned int num_resource_types = 0;      // stores the number of columns
+unsigned int* resource_capacities = NULL; // Stores the sizes of each column
 
-unsigned int num_resource_types = 0;
-unsigned int* resource_capacities = NULL;
-
-IntList** free_indices = NULL;
-GenDict** resource_names = NULL;
+IntList** free_indices = NULL;            // An array of Integer Lists, where each list in the array stores free indices in a stack-like fashion
+GenDict** resource_names = NULL;          // An array of Dictionaries whose keys are strings and values Generational Indices
 
 void* (**resource_loaders)(char* path) = NULL;
 void (**resource_destructors)(void* resource) = NULL;

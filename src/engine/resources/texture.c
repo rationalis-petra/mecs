@@ -16,7 +16,7 @@ void* load_texture(char* path) {
     unsigned char* data = stbi_load("resources/textures/floor-tile.jpg", &width, &height, &nr_channels, 0);
     #ifndef NDEBUG
     if (!data) {
-        fprintf(stderr, "error in load_texture: unable to load image from disk\n");
+        perror( "error in load_texture: unable to load image from disk\n");
     }
     #endif
 

@@ -192,10 +192,10 @@ Mat4f mat4f_perspective(float fov, float aspect, float near, float far) {
 
   #ifndef NDEBUG
   if (fov <= 0) {
-    fprintf(stderr, "error in mat4f_perspective in matmath: fov <= 0\n");
+    perror( "error in mat4f_perspective in matmath: fov <= 0\n");
   }
   if (aspect == 0) {
-    fprintf(stderr, "error in mat4f_perspective in matmath: aspect == 0\n");
+    perror( "error in mat4f_perspective in matmath: aspect == 0\n");
   }
   #endif
 

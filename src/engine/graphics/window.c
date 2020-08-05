@@ -30,14 +30,14 @@ int new_window(int width, int height)
   aspect = (float) width / height;
 #ifndef NDEBUG
   if (!window) {
-    fprintf(stderr, "error in new_window: failed to create GLFW window\n");
+    perror( "error in new_window: failed to create GLFW window\n");
   }
 #endif
   glfwMakeContextCurrent(window);
 
 #ifndef NDEBUG
   if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-    fprintf(stderr, "error in new_window: failed to initialize GLAD\n");
+    perror( "error in new_window: failed to initialize GLAD\n");
   }
 #else
   gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);

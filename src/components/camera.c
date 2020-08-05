@@ -13,7 +13,7 @@ void* new_camera() {
 void delete_camera(void* _camera) {
   #ifndef NDEBUG
   if (!_camera) {
-    fprintf(stderr, "error in function delete_camera in component Camera: camera is null\n");
+    perror("error in function delete_camera in component Camera: camera is null\n");
   }
   #endif
   free(_camera);

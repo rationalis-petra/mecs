@@ -70,7 +70,7 @@ int first_match(bool (*predicate)(int)) {
   }
 
 #ifndef NDEBUG
-  fprintf(stderr, "error in function first_match: no match found\n");
+  perror("error in function first_match: no match found\n");
 #endif
 
   return -1;

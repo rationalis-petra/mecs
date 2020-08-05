@@ -14,7 +14,7 @@ void* new_creature() {
 void delete_creature(void* _creature) {
 #ifndef NDEBUG
   if (!_creature) {
-    fprintf(stderr, "error in function delete_creature in component Creature: creature is null\n");
+    perror("error in function delete_creature in component Creature: creature is null\n");
   }
   #endif
   free(_creature);

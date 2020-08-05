@@ -9,9 +9,9 @@
 void delete_template(Template* template) {
   #ifndef NDEBUG
   if (!template)
-    fprintf(stderr, "error in delete_tempalte: attempt to delete null template\n");
+    perror( "error in delete_tempalte: attempt to delete null template\n");
   if (!template->components)
-    fprintf(stderr, "error in delete_template: attempt to delete template with null components\n");
+    perror( "error in delete_template: attempt to delete template with null components\n");
   #endif
 
 
