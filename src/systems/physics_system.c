@@ -26,7 +26,6 @@ void physics_system(void) {
 
     EntityList physicals = component_mask(2, TransformType, RigidBodyType);
     for (int id = 0; id < physicals.len; id++) {
-        Transform*  transform = get_component(id, TransformType);
         RigidBody* rigidbody = get_component(id, RigidBodyType);
 
         // step 1: Calculate Force
@@ -34,22 +33,22 @@ void physics_system(void) {
         Vec3f total_force = vec3f_sum(decel_force, rigidbody->force);
         rigidbody->velocity = vec3f_sum(total_force, rigidbody->velocity);
 
-        if (transform->position.y > 0.01f) {
+        if (rigidbody->position.y > 0.01f) {
             rigidbody->velocity.y -= 9.8 * args.dt;
         }
         else {
             rigidbody->velocity.y = rigidbody->velocity.y > 0 ? rigidbody->velocity.y : 0;
         }
 
-        transform->position = vec3f_sum(transform->position, vec3f_multiply(args.dt, rigidbody->velocity));
-        if (transform->position.y < 0) { transform->position.y = 0; }
+        rigidbody->position = vec3f_sum(rigidbody->position, vec3f_multiply(args.dt, rigidbody->velocity));
+        if (rigidbody->position.y < 0) { rigidbody->position.y = 0; }
 
 
-        Vec3f m_centre = transform->position;
+        Vec3f m_centre = rigidbody->position;
         for (int id2 = 0; id2 < physicals.len; id2++) {
             if (id == id2) continue;
-            Transform* transform2 = get_component(id2, TransformType);
-            Vec3f o_centre = transform2->position;
+            RigidBody* rigidbody2 = get_component(id2, RigidBodyType);
+            Vec3f o_centre = rigidbody2->position;
 
             // we test each of the following for bounding box overlap
             // we consider them to be unit cubes
@@ -72,8 +71,8 @@ void physics_system(void) {
                 else if (ly > 0.0f && ly < 0.5f) {delta = 0.5f - ly;}
                 else if (lz > 0.0f && lz < 0.5f) {delta = 0.5f - lz;}
 
-                transform2->position = vec3f_sum(o_centre, vec3f_multiply(delta, diff_vec));
-                transform->position = vec3f_sum(m_centre, vec3f_multiply(-delta, diff_vec));
+                rigidbody2->position = vec3f_sum(o_centre, vec3f_multiply(delta, diff_vec));
+                rigidbody->position = vec3f_sum(m_centre, vec3f_multiply(-delta, diff_vec));
             }
         }
     }

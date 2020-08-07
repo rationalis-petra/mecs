@@ -14,7 +14,7 @@ Cursor cursor_pos;
 
 void input_system(void) {
   int player = first_match(&is_player);
-  Transform* player_transform =  get_component(player, TransformType);
+  RigidBody* player_transform =  get_component(player, RigidBodyType);
   Vec3f* pos = &player_transform->position;
 
   if (window_should_close() || key_is_pressed(KEY_ESC)) {

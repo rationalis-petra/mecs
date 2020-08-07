@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -12,8 +13,12 @@
 const char texture_path[] = "resources/textures/";
 
 void* load_texture(char* path) {
+    char* resource_path = calloc(strlen(texture_path) + strlen(path) + 1, sizeof(char));
+    strcat(resource_path, texture_path);
+    strcat(resource_path, path);
+
     int width, height, nr_channels;
-    unsigned char* data = stbi_load("resources/textures/floor-tile.jpg", &width, &height, &nr_channels, 0);
+    unsigned char* data = stbi_load(resource_path, &width, &height, &nr_channels, 0);
     #ifndef NDEBUG
     if (!data) {
         perror( "error in load_texture: unable to load image from disk\n");

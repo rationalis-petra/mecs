@@ -61,7 +61,7 @@ int register_resource_type(void* (*resource_loader)(char* path), void (*resource
 }
 
 
-GenIndex get_index(int type, char* path) {
+GenIndex get_resource_id(int type, char* path) {
 #ifndef NDEBUG
   if (type >= num_resource_types) {
     fprintf(stderr, "error, attempted to get type of type %d, but there are only %d types registered. Undefined behaviour", type, num_resource_types);
@@ -93,6 +93,10 @@ GenIndex get_index(int type, char* path) {
     strcpy(resources[type][free].path, path);
   }
   return index;
+}
+
+void load_resource(int type, char* path) {
+  get_resource_id(type, path);
 }
 
 void* get_resource(int type, GenIndex resource_id) {

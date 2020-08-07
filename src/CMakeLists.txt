@@ -17,9 +17,14 @@ include_directories(
 
 add_library(game components/camera.c
                  components/rigidbody.c
-                 components/creature.c
+                 components/model.c
                  components/info.c
                  components/transform.c
+                 components/attachment.c
+                 components/sensor.c
+                 components/actuator.c
+                 components/agent.c
+
                  systems/enemy_system.c
                  systems/input_system.c
                  systems/render_system.c

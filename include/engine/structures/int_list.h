@@ -19,5 +19,4 @@ int intlist_insert(IntList* list, int val, int index);
 
 void intlist_ordered_insert(IntList* list, int val);
 
-
 #endif

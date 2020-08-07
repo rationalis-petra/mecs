@@ -12,21 +12,24 @@
  *          is set in the new_template function to the current number of
  *          components in the system.
  */
-typedef struct Template {
+typedef struct {
   void** components;
 } Template;
 
 void delete_template(Template* template);
 
-typedef struct GenIndex {
+typedef struct {
   unsigned int index;
   unsigned int generation;
 } GenIndex;
 
+typedef GenIndex EntityID;
+typedef GenIndex ResourceID;
+
 /** @brief Contains potentially useful update arguments, which are most often useful in
  *
  */
-typedef struct UpdateArgs {
+typedef struct {
   float dt;  ///< The time since the last frame was called
 } UpdateArgs;
 

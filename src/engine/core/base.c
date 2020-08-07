@@ -89,41 +89,35 @@ void* get_component(int entity, int type) {
   return entities[type][entity];
 }
 
-void register_component(int type, void* (*new_function)(void), void (*delete_function)(void*)) {
+int register_component(void* (*new_function)(void), void (*delete_function)(void*)) {
 #ifndef NDEBUG
   if (entities_added) {
     perror( "error: registering a component when entities have already been added will result in undefined behaviour!\n");
   }
 #endif
-  if (type == num_components) {
+  int type = num_components;
+  num_components++;
 
-    num_components++;
+  entities = realloc(entities, sizeof(void*) * num_components);
+  registered_components = realloc(registered_components, sizeof(int*) * num_components);
 
-    entities = realloc(entities, sizeof(void*) * num_components);
-    registered_components = realloc(registered_components, sizeof(int*) * num_components);
-
-    new_methods = (void* (**)()) realloc(new_methods, sizeof(void* (**)(void)) * num_components);
-    delete_methods = (void (**)(void*)) realloc(delete_methods, sizeof(void (**)(void*)) * num_components);
+  new_methods = (void* (**)()) realloc(new_methods, sizeof(void* (**)(void)) * num_components);
+  delete_methods = (void (**)(void*)) realloc(delete_methods, sizeof(void (**)(void*)) * num_components);
 
 #ifndef NDEBUG
-    if (!(entities || registered_components || new_methods || delete_methods))
-      perror( "error in register_component: memory allocation failed!");
+  if (!(entities || registered_components || new_methods || delete_methods))
+    perror( "error in register_component: memory allocation failed!");
 #endif
 
-    registered_components[type] = type;
-    new_methods[type] = new_function;
-    delete_methods[type] = delete_function;
-    entities[type] = malloc(sizeof(void*) * entity_capacity);
-    for (int i = 0; i < entity_capacity; i++) {
-      entities[type][i] = 0;
-    }
-
-    // zero out the pointers in the newly allocated entites block
+  registered_components[type] = type;
+  new_methods[type] = new_function;
+  delete_methods[type] = delete_function;
+  entities[type] = malloc(sizeof(void*) * entity_capacity);
+  for (int i = 0; i < entity_capacity; i++) {
+    entities[type][i] = 0;
   }
 
-  else {
-    fprintf(stderr, "error: failed to register component, %d, as there are %d registered components\n", type, num_components);
-  }
+  return type;
 }
 
 void register_system(void (*system_function)(void), void (*sys_init)(void), void (*sys_clean)(void)) {

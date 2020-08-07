@@ -1,11 +1,17 @@
 #ifndef __COMPONENTS_H
 #define __COMPONENTS_H
 
-#include "components/creature.h"
-#include "components/info.h"
-#include "components/transform.h"
+#include "components/model.h"
 #include "components/camera.h"
+
 #include "components/rigidbody.h"
+#include "components/attachment.h"
+
+#include "components/sensor.h"
+#include "components/actuator.h"
+#include "components/agent.h"
+
+#include "components/info.h"
 
 #ifndef NDEBUG
 #include <stdio.h>
@@ -23,13 +29,17 @@
  */
 
 ///@addtogroup Components
-enum ComponentType {
-		 TransformType,
-		 InfoType,
-		 CreatureType,
-		 CameraType,
-		 RigidBodyType,
-};
 
+extern int ModelType;
+extern int CameraType;
+
+extern int RigidBodyType;
+extern int AttachmentType;
+
+extern int SensorType;
+extern int ActuatorType;
+extern int AgentType;
+
+extern int InfoType;
 
 #endif

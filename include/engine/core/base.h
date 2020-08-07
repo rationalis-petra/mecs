@@ -54,14 +54,13 @@ void* get_component(int id, int type);
  *
  * @details Takes 
  *
- * @param[in] type: The type is an int which is associated with a specific component type - it corresponds to the
- *                  index of all components in each record.
- * 
  * @param[in] new_function: a function which will create a component of type type.
  *
  * @param[in] delete_function: a function which should free all data in a component
+ *
+ * @return Type: a integer which can be used to access that type
  */
-void register_component(int type, void* (*new_function)(void), void (*delete_function)(void*));
+int register_component(void* (*new_function)(void), void (*delete_function)(void*));
 
 /** @brief Add a system to the list of usable systems.
  *

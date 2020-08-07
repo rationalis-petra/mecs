@@ -1,9 +1,5 @@
-#ifndef __CAMERA_H
-#define __CAMERA_H
-
-/** @file
- * @brief contains the camera struct
- */
+#ifndef __CAMERA_H_
+#define __CAMERA_H_
 
 ///@addtogroup Components
 ///@{
@@ -22,7 +18,7 @@ typedef struct Camera {
 
 void* new_camera();
 
-void delete_camera(void* _camera);
+void delete_camera(void* camera);
 ///@}
 
 #endif

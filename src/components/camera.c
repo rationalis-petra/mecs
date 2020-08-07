@@ -10,11 +10,11 @@ void* new_camera() {
   return malloc(sizeof(Camera));
 }
 
-void delete_camera(void* _camera) {
+void delete_camera(void* camera) {
   #ifndef NDEBUG
-  if (!_camera) {
+  if (!camera) {
     perror("error in function delete_camera in component Camera: camera is null\n");
   }
   #endif
-  free(_camera);
+  free(camera);
 }

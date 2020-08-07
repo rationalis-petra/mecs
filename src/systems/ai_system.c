@@ -31,7 +31,8 @@ struct {
   char* msg;
 } shared_state;
 
-pthread_t throw_ra;
+pthread_t ai_thread;
+pthread_t killing_thread;
 
 void communicate_with_ai(void) {
   socklen_t socksize = sizeof(dest);
@@ -114,13 +115,20 @@ void ai_init(void) {
 
   listen(mysocket, 5);
 
-  pthread_create(&throw_ra, NULL, communicate_with_ai, NULL);
+  pthread_create(&ai_thread, NULL, (void*) &communicate_with_ai, NULL);
   shared_state.msg = stringify_state();
   shared_state.ready_send = true;
   shared_state.ready_read = false;
 }
 
+void kill_thread() {
+  sleep(10);
+  pthread_cancel(ai_thread);
+  pthread_exit(EXIT_SUCCESS);
+}
+
 void ai_clean(void) {
   shared_state.end = true;
+  pthread_create(&killing_thread, NULL, (void*) &kill_thread, NULL);
   // delete/free scheme_environment
 }

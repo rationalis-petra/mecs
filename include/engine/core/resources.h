@@ -34,7 +34,10 @@ int register_resource_type(void* (resource_loader)(char* path), void (resource_d
  *
  * @param[in] args: any additional arguments to provide to the resource loader
  */
-GenIndex get_index(int type, char* path);
+GenIndex get_resource_id(int type, char* path);
+
+/** @brief An alias for get_resource_id, but doesn't return a GenIndex*/
+void load_resource(int type, char* path);
 
 void* get_resource(int type, GenIndex resource_id);
 

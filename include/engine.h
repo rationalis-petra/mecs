@@ -4,4 +4,5 @@
 #include "engine/math.h"
 #include "engine/graphics.h"
 #include "engine/resources.h"
+#include "engine/structures.h"
 #endif

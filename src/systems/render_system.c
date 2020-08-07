@@ -35,10 +35,10 @@ GenIndex texture_id;
 void render_system(void) {
   // View matrix
   int player = first_match(&is_player);
-  Transform* transform = (Transform*) get_component(player, TransformType);
+  RigidBody* rigid = (RigidBody*) get_component(player, RigidBodyType);
   Camera* camera = (Camera*) get_component(player, CameraType);
 
-  Vec3f play_pos = transform->position;
+  Vec3f play_pos = rigid->position;
 
 
   Vec3f delta = {{{ camera->r * -cos(camera->theta) * cos(camera->phi),
@@ -80,7 +80,7 @@ void render_system(void) {
 
   EntityList enemies = predicate_mask(&is_enemy);
   for (int i = 0; i < enemies.len; i++) {
-    transform = (Transform*) get_component(enemies.entities[i], TransformType);
+    RigidBody* transform = get_component(enemies.entities[i], RigidBodyType);
 
     Mat4f trans = mat4f_translate(transform->position.x, transform->position.y, transform->position.z);
 
@@ -193,7 +193,7 @@ float vertices[] = {
   is_floor = get_uniform(shader_program, "is_floor");
   texture = get_uniform(shader_program, "our_texture");
 
-  texture_id = get_index(0, "fixme!");
+  texture_id = get_resource_id(0, "floor-tile.jpg");
 }
 
 void render_clean(void) {

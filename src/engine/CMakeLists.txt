@@ -9,4 +9,5 @@ add_library(engine core/base.c
                    math/vecmath.c
                    resources/texture.c
                    structures/int_list.c
-                   structures/gen_dict.c)
+                   structures/gen_dict.c
+                   structures/gen_list.c)

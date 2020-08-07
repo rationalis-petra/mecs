@@ -1,35 +1,50 @@
-#ifndef NDEBUF
-#include <stdio.h>
-#endif
-#include <pthread.h>
-#include <stdlib.h>
 #include "engine.h"
 
 #include "components/components.h"
 #include "templates/templates.h"
 #include "systems/systems.h"
 
+
+int ModelType;
+int CameraType;
+
+int RigidBodyType;
+int AttachmentType;
+
+int SensorType;
+int ActuatorType;
+int AgentType;
+
+int TransformType;
+int InfoType;
+
 int main(int argc, char** argv)
 {
   new_window(2560, 1440);
 
   // The initialisation
-  register_component(TransformType, &new_transform, &delete_transform);
-  register_component(InfoType, &new_info, &delete_info);
-  register_component(CreatureType, &new_creature, &delete_creature);
-  register_component(CameraType, &new_camera, &delete_camera);
-  register_component(RigidBodyType, &new_rigidbody, &delete_rigidbody);
+  ModelType = register_component(&new_model, &delete_model);
+  CameraType = register_component(&new_camera, &delete_camera);
+
+  RigidBodyType = register_component(&new_rigidbody, &delete_rigidbody);
+  AttachmentType = register_component(&new_attachment, &delete_attachment);
+
+  SensorType = register_component(&new_sensor, &delete_sensor);
+  ActuatorType = register_component(&new_actuator, &delete_actuator);
+  AgentType = register_component(&new_agent, &delete_agent);
+
+  InfoType = register_component(&new_info, &delete_info);
 
   register_system(&input_system, &input_init, &input_clean);
   register_system(&enemy_system, &enemy_init, &enemy_clean);
-
   register_system(&ai_system, &ai_init, &ai_clean);
   register_system(&physics_system, &physics_init, &physics_clean);
-
   register_system(&render_system, &render_init, &render_clean);
 
   int TextureType = register_resource_type(&load_texture, &delete_texture);
-  get_index(TextureType, "floor-tile.jpg");
+  load_resource(TextureType, "floor-tile.jpg");
+  load_resource(TextureType, "companion-cube.jpg");
+  load_resource(TextureType, "evil-eye-texture.jpg");
 
   add_entity(&player_template);
 
@@ -40,6 +55,5 @@ int main(int argc, char** argv)
   run();
   clean();
 
-  sleep(1);
   return 0;
 }

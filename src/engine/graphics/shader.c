@@ -17,17 +17,19 @@ unsigned int new_shader_program(char* program_name) {
   
   size_t len = strlen(program_name);
   len += sizeof(shader_path);
+  // for .vert/.frag file extension
+  len += 5;
   // for null character
   len += 1;
 
   // 3 characters .vs
-  char* vertex_shader_path = malloc((len+3) * sizeof(char));
+  char* vertex_shader_path = malloc((len) * sizeof(char));
 
   strcpy(vertex_shader_path, shader_path);
   strcat(vertex_shader_path, program_name);
   strcat(vertex_shader_path, ".vert");
 
-  char* fragment_shader_path = malloc((len+3) * sizeof(char));
+  char* fragment_shader_path = malloc((len) * sizeof(char));
   strcpy(fragment_shader_path, shader_path);
   strcat(fragment_shader_path, program_name);
   strcat(fragment_shader_path, ".frag");
