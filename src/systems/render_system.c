@@ -4,17 +4,16 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include "engine.h"
+
 #include "systems/systems.h"
 #include "systems/utils.h"
-#include "engine.h"
 #include "components/components.h"
 
 #ifndef NDEBUG
 #include <stdio.h>
 #endif
 
-unsigned int VBO;
-unsigned int VAO;
 unsigned int shader_program;
 
 unsigned int model_uniform;
@@ -27,10 +26,6 @@ unsigned int object_colour;
 unsigned int light_pos;
 unsigned int view_pos;
 
-unsigned int is_floor;
-unsigned int texture;
-
-GenIndex texture_id;
 
 void render_system(void) {
   // View matrix
@@ -67,117 +62,77 @@ void render_system(void) {
   glUniform3f(light_pos, 0.0f, 8.0f, 0.0f);
   glUniform3f(view_pos, camera_pos.x, camera_pos.y, camera_pos.z);
 
-  glUniform1i(is_floor, false);
-
   // draw player
   Mat4f player_trans = mat4f_translate(play_pos.x, play_pos.y, play_pos.z);
   glUniformMatrix4fv(model_uniform, 1, GL_FALSE, player_trans);
-  glBindVertexArray(VAO);
+
+
+  Model* model = get_component(player, ModelType);
+  unsigned int texture =  *((unsigned int*) get_resource(TextureType, model->texture));
+  glBindTexture(GL_TEXTURE_2D, texture);
+
+
+  Mesh* mesh = get_resource(MeshType, model->mesh);
+  glBindVertexArray(mesh->VAO);
   glDrawArrays(GL_TRIANGLES, 0, 36);
   free(player_trans);
 
-  // enemies are more red
+  // Draw all enemies
 
   EntityList enemies = predicate_mask(&is_enemy);
   for (int i = 0; i < enemies.len; i++) {
-    RigidBody* transform = get_component(enemies.entities[i], RigidBodyType);
+    RigidBody* body = get_component(enemies.entities[i], RigidBodyType);
 
-    Mat4f trans = mat4f_translate(transform->position.x, transform->position.y, transform->position.z);
+    Mat4f trans = mat4f_translate(body->position.x, body->position.y, body->position.z);
 
-    glUniform3f(object_colour, 1.0f, 0.0f, 0.0f);
     glUniformMatrix4fv(model_uniform, 1, GL_FALSE, trans);
+
+    Model* model = get_component(enemies.entities[i], ModelType);
+    Mesh* mesh = get_resource(MeshType, model->mesh);
+
+    glBindVertexArray(mesh->VAO);
+    unsigned int texture =  *((unsigned int*) get_resource(TextureType, model->texture));
+    glBindTexture(GL_TEXTURE_2D, texture);
 
     glDrawArrays(GL_TRIANGLES, 0, 36);
 
     free(trans);
   }
 
+  // Draw all static objects:
+  EntityList statics = predicate_mask(&is_static);
+  for (int i = 0; i < statics.len; i++) {
+    Model* model = get_component(statics.entities[i], ModelType);
+
+    Mesh* mesh = get_resource(MeshType, model->mesh);
+
+    glBindVertexArray(mesh->VAO);
+
+    unsigned int texture =  *((unsigned int*) get_resource(TextureType, model->texture));
+
+    Mat4f scale = mat4f_scale(model->scale.x, model->scale.y, model->scale.z);
+    Mat4f trans = mat4f_translate(model->position.x, model->position.y, model->position.z);
+    Mat4f model_mat = mat4f_multiply(scale, trans);
+
+
+    glBindTexture(GL_TEXTURE_2D, texture);
+
+    glUniformMatrix4fv(model_uniform, 1, GL_FALSE, model_mat);
+
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+
+    free(trans);
+    free(scale);
+    free(model_mat);
+  }
+
+
+
   display();
   poll_events();
-
-
-  // Draw ground plane
-  // the model matrix
-  Mat4f scale = mat4f_scale(100.0f, 1.0f, 100.0f);
-  Mat4f trans = mat4f_translate(0.0f, -1.0f, 0.0f);
-  Mat4f model = mat4f_multiply(scale, trans);
-
-  glUniform1i(is_floor, true);
-  glBindTexture(GL_TEXTURE_2D, texture);
-
-  // the plane should be grey
-  glUniform3f(object_colour, 0.6f, 0.6f, 0.6f);
-  glUniformMatrix4fv(model_uniform, 1, GL_FALSE, model);
-
-  glDrawArrays(GL_TRIANGLES, 0, 36);
-
-  free(trans);
-  free(scale);
-  free(model);
 }
 
 void render_init(void) {
-float vertices[] = {
-    // positions          // normals           // texture coords
-    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
-     0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  8.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  8.0f, 8.0f,
-     0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  8.0f, 8.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 8.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
-
-    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   0.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   8.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   8.0f, 8.0f,
-     0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   8.0f, 8.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   0.0f, 8.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   0.0f, 0.0f,
-
-    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  8.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  8.0f, 8.0f,
-    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 8.0f,
-    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 8.0f,
-    -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  8.0f, 0.0f,
-
-     0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  8.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  8.0f, 8.0f,
-     0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 8.0f,
-     0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 8.0f,
-     0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  8.0f, 0.0f,
-
-    -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 8.0f,
-     0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  8.0f, 8.0f,
-     0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  8.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  8.0f, 0.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 0.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 8.0f,
-
-    -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 8.0f,
-     0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  8.0f, 8.0f,
-     0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  8.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  8.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 8.0f
-};
-
-  glGenVertexArrays(1, &VAO);
-  glGenBuffers(1, &VBO);
-
-  glBindVertexArray(VAO);
-
-  glBindBuffer(GL_ARRAY_BUFFER, VBO);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-  glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-  glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-  glEnableVertexAttribArray(0);
-  glEnableVertexAttribArray(1);
-  glEnableVertexAttribArray(2);
-
-
   shader_program = new_shader_program("basic");
 
   model_uniform = get_uniform(shader_program, "model");
@@ -189,14 +144,7 @@ float vertices[] = {
 
   light_pos = get_uniform(shader_program, "light_pos");
   view_pos = get_uniform(shader_program, "view_pos");
-
-  is_floor = get_uniform(shader_program, "is_floor");
-  texture = get_uniform(shader_program, "our_texture");
-
-  texture_id = get_resource_id(0, "floor-tile.jpg");
 }
 
 void render_clean(void) {
-    glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
 }

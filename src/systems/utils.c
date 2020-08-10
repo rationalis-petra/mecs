@@ -1,4 +1,6 @@
 #include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "engine.h"
 #include "components/components.h"
@@ -22,13 +24,17 @@ bool is_enemy(int id) {
   return false;
 }
 
-char* stringify_state() {
+bool is_static(int id) {
+  return (!has_component(id, RigidBodyType)) && has_component(id, ModelType);
+}
+
+char* stringify_state(void) {
  // take the enemies, player and turn to string!
   char* tmp_state = calloc(100, sizeof(char));
   char* state = calloc(500, sizeof(char));
 
   int player = first_match(&is_player);
-  Transform* player_transform = get_component(player, TransformType);
+  RigidBody* player_transform = get_component(player, RigidBodyType);
   Vec3f player_position = player_transform->position;
   sprintf(state, "((%f %f %f)", player_position.x, player_position.y, player_position.z);
 
@@ -36,7 +42,7 @@ char* stringify_state() {
 
   for (int i = 0; i < enemies.len; i++) {
     int enemy = enemies.entities[i];
-    Transform* enemy_transform = get_component(enemy, TransformType);
+    RigidBody* enemy_transform = get_component(enemy, RigidBodyType);
     Vec3f enemy_position = enemy_transform->position;
 
     sprintf(tmp_state, "(%f %f %f)", enemy_position.x, enemy_position.y, enemy_position.z);

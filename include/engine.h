@@ -5,4 +5,5 @@
 #include "engine/graphics.h"
 #include "engine/resources.h"
 #include "engine/structures.h"
+#include "engine/resources/resource_types.h"
 #endif

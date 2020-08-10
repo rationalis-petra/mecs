@@ -18,12 +18,13 @@ void* load_texture(char* path) {
     strcat(resource_path, path);
 
     int width, height, nr_channels;
-    unsigned char* data = stbi_load(resource_path, &width, &height, &nr_channels, 0);
+    unsigned char* data = stbi_load(resource_path, &width, &height, &nr_channels, STBI_rgb);
     #ifndef NDEBUG
     if (!data) {
         perror( "error in load_texture: unable to load image from disk\n");
     }
     #endif
+    free(resource_path);
 
     // set the texture wrapping/filtering options (on the currently bound texture object)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);

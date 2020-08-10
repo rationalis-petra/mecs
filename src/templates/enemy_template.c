@@ -11,6 +11,7 @@
 void enemy_template(Template* enemy, va_list inpos) {
   enemy->components[InfoType] =  new_info();
   enemy->components[RigidBodyType] = new_rigidbody();
+  enemy->components[ModelType] = new_model();
 
   Info* info = enemy->components[InfoType];
   info->tags = EnemyTag;
@@ -18,8 +19,12 @@ void enemy_template(Template* enemy, va_list inpos) {
   strcpy(info->name, "Dave");
 
   RigidBody* rigid = enemy->components[RigidBodyType];
-  rigid->position.x = 0.0f;
-  rigid->position.y = 0.0f;
-  rigid->position.z = 0.0f;
+  rigid->position.x = va_arg(inpos, double);
+  rigid->position.y = va_arg(inpos, double);
+  rigid->position.z = va_arg(inpos, double);
 
+  Model* model = enemy->components[ModelType];
+  model->position = rigid->position;
+  model->texture = get_resource_id(TextureType, "angry.png");
+  model->mesh = get_resource_id(MeshType, "enemy");
 }

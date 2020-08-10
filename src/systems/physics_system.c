@@ -24,7 +24,7 @@ void physics_system(void) {
     // Step 4: Apply constraints
     // Step 5: Update position
 
-    EntityList physicals = component_mask(2, TransformType, RigidBodyType);
+    EntityList physicals = component_mask(1, RigidBodyType);
     for (int id = 0; id < physicals.len; id++) {
         RigidBody* rigidbody = get_component(id, RigidBodyType);
 
@@ -66,7 +66,7 @@ void physics_system(void) {
                 float ly = (o_centre.y + py - m_centre.y) / diff_vec.y;
                 float lz = (o_centre.z + pz - m_centre.z) / diff_vec.z;
 
-                float delta;
+                float delta = 0.0f;
                 if (lx > 0.0f && lx < 0.5f) {delta = 0.5f - lx;}
                 else if (ly > 0.0f && ly < 0.5f) {delta = 0.5f - ly;}
                 else if (lz > 0.0f && lz < 0.5f) {delta = 0.5f - lz;}

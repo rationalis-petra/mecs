@@ -89,6 +89,10 @@ void* get_component(int entity, int type) {
   return entities[type][entity];
 }
 
+int has_component(int entity, int type) {
+  return entities[type][entity] != NULL;
+}
+
 int register_component(void* (*new_function)(void), void (*delete_function)(void*)) {
 #ifndef NDEBUG
   if (entities_added) {
@@ -195,7 +199,6 @@ void clean(void) {
 
   // graphics
   //free_shaders();
-  //free_models();
 
   delete_window(0);
   pthread_exit(EXIT_SUCCESS);

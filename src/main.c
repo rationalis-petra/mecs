@@ -18,6 +18,9 @@ int AgentType;
 int TransformType;
 int InfoType;
 
+int TextureType;
+int MeshType;
+
 int main(int argc, char** argv)
 {
   new_window(2560, 1440);
@@ -41,15 +44,15 @@ int main(int argc, char** argv)
   register_system(&physics_system, &physics_init, &physics_clean);
   register_system(&render_system, &render_init, &render_clean);
 
-  int TextureType = register_resource_type(&load_texture, &delete_texture);
-  load_resource(TextureType, "floor-tile.jpg");
-  load_resource(TextureType, "companion-cube.jpg");
-  load_resource(TextureType, "evil-eye-texture.jpg");
+  TextureType = register_resource_type(&load_texture, &delete_texture);
+  MeshType = register_resource_type(&load_mesh, &delete_mesh);
 
   add_entity(&player_template);
 
   add_entity(&enemy_template, 4.0, 0.0, 4.0);
   add_entity(&enemy_template, -5.0, 0.0, 4.0);
+
+  add_entity(&floor_template);
 
   init();
   run();

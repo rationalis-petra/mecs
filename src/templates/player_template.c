@@ -10,11 +10,13 @@ void player_template(Template* player, va_list _args) {
   player->components[ModelType] = new_model();
   player->components[CameraType] = new_camera();
 
-  player->components[InfoType] = new_info();
   player->components[RigidBodyType] = new_rigidbody();
 
+  player->components[InfoType] = new_info();
+
   Model* model = player->components[ModelType];
-  model->texture = get_resource_id(ModelType, "companion-cube.jpg");
+  model->texture = get_resource_id(TextureType, "container.jpg");
+  model->mesh = get_resource_id(MeshType, "player");
   model->position.x = 0.0f;
   model->position.y = 0.0f;
   model->position.z = 0.0f;

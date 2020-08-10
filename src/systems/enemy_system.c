@@ -19,8 +19,6 @@ void enemy_system(void) {
     int enemy = enemies.entities[i];
 
     RigidBody* e_rigidbody = get_component(enemy, RigidBodyType);
-    //Info* info = (Info*) get_component(enemy, InfoType);
-    //Creature* creature = (Creature*) get_component(enemy, CreatureType);
 
     Vec3f diff = vec3f_difference(player_pos, e_rigidbody->position);
     diff.y = 0.0f;

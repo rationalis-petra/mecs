@@ -50,6 +50,10 @@ void delete_entity(int id);
  */
 void* get_component(int id, int type);
 
+/** @brief Returns a boolean indicating whether the component exists or is NULL
+ */
+int has_component(int id, int type);
+
 /** @brief Adds a component as a valid type to the component system.
  *
  * @details Takes 

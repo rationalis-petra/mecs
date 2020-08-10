@@ -85,12 +85,18 @@ GenIndex get_resource_id(int type, char* path) {
       }
       free = old_cap;
     }
-    index.index = free;
     generations[type][free]++;
+
+    index.generation = generations[type][free];
+    index.index = free;
 
     resources[type][free].resource = resource_loaders[type](path);
     resources[type][free].path = malloc(strlen(path) + 1);
     strcpy(resources[type][free].path, path);
+
+
+    // insert resource into
+    dict_insert(resource_names[type], path, index);
   }
   return index;
 }

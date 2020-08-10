@@ -6,5 +6,8 @@ bool is_enemy(int id);
 
 bool is_player(int id);
 
-char* stringify_state();
+bool is_static(int id);
+
+char* stringify_state(void);
+
 #endif

@@ -12,7 +12,6 @@ uniform vec3 light_pos;
 uniform vec3 view_pos;
 
 uniform sampler2D floor_texture;
-uniform int is_floor;
 
 void main()
 {
@@ -31,13 +30,8 @@ void main()
   vec3 specular = specular_strength * spec * light_colour;
 
   vec3 result;
-  if (is_floor == 0) {
-    result= (diffuse + ambient + specular) * object_colour;
-  }
-  else {
-    vec3 obj_tex_colour = texture(floor_texture, tex_coord).xyz;
-    result = (diffuse + ambient + specular) * obj_tex_colour;
-  }
+  vec3 obj_tex_colour = texture(floor_texture, tex_coord).xyz;
+  result = (diffuse + ambient + specular) * obj_tex_colour;
 
   FragColor = vec4(result, 1.0);
 }

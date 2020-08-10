@@ -19,7 +19,6 @@ add_library(game components/camera.c
                  components/rigidbody.c
                  components/model.c
                  components/info.c
-                 components/transform.c
                  components/attachment.c
                  components/sensor.c
                  components/actuator.c
@@ -31,5 +30,7 @@ add_library(game components/camera.c
                  systems/ai_system.c
                  systems/physics_system.c
                  systems/utils.c
+
                  templates/enemy_template.c
-                 templates/player_template.c)
+                 templates/player_template.c
+                 templates/floor_template.c)
