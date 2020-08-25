@@ -8,10 +8,10 @@
 #include "components/components.h"
 
 #include "systems/systems.h"
+#include "systems/physics.h"
 #include "systems/utils.h"
 
-const float friction_coefficient = 0.01f;
-int frame = 0;
+const float friction_coefficient = -0.01f;
 
 void physics_system(void) {
     UpdateArgs args = get_update_args();
@@ -24,64 +24,78 @@ void physics_system(void) {
     // Step 4: Apply constraints
     // Step 5: Update position
 
+    // Step 1: Calculate Force
     EntityList physicals = component_mask(1, RigidBodyType);
-    for (int id = 0; id < physicals.len; id++) {
-        RigidBody* rigidbody = get_component(id, RigidBodyType);
+    for (int i = 0; i < physicals.len; i++) {
+      int id = physicals.entities[i];
+      RigidBody *rigidbody = get_component(id, RigidBodyType);
 
-        // step 1: Calculate Force
-        Vec3f decel_force = vec3f_multiply(friction_coefficient, rigidbody->velocity);
-        Vec3f total_force = vec3f_sum(decel_force, rigidbody->force);
-        rigidbody->velocity = vec3f_sum(total_force, rigidbody->velocity);
+      // Collision (ground)
+      if (rigidbody->position.y < 0.0f) {
+	rigidbody->force = vec3f_sum(
+	    rigidbody->force, new_vec3f(0.0f, -rigidbody->position.y * 100, 0.0f));
+      }
+      else {
+	rigidbody->force = vec3f_sum(
+	    rigidbody->force, new_vec3f(0.0f, -9.8f, 0.0f));
+      }
 
-        if (rigidbody->position.y > 0.01f) {
-            rigidbody->velocity.y -= 9.8 * args.dt;
-        }
-        else {
-            rigidbody->velocity.y = rigidbody->velocity.y > 0 ? rigidbody->velocity.y : 0;
-        }
+      // Collision (other rigidbodies)
+      for (int j = 0; j < physicals.len; j++) {
+	int id2 = physicals.entities[j];
+	if (id == id2) continue;
 
-        rigidbody->position = vec3f_sum(rigidbody->position, vec3f_multiply(args.dt, rigidbody->velocity));
-        if (rigidbody->position.y < 0) { rigidbody->position.y = 0; }
+	RigidBody *rigidbody2 = get_component(id2, RigidBodyType);
+
+	Vec3f collision_force = sat_test(rigidbody, rigidbody2);
+	collision_force = vec3f_multiply(500.0f, collision_force);
+
+	if (collision_force.x != 0 || collision_force.y != 0 || collision_force.z != 0) {
+	  
+	rigidbody2->force = vec3f_sum(collision_force, rigidbody->force);
+	rigidbody->force = vec3f_sum(vec3f_multiply(-1.0f, collision_force),
+				      rigidbody2->force);
+	}
+      }
+
+      // apply damping
+      Vec3f decel_force = vec3f_multiply(friction_coefficient, rigidbody->velocity);
+      rigidbody->force = vec3f_sum(decel_force, rigidbody->force);
+    }
+
+    for (int i = 0; i < physicals.len; i++) {
+      int id = physicals.entities[i];
+
+      // Apply forces, then reset forces to 0
+      RigidBody *rigidbody = get_component(id, RigidBodyType);
+      rigidbody->velocity = vec3f_sum(vec3f_multiply(args.dt, rigidbody->force),
+				      rigidbody->velocity);
+
+      rigidbody->force.x = 0.0f;
+      rigidbody->force.y = 0.0f;
+      rigidbody->force.z = 0.0f;
+
+      // Update position
+      rigidbody->position = vec3f_sum(
+	  rigidbody->position, vec3f_multiply(args.dt, rigidbody->velocity));
 
 
-        Vec3f m_centre = rigidbody->position;
-        for (int id2 = 0; id2 < physicals.len; id2++) {
-            if (id == id2) continue;
-            RigidBody* rigidbody2 = get_component(id2, RigidBodyType);
-            Vec3f o_centre = rigidbody2->position;
 
-            // we test each of the following for bounding box overlap
-            // we consider them to be unit cubes
-            Vec3f diff_vec = vec3f_difference(o_centre, m_centre);
-            if (fabs(diff_vec.x) < 1.0f &&
-                fabs(diff_vec.y) < 1.0f &&
-                fabs(diff_vec.z) < 1.0f) {
-                // we want to solve the equation for the intersectino of a line with
-                // an axis-aligned plane - plane depends on sign of diff_vec
-                float px = diff_vec.x < 0.0f ? 0.5f : -0.5f;
-                float py = diff_vec.y < 0.0f ? 0.5f : -0.5f;
-                float pz = diff_vec.z < 0.0f ? 0.5f : -0.5f;
+    }
 
-                float lx = (o_centre.x + px - m_centre.x) / diff_vec.x;
-                float ly = (o_centre.y + py - m_centre.y) / diff_vec.y;
-                float lz = (o_centre.z + pz - m_centre.z) / diff_vec.z;
+    // sync rigidbody & model positions
+    EntityList rendered = component_mask(2, RigidBodyType, ModelType);
+    for (int id = 0; id < rendered.len; id++) {
+      RigidBody *rigidbody = get_component(id, RigidBodyType);
+      Model *model = get_component(id, ModelType);
 
-                float delta = 0.0f;
-                if (lx > 0.0f && lx < 0.5f) {delta = 0.5f - lx;}
-                else if (ly > 0.0f && ly < 0.5f) {delta = 0.5f - ly;}
-                else if (lz > 0.0f && lz < 0.5f) {delta = 0.5f - lz;}
+      model->position.x = rigidbody->position.x;
+      model->position.y = rigidbody->position.y;
+      model->position.z = rigidbody->position.z;
 
-                rigidbody2->position = vec3f_sum(o_centre, vec3f_multiply(delta, diff_vec));
-                rigidbody->position = vec3f_sum(m_centre, vec3f_multiply(-delta, diff_vec));
-            }
-        }
     }
 }
 
-void physics_init(void) {
+void physics_init(void) {}
 
-}
-
-void physics_clean(void) {
-   
-}
+void physics_clean(void) {}

@@ -30,15 +30,15 @@ unsigned int view_pos;
 void render_system(void) {
   // View matrix
   int player = first_match(&is_player);
-  RigidBody* rigid = (RigidBody*) get_component(player, RigidBodyType);
-  Camera* camera = (Camera*) get_component(player, CameraType);
+  Model* pmodel = get_component(player, ModelType);
+  Camera* camera = get_component(player, CameraType);
 
-  Vec3f play_pos = rigid->position;
+  Vec3f play_pos = pmodel->position;
 
 
-  Vec3f delta = {{{ camera->r * -cos(camera->theta) * cos(camera->phi),
-		    camera->r * sin(camera->theta),
-		    camera->r * -cos(camera->theta) * sin(camera->phi)}}};
+  Vec3f delta = {{{ camera->r * -cosf(camera->theta) * cosf(camera->phi),
+		    camera->r *  sinf(camera->theta),
+		    camera->r * -cosf(camera->theta) * sinf(camera->phi)}}};
 
   Vec3f camera_pos = vec3f_sum(delta, play_pos);
   Vec3f camera_target = play_pos;
