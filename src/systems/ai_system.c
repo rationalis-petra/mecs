@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#ifdef linux
 #include <unistd.h>
 #include <signal.h>
 
@@ -9,6 +11,12 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <pthread.h>
+
+#elif defined(_WIN32) || defined(_WIN64)
+
+#include <windows.h>
+
+#endif
 
 #include "engine.h"
 #include "components/components.h"
