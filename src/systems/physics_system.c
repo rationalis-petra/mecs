@@ -33,7 +33,7 @@ void physics_system(void) {
       // Collision (ground)
       if (rigidbody->position.y < 0.0f) {
 	rigidbody->force = vec3f_sum(
-	    rigidbody->force, new_vec3f(0.0f, -rigidbody->position.y * 100, 0.0f));
+	    rigidbody->force, new_vec3f(0.0f, -rigidbody->position.y * 500, 0.0f));
       }
       else {
 	rigidbody->force = vec3f_sum(

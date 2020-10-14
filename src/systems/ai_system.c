@@ -48,7 +48,7 @@ void communicate_with_ai(void) {
 
   while(!shared_state.end) {
     while (!(shared_state.ready_send || shared_state.end)) {
-       sleep (0.1);
+       sleep (1u);
     }
     if (shared_state.end) {
       break;
