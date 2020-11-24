@@ -1,137 +1,157 @@
 [
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/enigma.dir/src/main.c.o   -c /home/connorfr/Projects/Programming/enigma/src/main.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/main.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -std=gnu++2a -o CMakeFiles/enigma.dir/src/main.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/main.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/main.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/components/camera.c.o   -c /home/connorfr/Projects/Programming/enigma/src/components/camera.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/components/camera.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/components/camera.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/components/camera.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/components/camera.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/components/rigidbody.c.o   -c /home/connorfr/Projects/Programming/enigma/src/components/rigidbody.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/components/rigidbody.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/components/rigidbody.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/components/rigidbody.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/components/rigidbody.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/components/creature.c.o   -c /home/connorfr/Projects/Programming/enigma/src/components/creature.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/components/creature.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/components/model.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/components/model.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/components/model.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/components/info.c.o   -c /home/connorfr/Projects/Programming/enigma/src/components/info.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/components/info.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/components/info.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/components/info.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/components/info.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/components/transform.c.o   -c /home/connorfr/Projects/Programming/enigma/src/components/transform.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/components/transform.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/components/attachment.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/components/attachment.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/components/attachment.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/systems/enemy_system.c.o   -c /home/connorfr/Projects/Programming/enigma/src/systems/enemy_system.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/systems/enemy_system.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/components/sensor.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/components/sensor.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/components/sensor.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/systems/input_system.c.o   -c /home/connorfr/Projects/Programming/enigma/src/systems/input_system.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/systems/input_system.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/components/actuator.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/components/actuator.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/components/actuator.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/systems/render_system.c.o   -c /home/connorfr/Projects/Programming/enigma/src/systems/render_system.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/systems/render_system.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/components/agent.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/components/agent.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/components/agent.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/systems/ai_system.c.o   -c /home/connorfr/Projects/Programming/enigma/src/systems/ai_system.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/systems/ai_system.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/systems/enemy_system.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/systems/enemy_system.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/systems/enemy_system.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/systems/physics_system.c.o   -c /home/connorfr/Projects/Programming/enigma/src/systems/physics_system.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/systems/physics_system.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/systems/input_system.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/systems/input_system.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/systems/input_system.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/systems/utils.c.o   -c /home/connorfr/Projects/Programming/enigma/src/systems/utils.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/systems/utils.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/systems/render_system.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/systems/render_system.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/systems/render_system.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/templates/enemy_template.c.o   -c /home/connorfr/Projects/Programming/enigma/src/templates/enemy_template.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/templates/enemy_template.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/systems/ai_system.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/systems/ai_system.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/systems/ai_system.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine    -o CMakeFiles/game.dir/templates/player_template.c.o   -c /home/connorfr/Projects/Programming/enigma/src/templates/player_template.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/templates/player_template.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/systems/physics_system.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/systems/physics_system.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/systems/physics_system.cpp"
+},
+{
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/systems/physics/sat_test.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/systems/physics/sat_test.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/systems/physics/sat_test.cpp"
+},
+{
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/systems/utils.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/systems/utils.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/systems/utils.cpp"
+},
+{
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/templates/enemy_template.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/templates/enemy_template.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/templates/enemy_template.cpp"
+},
+{
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/templates/player_template.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/templates/player_template.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/templates/player_template.cpp"
+},
+{
+  "directory": "/home/connorfr/Projects/Programming/enigma/build/src",
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -I/home/connorfr/Projects/Programming/enigma/include/engine -std=gnu++2a -o CMakeFiles/game.dir/templates/floor_template.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/templates/floor_template.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/templates/floor_template.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/core/base.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/core/base.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/core/base.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -std=gnu++2a -o CMakeFiles/engine.dir/core/world.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/engine/core/world.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/core/world.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/core/query.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/core/query.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/core/query.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -std=gnu++2a -o CMakeFiles/engine.dir/core/entity.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/engine/core/entity.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/core/entity.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/core/resources.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/core/resources.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/core/resources.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -std=gnu++2a -o CMakeFiles/engine.dir/core/query.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/engine/core/query.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/core/query.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/core/types.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/core/types.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/core/types.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -std=gnu++2a -o CMakeFiles/engine.dir/core/resources.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/engine/core/resources.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/core/resources.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/graphics/mesh.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/graphics/mesh.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/graphics/mesh.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -std=gnu++2a -o CMakeFiles/engine.dir/core/types.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/engine/core/types.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/core/types.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/graphics/shader.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/graphics/shader.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/graphics/shader.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -std=gnu++2a -o CMakeFiles/engine.dir/graphics/shader.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/engine/graphics/shader.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/graphics/shader.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/graphics/window.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/graphics/window.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/graphics/window.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -std=gnu++2a -o CMakeFiles/engine.dir/graphics/window.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/engine/graphics/window.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/graphics/window.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/math/matmath.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/math/matmath.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/math/matmath.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -std=gnu++2a -o CMakeFiles/engine.dir/math/matmath.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/engine/math/matmath.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/math/matmath.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/math/vecmath.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/math/vecmath.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/math/vecmath.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -std=gnu++2a -o CMakeFiles/engine.dir/math/vecmath.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/engine/math/vecmath.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/math/vecmath.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/resources/texture.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/resources/texture.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/resources/texture.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -std=gnu++2a -o CMakeFiles/engine.dir/resources/texture.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/engine/resources/texture.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/resources/texture.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/structures/int_list.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/structures/int_list.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/structures/int_list.c"
-},
-{
-  "directory": "/home/connorfr/Projects/Programming/enigma/build/src/engine",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/engine.dir/structures/gen_dict.c.o   -c /home/connorfr/Projects/Programming/enigma/src/engine/structures/gen_dict.c",
-  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/structures/gen_dict.c"
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/g++  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -std=gnu++2a -o CMakeFiles/engine.dir/resources/mesh.cpp.o -c /home/connorfr/Projects/Programming/enigma/src/engine/resources/mesh.cpp",
+  "file": "/home/connorfr/Projects/Programming/enigma/src/engine/resources/mesh.cpp"
 },
 {
   "directory": "/home/connorfr/Projects/Programming/enigma/build/libs",
-  "command": "/usr/bin/cc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include    -o CMakeFiles/glad.dir/src/glad.c.o   -c /home/connorfr/Projects/Programming/enigma/libs/src/glad.c",
+  "command": "/nix/store/mimzy2k99xq842k59zl3f2z2s34rcq5b-gcc-wrapper-9.3.0/bin/gcc  -I/home/connorfr/Projects/Programming/enigma/include -I/home/connorfr/Projects/Programming/enigma/libs/include -g -Wall -o CMakeFiles/glad.dir/src/glad.c.o -c /home/connorfr/Projects/Programming/enigma/libs/src/glad.c",
   "file": "/home/connorfr/Projects/Programming/enigma/libs/src/glad.c"
 }
 ]

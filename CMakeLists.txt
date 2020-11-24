@@ -1,6 +1,7 @@
 # specify the minimum version required for CMake
 
 cmake_minimum_required(VERSION 3.10)
+set (CMAKE_CXX_STANDARD 20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS on)
 set( CMAKE_C_FLAGS "-g -Wall" )
 # Projectn's Name
@@ -20,7 +21,7 @@ include_directories(
 add_subdirectory(src)
 add_subdirectory(libs)
 
-add_executable(enigma src/main.c)
+add_executable(enigma src/main.cpp)
 
 target_link_libraries(enigma game engine glad)
 target_link_libraries(enigma glfw GL X11 pthread Xrandr Xi dl m)

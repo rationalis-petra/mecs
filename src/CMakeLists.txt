@@ -15,23 +15,23 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/libs/include/)
 
 
-add_library(game components/camera.c
-                 components/rigidbody.c
-                 components/model.c
-                 components/info.c
-                 components/attachment.c
-                 components/sensor.c
-                 components/actuator.c
-                 components/agent.c
+add_library(game components/camera.cpp
+                 components/rigidbody.cpp
+                 components/model.cpp
+                 components/info.cpp
+                 components/attachment.cpp
+                 components/sensor.cpp
+                 components/actuator.cpp
+                 components/agent.cpp
 
-                 systems/enemy_system.c
-                 systems/input_system.c
-                 systems/render_system.c
-                 systems/ai_system.c
-                 systems/physics_system.c
-		 systems/physics/sat_test.c
-                 systems/utils.c
+                 systems/enemy_system.cpp
+                 systems/input_system.cpp
+                 systems/render_system.cpp
+                 #systems/ai_system.cpp
+                 systems/physics_system.cpp
+		 systems/physics/sat_test.cpp
+                 systems/utils.cpp
 
-                 templates/enemy_template.c
-                 templates/player_template.c
-                 templates/floor_template.c)
+                 templates/enemy_template.cpp
+                 templates/player_template.cpp
+                 templates/floor_template.cpp)
