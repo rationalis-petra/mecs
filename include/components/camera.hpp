@@ -1,6 +1,8 @@
 #ifndef __CAMERA_H_
 #define __CAMERA_H_
 
+#include "engine.hpp"
+
 ///@addtogroup Components
 ///@{
 
@@ -10,7 +12,7 @@
  * @details The camera struct contains information about it's position relative
  *          to a target
  */
-class Camera {
+class Camera : public Component {
 public:
   static unsigned type_idx;
   

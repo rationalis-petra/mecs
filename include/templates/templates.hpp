@@ -3,8 +3,8 @@
 
 #include "engine.hpp"
 
-void enemy_template(World& world, float, float, float);
-void player_template(World& world);
-void floor_template(World& world);
+void make_enemy(World& world, float, float, float);
+void make_player(World& world);
+void make_floor(World& world);
 
 #endif

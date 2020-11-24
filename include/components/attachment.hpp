@@ -1,5 +1,5 @@
-#ifndef __ATTACHMENT_H_
-#define __ATTACHMENT_H_
+#ifndef __ATTACHMENT_HPP_
+#define __ATTACHMENT_HPP_
 
 #include "engine.hpp"
 
@@ -14,9 +14,9 @@
  *          can be on one element, these tuples are stored in a list;
  */
 
-class AttachmentElement{
+class AttachmentElement : public Component {
 public:
-  unsigned type_idx;
+  static unsigned int type_idx;
   Entity id;
   Vec3f displacement;
 

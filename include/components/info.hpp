@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include "engine.hpp"
+
 /**@file 
  * @brief the info component stores useful yet miscellaneous information
  *
@@ -23,7 +25,7 @@ enum Tag {
 
 /**@brief The info struct stored miscellaneous information about an entity
  */
-class Info {
+class Info : public Component {
 public:
   static unsigned type_idx;
   

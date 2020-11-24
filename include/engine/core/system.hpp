@@ -1,3 +1,6 @@
+#ifndef __SYSTEM_HPP
+#define __SYSTEM_HPP
+
 /**@bried An abstract class for systems to inherit from
  */
 
@@ -8,3 +11,5 @@ public:
   virtual void clean() = 0;
   virtual void run(World& world, UpdateArgs args) = 0;
 };
+
+#endif

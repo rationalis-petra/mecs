@@ -1,6 +1,9 @@
 #ifndef __RESOURCES_H
 #define __RESOURCES_H
 
+
+#include <string>
+
 #include "types.hpp"
 
 /** @file
@@ -34,7 +37,7 @@ int register_resource_type(void* (resource_loader)(const char* path), void (reso
  *
  * @param[in] args: any additional arguments to provide to the resource loader
  */
-GenIndex get_resource_id(int type, const char* path);
+GenIndex get_resource_id(int type, std::string path);
 
 /** @brief An alias for get_resource_id, but doesn't return a GenIndex*/
 void load_resource(int type, char* path);

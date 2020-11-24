@@ -1,5 +1,6 @@
 add_library(engine core/world.cpp
                    core/entity.cpp
+                   core/component.cpp
                    core/resources.cpp
                    core/types.cpp
                    graphics/shader.cpp

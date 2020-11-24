@@ -12,7 +12,10 @@
  * @details The camera struct contains information about it's position relative
  *          to a target
  */
-struct RigidBody {
+class RigidBody : public Component {
+public:
+  static unsigned type_idx;
+
   float mass;      ///< Standard newtonian mass
   Vec3f position;  ///< Store the postion - allows visual position changes (via Model) without changing the 'physics' position
   Vec3f velocity;  ///< Change in position w.r.t time

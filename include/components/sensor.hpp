@@ -1,6 +1,8 @@
 #ifndef __SENSOR_H_
 #define __SENSOR_H_
 
+#include "engine.hpp"
+
 ///@addtogroup Components
 ///@{
 
@@ -13,7 +15,9 @@
 typedef enum {RadarSensor, GPSSensor, MicrophoneSensor, CameraSensor} TypeofSensor;
 
 
-struct Sensor {
+class Sensor : public Component {
+public:
+  static unsigned type_idx;
   TypeofSensor type; ///< The type of sensor - Camera, Radar, etc.
   void* info;        ///< A pointer to the information output by the sensor.
   int machine;       ///< An ID which identifies which 'machine' the sensor is a part of

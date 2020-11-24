@@ -9,7 +9,9 @@
 ///@{
 
 
-struct Model{
+class Model : public Component {
+public:
+  static unsigned type_idx;
   ResourceID mesh;
   ResourceID texture;
   // Resource normal map

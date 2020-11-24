@@ -6,7 +6,7 @@
 
 using std::string;
 
-void player_template(World& world) {
+void make_player(World& world) {
   Entity player = world.create_entity()
     .add_component<Model>(new Model("container.jpt", "player", {0, 0, 0}))
     .add_component<RigidBody>(new RigidBody(0, 0, 0))

@@ -52,20 +52,6 @@ Entity World::create_entity() {
 }
 
 
-template <typename T>
-void World::register_component() {
-  // subclass of Component
-  T::type_idx = num_components;
-  num_components++;
-
-  entities.push_back(vector(entity_capacity));
-
-  for (int i = 0; i < entity_capacity; i++) {
-    entities[T::type_idx][i] = std::nullopt;
-  }
-}
-
-
 /*
  * SYSTEM CODE
  */

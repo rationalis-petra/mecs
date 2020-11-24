@@ -1,3 +1,6 @@
+#ifndef __WORLD_HPP
+#define __WORLD_HPP
+
 #include <optional>
 #include <vector>
 
@@ -32,7 +35,20 @@ public:
   ~World();
 
   Entity create_entity();
-  template<typename T> void register_component();
+  template <typename T>
+  void register_component() {
+    // subclass of Component
+    T::type_idx = num_components;
+    num_components++;
+
+    entities.push_back(std::vector<std::optional<Component*>>(entity_capacity));
+
+    for (int i = 0; i < entity_capacity; i++) {
+      entities[T::type_idx][i] = std::nullopt;
+    }
+  }
+
+
 
   void register_system(System* s);
   void stop();
@@ -43,3 +59,5 @@ public:
   std::vector<Entity> predicate_mask(bool (*predicate)(Entity));
   std::optional<Entity> first_match(bool (*predicate)(Entity));
 };
+
+#endif
