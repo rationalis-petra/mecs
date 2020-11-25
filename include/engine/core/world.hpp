@@ -17,9 +17,7 @@ private:
   std::vector<std::vector<std::optional<Component*>>> entities;
   std::vector<unsigned> free_indices;
 
-  int entity_capacity;
-  int entity_len;
-  int num_components;
+  unsigned int entity_len;
 
   std::vector<System*> systems;
 
@@ -38,12 +36,11 @@ public:
   template <typename T>
   void register_component() {
     // subclass of Component
-    T::type_idx = num_components;
-    num_components++;
+    T::type_idx = entities.size();
 
-    entities.push_back(std::vector<std::optional<Component*>>(entity_capacity));
+    entities.push_back(std::vector<std::optional<Component*>>(entity_len));
 
-    for (int i = 0; i < entity_capacity; i++) {
+    for (unsigned i = 0; i < entity_len; i++) {
       entities[T::type_idx][i] = std::nullopt;
     }
   }

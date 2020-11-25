@@ -17,7 +17,7 @@ using std::string;
 using std::list;
 
 struct Resource {
-  char* path;
+  const char* path;
   void* resource;
 };
 
@@ -29,10 +29,8 @@ struct Resource {
  * with the correct generation may access, and generations are incremented
  * each time a resource is deleted
  */
-Resource** resources = NULL;              // the actual 2d array containing resources
-unsigned int** generations = NULL;        // for use in generational indexing (above)
-unsigned int num_resource_types = 0;      // stores the number of columns
-unsigned int* resource_capacities = NULL; // Stores the sizes of each column
+vector<vector<Resource>> resources = vector<vector<Resource>>(0);              // the actual 2d array containing resources
+vector<vector<unsigned>> generations = vector<vector<unsigned>>(0);
 
 vector<list<unsigned>> free_indices;
 vector<unordered_map<string, GenIndex>> resource_names;
@@ -42,18 +40,9 @@ vector<void (*)(void*)> resource_destructors = vector<void (*)(void*)>(0);
 
 int register_resource_type(void* (*resource_loader)(const char* path), void (*resource_destructor)(void* resource)) {
 
-  // allocate the memory & adjust capacity
-  unsigned int index = num_resource_types;
-  num_resource_types++;
-  resource_capacities = (unsigned int*) realloc(resource_capacities, sizeof(int) * num_resource_types);
-
-  resources = (Resource**) realloc(resources, sizeof(Resource*) * num_resource_types);
-  generations = (unsigned int**) realloc(generations, sizeof(int*) * num_resource_types);
-
   // now populate the newly allocated memoryinfo
-  resource_capacities[index] = 0;
-  resources[index] = NULL;
-  generations[index] = NULL;
+  resources.push_back(vector<Resource>(0));
+  generations.push_back(vector<unsigned>(0));
 
   free_indices.push_back(list<unsigned>());
   resource_names.push_back(unordered_map<string, GenIndex>());
@@ -62,51 +51,51 @@ int register_resource_type(void* (*resource_loader)(const char* path), void (*re
   resource_destructors.push_back(resource_destructor);
 
   // return the index of this type
-  return index;
+  return resources.size() - 1;
 }
 
 
 GenIndex get_resource_id(int type, string path) {
 #ifndef NDEBUG
-  if (type >= num_resource_types) {
-    fprintf(stderr, "error, attempted to get type of type %d, but there are only %d types registered. Undefined behaviour", type, num_resource_types);
+  if (type >= resources.size()) {
+    fprintf(stderr, "error, attempted to get type of type %d, but there are only %d types registered. Undefined behaviour", type, (int) resources.size());
   }
 #endif
 
   GenIndex index;
   // if failed
   try {
-    index = resource_names[type].at(path);
+    index = resource_names.at(type).at(path);
   }
   catch (std::out_of_range& e) {
-    // the resource does not exist -
-    int free;
+    // the resource does not exist - so we try and load it 
+    Resource resource;
+    resource.resource = resource_loaders[type](path.c_str());
+    resource.path = path.c_str();
+
+
+    // now, we need to figure otu where to store it...
+    // case 1: there are free slots in the array
     if (!free_indices[type].empty()) {
-      free = free_indices[type].front();
+      unsigned free = free_indices[type].front();
       free_indices[type].pop_front();
-      // there are no free slots - double the size of the resource array
-      int old_cap = resource_capacities[type];
-      resource_capacities[type] = old_cap == 0 ? 10 : old_cap * 2;
-      resources[type] = (Resource*) realloc(resources[type], sizeof(Resource) * resource_capacities[type]);
-      generations[type] = (unsigned int*) realloc(generations[type], sizeof(int) * resource_capacities[type]);
 
-      memset(generations[type] + old_cap, 0, sizeof(int) * resource_capacities[type]);
-      for (unsigned  i = old_cap + 1; i < resource_capacities[type]; i++) {
-        free_indices[type].push_front(i);
-      }
-      free = old_cap;
+      index.index = free;
+      generations[type][index.index]++;
+      index.generation = generations.at(type).at(free);
+
+      resources[type][free] = resource;
+
+      // case 2: the vector is full, so we push_back
+    } else {
+      // there are no free slots, so we are inserting 
+      index.index = resources[type].size();
+      index.generation = 0;
+      generations[type].push_back(0);
+
+      resources[type].push_back(resource);
     }
-    generations[type][free]++;
 
-    index.generation = generations[type][free];
-    index.index = free;
-
-    resources[type][free].resource = resource_loaders[type](path.c_str());
-    resources[type][free].path = (char*) malloc(strlen(path.c_str()) + 1);
-    strcpy(resources[type][free].path, path.c_str());
-
-
-    // insert resource into
     resource_names[type][path] = index;
   }
   return index;
@@ -118,11 +107,13 @@ void load_resource(int type, char* path) {
 
 void* get_resource(int type, GenIndex resource_id) {
 #ifndef NDEBUG
-  if (type >= num_resource_types) {
-    fprintf(stderr, "error, attempted to get type %d, but there are only %d types registered. Undefined behaviour", type, num_resource_types);
+  if (type >= resources.size()) {
+    fprintf(stderr, "error, attempted to get type %d, but there are only %d types registered. Undefined behaviour", type, (int) resources.size());
   }
-  if (resource_id.index >= resource_capacities[type]) {
-    fprintf(stderr, "error, attempted to get index %d, byt the array has size %d. Undefined behaviour", resource_id.index, resource_capacities[type]);
+  if (resource_id.index >= resources[type].size()) {
+    fprintf(stderr, "error, attempted to get index %d, byt the array has size %d. Undefined behaviour",
+            resource_id.index,
+            (int) resources[type].size());
   }
 #endif
 

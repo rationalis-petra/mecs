@@ -18,13 +18,11 @@ using std::reference_wrapper;
 World::World() {
   entities = vector<vector<optional<Component*>>>(0);
   free_indices = vector<unsigned>(0);
-  entity_capacity = 0;
   entity_len = 0;
 
-  systems = vector<System*>(0);
 
-  int num_components = 0;
-  bool running = false;
+  systems = vector<System*>(0);
+  running = false;
 
 #ifndef NDEBUG
   bool entities_added = false;
@@ -42,6 +40,11 @@ Entity World::create_entity() {
   unsigned id;
   if (free_indices.empty()) {
     id = entity_len++;
+
+    // initialise to null
+    for (vector<optional<Component*>>& component_vec : entities) {
+      component_vec.push_back(std::nullopt);
+    }
   }
   else {
     id = free_indices[free_indices.size() - 1];

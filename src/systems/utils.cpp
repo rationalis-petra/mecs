@@ -17,8 +17,8 @@ bool is_player(Entity e) {
 
 bool is_enemy(Entity e) {
   optional<Info*> info = e.get_component<Info>();
-  if (info.has_value()) {
-    if (info.value()->tags & EnemyTag)
+  if (info) {
+    if ((*info.value()).tags & EnemyTag)
       return true;
   }
   return false;

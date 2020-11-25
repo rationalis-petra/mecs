@@ -1,3 +1,4 @@
+#include <iostream>
 #include <stdlib.h>
 #include <string.h>
 #include <glad/glad.h>
@@ -21,7 +22,8 @@ void* load_texture(const char* path) {
     unsigned char* data = stbi_load(resource_path, &width, &height, &nr_channels, STBI_rgb);
     #ifndef NDEBUG
     if (!data) {
-        perror( "error in load_texture: unable to load image from disk\n");
+      std::cerr << "error in load_texture: unable to load image from disk: " << path  << std::endl;
+       
     }
     #endif
     free(resource_path);

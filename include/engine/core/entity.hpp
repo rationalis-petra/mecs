@@ -21,7 +21,7 @@ public:
   template<typename T>
   Entity& add_component(T* component) {
 #ifndef NDEBUG
-    if (world.entities[T::type_idx][idx] != std::nullopt) {
+    if (world.entities[T::type_idx][idx]) {
       std::cerr << "Error in fn Enitty::add_component: component already exists" << std::endl;
     }
 #endif

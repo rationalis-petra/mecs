@@ -43,11 +43,8 @@ extern unsigned int num_models;
 
 
 typedef struct Resource Resource;
-extern Resource** resources;
-extern unsigned int num_resource_types;
-extern unsigned int* num_resources;
-extern unsigned int* resources_capacity;
-extern unsigned int** generations;
+extern std::vector<std::vector<Resource>> resources;
+extern std::vector<std::vector<unsigned int>> generations;
 
 extern std::vector<void* (*)(const char*)> resource_loaders;
 extern std::vector<void (*)(void*)> resource_destructors;
