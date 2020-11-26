@@ -1,10 +1,11 @@
-#include <stdlib.h>
-#include <string.h>
+#include <string>
 
 #include "glad/glad.h"
 
 #include "engine/resources.hpp"
 
+
+using std::string;
 
 float floor_vertices[] = {
     // positions          // normals           // texture coords
@@ -95,18 +96,16 @@ float other_vertices[] = {
     -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f
 };
 
-void* load_mesh(const char* path) {
-  Mesh* mesh = (Mesh*) malloc(sizeof(Mesh));
+Mesh::Mesh(string path) {
+  glGenVertexArrays(1, &(VAO));
+  glGenBuffers(1, &(VBO));
 
-  glGenVertexArrays(1, &(mesh->VAO));
-  glGenBuffers(1, &(mesh->VBO));
+  glBindVertexArray(VAO);
 
-  glBindVertexArray(mesh->VAO);
+  glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-  glBindBuffer(GL_ARRAY_BUFFER, mesh->VBO);
-
-  mesh->num_triangles = 36;
-  if (strcmp(path, "floor") == 0) {
+  num_triangles = 36;
+  if (path == "floor") {
     glBufferData(GL_ARRAY_BUFFER, sizeof(floor_vertices), floor_vertices, GL_STATIC_DRAW);
   }
   else {
@@ -119,13 +118,9 @@ void* load_mesh(const char* path) {
   glEnableVertexAttribArray(0);
   glEnableVertexAttribArray(1);
   glEnableVertexAttribArray(2);
-
-  return mesh;
 }
 
-void delete_mesh(void* _mesh) {
-  Mesh* mesh = (Mesh*) _mesh;
-  glDeleteVertexArrays(1, &(mesh->VAO));
-  glDeleteBuffers(1, &(mesh->VBO));
-  free(mesh);
+Mesh::~Mesh() {
+  glDeleteVertexArrays(1, &(VAO));
+  glDeleteBuffers(1, &(VBO));
 }

@@ -54,10 +54,10 @@ void RenderSystem::run(World& world, UpdateArgs args) {
   glUniformMatrix4fv(model_uniform, 1, GL_FALSE, player_trans);
 
 
-  unsigned int texture =  *((unsigned int*) get_resource(TextureType, player_model.texture));
-  glBindTexture(GL_TEXTURE_2D, texture);
+  Texture* t = player_model.texture.value<Texture>();
+  glBindTexture(GL_TEXTURE_2D, t->texture);
 
-  Mesh* mesh = (Mesh*) get_resource(MeshType, player_model.mesh);
+  Mesh* mesh = player_model.mesh.value<Mesh>();
   glBindVertexArray(mesh->VAO);
   glDrawArrays(GL_TRIANGLES, 0, 36);
   free(player_trans);
@@ -73,11 +73,11 @@ void RenderSystem::run(World& world, UpdateArgs args) {
     Model& model = *enemy.get_component<Model>().value();
     glUniformMatrix4fv(model_uniform, 1, GL_FALSE, trans);
 
-    Mesh* mesh = (Mesh*) get_resource(MeshType, model.mesh);
+    Mesh* mesh = model.mesh.value<Mesh>();
 
     glBindVertexArray(mesh->VAO);
-    unsigned int texture =  *((unsigned int*) get_resource(TextureType, model.texture));
-    glBindTexture(GL_TEXTURE_2D, texture);
+    Texture* t = model.texture.value<Texture>();
+    glBindTexture(GL_TEXTURE_2D, t->texture);
 
     glDrawArrays(GL_TRIANGLES, 0, 36);
 
@@ -89,18 +89,18 @@ void RenderSystem::run(World& world, UpdateArgs args) {
   for (Entity static_entity : statics) {
     Model& model = *static_entity.get_component<Model>().value();
 
-    Mesh* mesh = (Mesh*) get_resource(MeshType, model.mesh);
+    Mesh* mesh = model.mesh.value<Mesh>();
 
     glBindVertexArray(mesh->VAO);
 
-    unsigned int texture =  *((unsigned int*) get_resource(TextureType, model.texture));
+    Texture* t = model.texture.value<Texture>();
 
     Mat4f scale = mat4f_scale(model.scale.x, model.scale.y, model.scale.z);
     Mat4f trans = mat4f_translate(model.position.x, model.position.y, model.position.z);
     Mat4f model_mat = mat4f_multiply(scale, trans);
 
 
-    glBindTexture(GL_TEXTURE_2D, texture);
+    glBindTexture(GL_TEXTURE_2D, t->texture);
 
     glUniformMatrix4fv(model_uniform, 1, GL_FALSE, model_mat);
 

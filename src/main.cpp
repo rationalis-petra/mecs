@@ -5,15 +5,6 @@
 #include "systems/systems.hpp"
 
 // types
-int ModelType;
-int CameraType;
-int RigidBodyType;
-int AttachmentType;
-int SensorType;
-int ActuatorType;
-int AgentType;
-int InfoType;
-
 unsigned int Model::type_idx;
 unsigned int Camera::type_idx;
 unsigned int RigidBody::type_idx;
@@ -24,8 +15,8 @@ unsigned int Agent::type_idx;
 unsigned int Info::type_idx;
 
 // resources
-int TextureType;
-int MeshType;
+unsigned int Texture::type_id;
+unsigned int Mesh::type_id;
 
 int main(int argc, char** argv) {
   new_window(2560, 1440);
@@ -47,8 +38,8 @@ int main(int argc, char** argv) {
   world.register_system(new PhysicsSystem());
   world.register_system(new RenderSystem());
 
-  TextureType = register_resource_type(&load_texture, &delete_texture);
-  MeshType = register_resource_type(&load_mesh, &delete_mesh);
+  world.register_resource_type<Texture>();
+  world.register_resource_type<Mesh>();
 
   make_player(world);
   make_enemy(world, 4.0, 0.0, 4.0);

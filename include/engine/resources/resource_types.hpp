@@ -2,22 +2,28 @@
 #define __RESOURCE_TYPES_H_
 // texutre
 
-extern int TextureType;
+#include <string>
 
-void* load_texture(const char* path);
-void delete_texture(void* texture);
+class Texture {
+public:
+  static unsigned int type_id;
+  unsigned int texture;
 
-// Mesh
+  Texture(std::string path);
+  ~Texture();
+};
 
-extern int MeshType;
+class Mesh {
+public:
+  static unsigned int type_id;
 
-typedef struct {
-    unsigned int VAO;
-    unsigned int VBO;
-    unsigned int num_triangles;
-} Mesh;
+  unsigned int VAO;
+  unsigned int VBO;
+  unsigned int num_triangles;
 
-void* load_mesh(const char* path);
-void delete_mesh(void* mesh);
+  Mesh(std::string path);
+  ~Mesh();
+};
+
 
 #endif
