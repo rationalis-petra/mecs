@@ -19,7 +19,7 @@ Mat4f mat4f_multiply(Mat4f mat1, Mat4f mat2);
 /** @brief pre-multiplies the vector vec by the matrix mat
  *
  */
-Vec4f mat4f_act_on(Mat4f mat, Vec4f vec);
+Vec<4, float> mat4f_act_on(Mat4f mat, Vec<4, float> vec);
 
 /**@brief returns the identity matrix in 4d-space
  *
@@ -49,7 +49,7 @@ Mat4f mat4f_translate(float x, float y, float z);
  *          looking at the target, with an orientation specificed by the 
  *          up vector
  */
-Mat4f mat4f_look_at(Vec3f position, Vec3f target, Vec3f up);
+Mat4f mat4f_look_at(Vec<3, float> position, Vec<3, float> target, Vec<3, float> up);
 
 /** @brief Perspective projection matrices reduce the size of an object the
  *         further away it is.

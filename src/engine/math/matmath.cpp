@@ -9,6 +9,9 @@
 #endif
 
 
+typedef Vec<3, float> Vec3f;
+typedef Vec<4, float> Vec4f;
+
 int mat4f_equals(Mat4f mat1, Mat4f mat2) {
   for (int i = 0; i < 16; i++) {
     if (mat1[i] != mat2[i]) {
@@ -160,9 +163,9 @@ Mat4f mat4f_rotate(float x, float y, float z) {
 Mat4f mat4f_look_at(Vec3f position, Vec3f target, Vec3f up) {
   Mat4f out = (Mat4f) malloc(sizeof(Mat4f) * 16);
 
-  Vec3f camera_direction = vec3f_normalize(vec3f_difference(position, target));
-  Vec3f camera_right = vec3f_normalize(vec3f_cross(up, camera_direction));
-  Vec3f camera_up = vec3f_cross(camera_direction, camera_right);
+  Vec3f camera_direction = (position - target).normalized();
+  Vec3f camera_right = cross<float>(up, camera_direction).normalized();
+  Vec3f camera_up = cross<float>(camera_direction, camera_right);
 
   // look at -> combine re-orientation & translation
   out[0] = camera_right.x;

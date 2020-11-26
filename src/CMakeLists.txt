@@ -29,9 +29,9 @@ add_library(game components/camera.cpp
                  systems/render_system.cpp
                  #systems/ai_system.cpp
                  systems/physics_system.cpp
-		 systems/physics/sat_test.cpp
+                 systems/physics/sat_test.cpp
                  systems/utils.cpp
 
-                 templates/enemy_template.cpp
-                 templates/player_template.cpp
-                 templates/floor_template.cpp)
+                 constructors/enemy.cpp
+                 constructors/player.cpp
+                 constructors/floor.cpp)

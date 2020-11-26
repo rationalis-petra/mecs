@@ -6,7 +6,6 @@
 
 using std::optional;
 
-Entity::Entity(World& _world, unsigned _idx) : world(_world), idx(_idx) {
-}
+Entity::Entity(World& _world, unsigned _idx) : idx(_idx), world(_world) {}
 
 // TODO: throw ComponentAlreadyExists Exeption

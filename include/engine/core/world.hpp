@@ -46,10 +46,6 @@ private:
   std::vector<std::vector<void*>> resources;
   std::vector<std::unordered_map<std::string, Resource>> resource_indices;
 
-#ifndef NDEBUG
-  bool entities_added;
-#endif
-
 public:
   World();
   ~World();

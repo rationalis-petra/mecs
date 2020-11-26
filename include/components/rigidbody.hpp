@@ -16,11 +16,12 @@ class RigidBody : public Component {
 public:
   static unsigned type_idx;
 
-  float mass;      ///< Standard newtonian mass
-  Vec3f position;  ///< Store the postion - allows visual position changes (via Model) without changing the 'physics' position
-  Vec3f velocity;  ///< Change in position w.r.t time
-  Vec3f force;     ///< any forces that are acting on the object - gets reset to 0 when physics is called
-  ResourceID mesh; ///< the mesh used for collisions
+  float mass;                 /// Standard newtonian mass
+  Vec<3, float> position;     /// Store the postion - allows visual position changes (via Model) without changing the 'physics' position
+  Vec<3, float> orientation;  /// A triple of Euler angles: theta, phi, psi
+  Vec<3, float> velocity;     /// Change in position w.r.t time
+  Vec<3, float> force;        /// any forces that are acting on the object - gets reset to 0 when physics is called
+  //Resource mesh;              /// the mesh used for collisions
 
   RigidBody();
   RigidBody(float x, float y, float z);

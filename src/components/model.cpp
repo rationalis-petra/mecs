@@ -4,12 +4,12 @@
 
 using std::string;
 
-Model::Model(World& world, string _texture, string _mesh, Vec3f _position, Vec3f _scale) :
+Model::Model(World& world, string _texture, string _mesh, Vec<3, float> _position, Vec<3, float> _scale) :
   position(_position),
+  rotation(0.0f, 0.0f, 0.0f),
   scale(_scale),
-  texture (world.get_resource_or_construct<Texture>(_texture)),
-  mesh (world.get_resource_or_construct<Mesh>(_mesh)) {
-}
+  mesh (world.get_resource_or_construct<Mesh>(_mesh)),
+  texture (world.get_resource_or_construct<Texture>(_texture)) {}
 
 Model::~Model() {
 }

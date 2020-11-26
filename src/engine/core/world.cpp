@@ -23,10 +23,6 @@ World::World() {
 
   systems = vector<System*>(0);
   running = false;
-
-#ifndef NDEBUG
-  bool entities_added = false;
-#endif
 }
 
 World::~World() {}

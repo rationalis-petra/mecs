@@ -18,7 +18,7 @@ class AttachmentElement : public Component {
 public:
   static unsigned int type_idx;
   Entity id;
-  Vec3f displacement;
+  Vec<3, float> displacement;
 
   AttachmentElement();
   ~AttachmentElement();
