@@ -4,6 +4,9 @@
 #include "templates/templates.hpp"
 #include "systems/systems.hpp"
 
+#include <iostream>
+
+
 // types
 unsigned int Model::type_idx;
 unsigned int Camera::type_idx;
@@ -18,8 +21,13 @@ unsigned int Info::type_idx;
 unsigned int Texture::type_id;
 unsigned int Mesh::type_id;
 
+void test_multiplication() {
+
+}
+
 int main(int argc, char** argv) {
   new_window(2560, 1440);
+
   World world = World();
 
   // The initialisation
@@ -33,7 +41,7 @@ int main(int argc, char** argv) {
   world.register_component<Info>();
 
   world.register_system(new EnemySystem());
-  /* register_system(&ai_system, &ai_init, &ai_clean); */
+  // register_system(&ai_system, &ai_init, &ai_clean);
   world.register_system(new InputSystem());
   world.register_system(new PhysicsSystem());
   world.register_system(new RenderSystem());

@@ -1,5 +1,7 @@
 #include <math.h>
 
+#include <iostream>
+
 #include "engine.hpp"
 #include "components/components.hpp"
 

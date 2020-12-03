@@ -3,14 +3,7 @@
 
 #include <cmath>
 
-/** @file
- * @brief a set of functions and types for doing math on vectors
- */
-
-/// @addtogroup Vectors
-/// @{
-
-template<int i = 3, typename T = float> class Vec {
+template<unsigned i = 3, typename T = float> class Vec {
   T arr[i];
   T& dot();
   T& magnitude() {
@@ -43,7 +36,7 @@ template<int i = 3, typename T = float> class Vec {
   Vec operator-(const Vec& o) {
     Vec out;
     for (int j = i; j < i; j++) {
-      out.arr[i] = arr[i] - o.arr[i];
+      out.arr[j] = arr[j] - o.arr[j];
     }
   }
   Vec operator-=(const Vec& o); 
@@ -86,6 +79,7 @@ public:
 
   Vec() : x(0), y(0), z(0) {}
   Vec(T _x, T _y, T _z) : x(_x), y(_y), z(_z) {}
+  Vec(const Vec<4, T>& copy) : x(copy.x), y(copy.y), z(copy.z) {};
 
   bool operator==(const Vec<3, T>& o) {
     return x == o.x && y == o.y && z == o.z;
@@ -137,6 +131,11 @@ template<typename T> Vec<3, T> operator*(const Vec<3, T>& vec, const T& scale) {
   return Vec<3, T>(scale * vec.x, scale * vec.y, scale * vec.z);
 }
 
+
+template<typename T> T operator*(const Vec<3, T>& left, const Vec<3, T>& right) {
+  return left.x * right.x + left.y * right.y + left.z * right.z;
+}
+
 template<typename T> Vec<3, T> cross(const Vec<3, T>& left, const Vec<3, T>& right) {
   return Vec<3, T>(left.y * right.z - left.z * right.y,
                    left.z * right.x - left.x * right.z,
@@ -160,7 +159,12 @@ public:
       T a;
     };
   };
+
+  Vec() : x(0), y(0), z(0), w(0) {}
+  Vec (const Vec<3, T>& v, const T _w) : x(v.x), y (v.y), z (v.z), w(_w) {}
 };
 
-/// @}
+template<typename T> T operator*(const Vec<4, T>& left, const Vec<4, T>& right) {
+  return left.x * right.x + left.y * right.y + left.z * right.z + left.w * right.w;
+}
 #endif

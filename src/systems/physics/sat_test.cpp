@@ -1,9 +1,9 @@
 #include "engine.hpp"
 #include "components/rigidbody.hpp"
 
-
 typedef Vec<3, float> Vec3f;
-typedef Matrix<4, float> Mat4f;
+typedef Vec<4, float> Vec4f;
+typedef Matrix<4, 4, float> Mat4f;
 
 Vec3f sat_test(RigidBody& body1, RigidBody& body2) {
   Vec3f mesh1[] = {{ 0.5,  0.5,  0.5},
@@ -25,9 +25,7 @@ Vec3f sat_test(RigidBody& body1, RigidBody& body2) {
 
   // assume that the mesh is a box centred on the origin with side length 1
   const Vec3f& pos1 = body1.position;
-  const Vec3f& rot1 = body1.orientation;
   const Vec3f& pos2 = body2.position;
-  const Vec3f& rot2 = body2.orientation;
 
   Mat4f body1_rot = Mat4f::rotate(body1.orientation);
   Mat4f body2_rot = Mat4f::rotate(body2.orientation);
@@ -35,27 +33,28 @@ Vec3f sat_test(RigidBody& body1, RigidBody& body2) {
   Mat4f body2_model = Mat4f::translate(body2.position) * body2_rot;
 
   for (int i = 0; i < 8; i++) {
-    mesh1[i] = body1_model * mesh[i]; 
-    mesh2[i] = body1_model * mesh2[i];
+    mesh1[i] = Vec3f(body1_model * Vec4f(mesh1[i], 1)); 
+    mesh2[i] = Vec3f(body1_model * Vec4f(mesh2[i], 1));
   }
 
   // We choose 6 axes, based on the orientation of the two bodies
-  Vec3f  axes[] = {
-    Vec3f(body2_rot.column[0]),
-    Vec3f(body2_rot.column[1]),
-    Vec3f(body2_rot.column[2]),
-    Vec3f(body1_rot.column[0]),
-    Vec3f(body1_rot.column[1]),
-    Vec3f(body1_rot.column[2])};
+  Vec3f axes[] = {
+    Vec3f(body2_rot.column(0)),
+    Vec3f(body2_rot.column(1)),
+    Vec3f(body2_rot.column(2)),
+    Vec3f(body1_rot.column(0)),
+    Vec3f(body1_rot.column(1)),
+    Vec3f(body1_rot.column(2))};
 
   // perform test for each axis, if there exists /one/ axis where they do not collide, no collusiton!
-  for (Vec3f axis : axes) {
-    float xmin, xmax, ymin, ymax;
+  for (int j = 0; j < 6; j++) {
+    Vec3f axis = axes[j];
+    float xmin, xmax, ymin, ymax, x, y;
     // dot product
     xmin = xmax = axes[0] * mesh1[0];
     ymin = ymax = axes[0] * mesh2[0];
     for (int i = 1; i < 8; i++) {
-      x = axes[i] * mesh1[i];
+      x = axis * mesh1[i];
       xmin = x < xmin ? x : xmin;
       xmax = x > xmax ? x : xmax;
 
