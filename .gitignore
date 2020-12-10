@@ -1,4 +1,7 @@
 /build/**
 /doc/**
 /.clangd/**
+/.cache/**
 vgcore.*
+.glfw.supp
+compile_comands.json

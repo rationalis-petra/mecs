@@ -1,6 +1,7 @@
 #ifndef __VECMATH_H
 #define __VECMATH_H
 
+#include <iostream>
 #include <cmath>
 
 template<unsigned i = 3, typename T = float> class Vec {
@@ -142,6 +143,11 @@ template<typename T> Vec<3, T> cross(const Vec<3, T>& left, const Vec<3, T>& rig
                    left.x * right.y - left.y * right.x);
 }
 
+template<typename T> std::ostream& operator<<(std::ostream& os, const Vec<3, T>& v) {
+  os << "[" << v.x << ", " << v.y << ", " << v.z << ", " << "]";
+  return os;
+}
+
 
 template<typename T> class Vec<4, T> {
 public:
@@ -160,11 +166,18 @@ public:
     };
   };
 
-  Vec() : x(0), y(0), z(0), w(0) {}
+  Vec(T _x = 0, T _y = 0, T _z = 0, T _w = 0) : x(_x), y(_y), z(_z), w(_w) {}
   Vec (const Vec<3, T>& v, const T _w) : x(v.x), y (v.y), z (v.z), w(_w) {}
+
 };
 
 template<typename T> T operator*(const Vec<4, T>& left, const Vec<4, T>& right) {
   return left.x * right.x + left.y * right.y + left.z * right.z + left.w * right.w;
 }
+
+template<typename T> std::ostream& operator<<(std::ostream& os, const Vec<4, T>& v) {
+  os << "[" << v.x << ", " << v.y << ", " << v.z << ", " << v.w << "]";
+  return os;
+}
+
 #endif

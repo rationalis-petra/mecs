@@ -6,8 +6,7 @@
 
 #include <iostream>
 
-
-// types
+// components
 unsigned int Model::type_idx;
 unsigned int Camera::type_idx;
 unsigned int RigidBody::type_idx;
@@ -21,12 +20,12 @@ unsigned int Info::type_idx;
 unsigned int Texture::type_id;
 unsigned int Mesh::type_id;
 
-void test_multiplication() {
-
-}
-
 int main(int argc, char** argv) {
   new_window(2560, 1440);
+
+  Matrix<4, 4, float> id = Matrix<4, 4, float>::translate({1.0, 2.0, 3.0});
+  Vec<4, float> units = Vec<4, float>(1.0, 1.0, 1.0, 1.0);
+  std::cout << id * units << std::endl;
 
   World world = World();
 

@@ -218,12 +218,10 @@ template<typename T>
 Vec<4, T> operator*(const Matrix<4, 4, T>& mat, const Vec<4, T> vec) {
   Vec<4, T> out = Vec<4, T>();
   // essentially, vec^T
-  for (int i = 0; i < 4; i++) {
-    out.x += mat.arr[i] * vec.x;
-    out.x += mat.arr[i + 4] * vec.x;
-    out.x += mat.arr[i + 8] * vec.x;
-    out.x += mat.arr[i + 12] * vec.x;
-  }
+  out.x += mat.arr[0] * vec.x + mat.arr[4] * vec.y + mat.arr[8 ] * vec.z + mat.arr[12] * vec.w;
+  out.y += mat.arr[1] * vec.x + mat.arr[5] * vec.y + mat.arr[9 ] * vec.z + mat.arr[13] * vec.w;
+  out.z += mat.arr[2] * vec.x + mat.arr[6] * vec.y + mat.arr[10] * vec.z + mat.arr[14] * vec.w;
+  out.w += mat.arr[3] * vec.x + mat.arr[7] * vec.y + mat.arr[11] * vec.z + mat.arr[15] * vec.w;
   return out;
 }
 
