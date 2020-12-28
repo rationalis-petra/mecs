@@ -1,12 +1,12 @@
 # specify the minimum version required for CMake
 
 cmake_minimum_required(VERSION 3.10)
-set (CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS on)
-set( CMAKE_CXX_FLAGS "-g -Wall" )
-# Projectn's Name
+set(CMAKE_CXX_FLAGS "-g -Wall")
+# Project name
 
-project(enigma)
+project(mecs)
 
 # Set output output folder where your program will be created
 set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/build)
@@ -21,7 +21,12 @@ include_directories(
 add_subdirectory(src)
 add_subdirectory(libs)
 
-add_executable(enigma src/main.cpp)
+add_executable(mecs src/test_app/main.cpp)
 
-target_link_libraries(enigma game engine glad)
-target_link_libraries(enigma glfw GL X11 pthread Xrandr Xi dl m)
+add_library(engine $<TARGET_OBJECTS:ecs>
+                   $<TARGET_OBJECTS:physics>
+                   $<TARGET_OBJECTS:graphics>
+                   $<TARGET_OBJECTS:glad>)
+
+target_link_libraries(mecs sim engine)
+target_link_libraries(mecs glfw GL X11 Xrandr Xi dl m)
