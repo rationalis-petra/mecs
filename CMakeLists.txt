@@ -8,11 +8,18 @@ set(CMAKE_CXX_FLAGS "-g -Wall")
 
 project(mecs)
 
+option(UseConan "whether conan is used when building" OFF)
+
 # Set output output folder where your program will be created
 set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/build)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
 # The following folder will be included
+
+if (UseConan)
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
+endif()
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/include/
@@ -29,4 +36,9 @@ add_library(engine $<TARGET_OBJECTS:ecs>
 target_link_libraries(engine glad)
 
 target_link_libraries(mecs sim engine)
+
+if (UseConan)
+target_link_libraries(mecs ${CONAN_LIBS})
+else()
 target_link_libraries(mecs glfw GL X11 Xrandr Xi dl m)
+endif()

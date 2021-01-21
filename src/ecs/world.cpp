@@ -96,7 +96,6 @@ void World::clean() {
   //free_shaders();
 
   delete_window(0);
-  pthread_exit(EXIT_SUCCESS);
 }
 
 
