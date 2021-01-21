@@ -2,7 +2,7 @@
 #define __CONSTRAINT_HPP
 
 #include "ecs/ecs.hpp"
-#include "physics/dynamics/sparse_matrix.hpp"
+#include "math/sparse_matrix.hpp"
 
 class Constraint {
 public:
@@ -12,8 +12,8 @@ public:
 
   // calculate a partial derivative of the function w.r.t. an input element (del C / del x_i)
   // the dot version calculates (del^2 C/(del x_i del t)
-  virtual Block partial() = 0;
-  virtual Block partial_dot() = 0;
+  // virtual Block partial() = 0;
+  // virtual Block partial_dot() = 0;
 };
 
 

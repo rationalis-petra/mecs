@@ -25,8 +25,8 @@ add_executable(mecs src/test_app/main.cpp)
 
 add_library(engine $<TARGET_OBJECTS:ecs>
                    $<TARGET_OBJECTS:physics>
-                   $<TARGET_OBJECTS:graphics>
-                   $<TARGET_OBJECTS:glad>)
+                   $<TARGET_OBJECTS:graphics>)
+target_link_libraries(engine glad)
 
 target_link_libraries(mecs sim engine)
 target_link_libraries(mecs glfw GL X11 Xrandr Xi dl m)

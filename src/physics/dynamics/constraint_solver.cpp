@@ -7,8 +7,6 @@ const float damp_constant = 1.0f;
 
 using std::vector;
 
-class SparseMatrix {
-};
 
 // function which will return a vector which can be decomposed
 // into all accelerations experienced by the rigidbodies

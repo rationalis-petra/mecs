@@ -13,9 +13,4 @@ add_subdirectory(graphics)
 
 add_subdirectory(test_app)
 
-include_directories(
-    ${PROJECT_SOURCE_DIR}/include/
-    ${PROJECT_SOURCE_DIR}/include/
-    ${PROJECT_SOURCE_DIR}/libs/include/)
-
 
